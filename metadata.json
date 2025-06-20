@@ -1,0 +1,6 @@
+{
+  "description": "A web page displaying a list of AI business tools in a modern table. Each tool has its website, title (as a link), and description.",
+  "prompt": "create a web site show Title(link to the web site), Description in modern looking table. Here is the original image: [image]",
+  "requestFramePermissions": [],
+  "name": "App"
+}

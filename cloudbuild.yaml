@@ -1,0 +1,43 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/myresume-457817/apps', '.']
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/myresume-457817/apps']
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'app'
+      - '--image'
+      - 'gcr.io/myresume-457817/apps'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--service-account'
+      - '711582759542-compute@developer.gserviceaccount.com'
+      - '--project'
+      - 'myresume-457817'
+      - '--memory'
+      - '256Mi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
+      - '--port'
+      - '80'
+
+images:
+  - 'gcr.io/myresume-457817/apps'
+
+options:
+  logging: CLOUD_LOGGING_ONLY 
