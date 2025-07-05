@@ -33,10 +33,16 @@ const data: WebsiteData[] = [
         title: "Video Audio Synthesizer",
         description: "Combine video and audio directly in your browser."
     },
+   
     {
-        webSite: "voice.ai-biz.app",
-        title: "AI Speech Generator",
-        description: "Create a unique voice from a single or multiple speakers."
+        webSite: "insights.ai-biz.app",
+        title: "AI-Powered Insights for Every Topic",
+        description: "Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence."
+    },
+    {
+        webSite: "myjob.ai-biz.app",
+        title: "MyJob: AI-Powered Job Search",
+        description: "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance."
     },
     {
         webSite: "screen-capture.ai-biz.app",
