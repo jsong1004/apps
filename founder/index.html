@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Founder - Jaehee Song | AI Business Tools Showcase</title>
+    <meta name="description" content="Learn about Jaehee Song, founder of Startup Consulting Inc. Over 20 years of experience in data platform architecture and AI solution development.">
+    <meta name="keywords" content="Jaehee Song, founder, AI, data platform, startup consulting, Seattle Partners">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ai-biz.app/founder/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ai-biz.app/founder/">
+    <meta property="og:title" content="About Founder - Jaehee Song">
+    <meta property="og:description" content="Learn about Jaehee Song, founder of Startup Consulting Inc. Over 20 years of experience in data platform architecture and AI solution development.">
+    <meta property="og:image" content="https://www.ai-biz.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.ai-biz.app/founder/">
+    <meta name="twitter:title" content="About Founder - Jaehee Song">
+    <meta name="twitter:description" content="Learn about Jaehee Song, founder of Startup Consulting Inc. Over 20 years of experience in data platform architecture and AI solution development.">
+    <meta name="twitter:image" content="https://www.ai-biz.app/og-image.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #app-header-placeholder {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #2c3e50; 
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        #app-header-placeholder .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #app-header-placeholder .header-title {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        
+        #app-header-placeholder .header-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #app-header-placeholder .header-social-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 0.9em;
+        }
+
+        #app-header-placeholder .header-social-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #app-header-placeholder .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #app-header-placeholder .header-title {
+                margin-bottom: 10px;
+            }
+            #app-header-placeholder .header-social-links a {
+                margin-left: 0;
+                margin-right: 15px;
+            }
+            #app-header-placeholder .header-social-links a:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .container {
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .profile-section {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-circle {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 16px;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .profile-title {
+            color: #3498db;
+            font-weight: 500;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                text-align: left;
+            }
+        }
+
+        .divider {
+            height: 4px;
+            width: 64px;
+            background-color: #3498db;
+            border-radius: 2px;
+            margin: 0 auto 24px;
+        }
+
+        @media (min-width: 768px) {
+            .divider {
+                margin: 0 0 24px;
+            }
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .expertise-section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .expertise-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .expertise-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .expertise-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .expertise-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .expertise-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .expertise-card-text {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        #app-footer-placeholder {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 48px 0;
+        }
+
+        /* Footer styles from main site */
+        #app-footer-placeholder .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        #app-footer-placeholder .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            #app-footer-placeholder .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        #app-footer-placeholder .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        #app-footer-placeholder .footer-section.company-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        #app-footer-placeholder .footer-section p {
+            margin-bottom: 16px;
+        }
+
+        #app-footer-placeholder .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #app-footer-placeholder .footer-section ul li a,
+        #app-footer-placeholder .footer-contact-item a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        #app-footer-placeholder .footer-section ul li a:hover,
+        #app-footer-placeholder .footer-contact-item a:hover {
+            color: white;
+        }
+
+        #app-footer-placeholder .footer-contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        #app-footer-placeholder .footer-contact-item span {
+            margin-right: 8px;
+        }
+
+        #app-footer-placeholder .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 48px;
+            padding-top: 32px;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        #app-footer-placeholder .footer-bottom p {
+            margin: 0 0 8px 0;
+        }
+
+        #app-footer-placeholder .footer-bottom-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        #app-footer-placeholder .footer-bottom-links a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000;background:#fff;color:#000;padding:8px;">Skip to main content</a>
+    <header id="app-header-placeholder" aria-label="Site header" role="banner">
+        <!-- Header will be injected here by JavaScript -->
+    </header>
+
+    <main id="main-content" role="main" tabindex="-1">
+        <div class="container">
+            <section class="profile-section">
+                <div class="profile-image">
+                    <div class="profile-circle">JS</div>
+                    <h2 class="profile-name">Jaehee Song</h2>
+                    <p class="profile-title">Data Platform Architect & AI Solution Developer</p>
+                </div>
+                <div class="profile-content">
+                    <h1>Our Founder</h1>
+                    <div class="divider"></div>
+                    <p class="bio-text">
+                        With over 20 years of experience in data platform architecture and AI solution development, Jaehee Song is a visionary leader bridging technology and business across international markets. As the founder of Startup Consulting Inc. and Executive Director at Seattle Partners, he has dedicated his career to helping Korean startups successfully enter the US market.
+                    </p>
+                    <p class="bio-text">
+                        Jaehee's extensive background includes designing and operating enterprise-level data systems at Visa, where he led critical infrastructure projects and innovations. His expertise spans from real-time analytics platforms using Apache Druid to comprehensive database management systems that have saved organizations thousands of hours annually.
+                    </p>
+                    <p class="bio-text">
+                        Beyond his technical achievements, Jaehee is passionate about developing next-generation talent through global internship programs and has authored "This Is How We Came," sharing employment stories of Korean professionals who successfully transitioned to US tech companies.
+                    </p>
+                </div>
+            </section>
+
+            <section class="expertise-section">
+                <h2 class="expertise-title">Key Expertise Areas</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <span class="expertise-icon">🚀</span>
+                        <h3 class="expertise-card-title">Startup Acceleration</h3>
+                        <p class="expertise-card-text">Led accelerator programs supporting 50+ startups entering the US market with comprehensive consulting from market research to implementation.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-icon">🤖</span>
+                        <h3 class="expertise-card-title">AI Development</h3>
+                        <p class="expertise-card-text">Developed multiple AI-powered services including RAG-based chat systems, lead generators, and career guidance platforms using cutting-edge technologies.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-icon">🏛️</span>
+                        <h3 class="expertise-card-title">Enterprise Architecture</h3>
+                        <p class="expertise-card-text">Designed and implemented large-scale data platforms at Visa, achieving 90% reduction in deployment times and significant cost savings.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-icon">🌐</span>
+                        <h3 class="expertise-card-title">Cross-Cultural Leadership</h3>
+                        <p class="expertise-card-text">Successfully bridged Korean and American business environments, establishing partnerships and facilitating international market entry.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="app-footer-placeholder" aria-label="Site footer" role="contentinfo">
+        <!-- Footer will be injected here by JavaScript -->
+    </footer>
+
+    <script>
+        // Initialize header and footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('app-header-placeholder');
+            const footerContainer = document.getElementById('app-footer-placeholder');
+            
+            if (headerContainer) {
+                headerContainer.innerHTML = `
+                    <div class="header-content">
+                        <div class="header-title">
+                            <a href="/">AI Business Tools Showcase</a>
+                        </div>
+                        <div class="header-social-links">
+                            <a href="https://facebook.com/usa.startup.consulting" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">Facebook</a>
+                            <a href="https://linkedin.com/company/75661993/admin/dashboard/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">LinkedIn</a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (footerContainer) {
+                footerContainer.innerHTML = `
+                    <div class="footer-container">
+                        <div class="footer-grid">
+                            <div class="footer-section company-info">
+                                <h3>Startup Consulting Inc.</h3>
+                                <p>Transforming businesses through AI automation and education.</p>
+                            </div>
+                            <div class="footer-section">
+                                <h3>Services</h3>
+                                <ul>
+                                    <li><a href="https://www.ai-biz.app" target="_blank" rel="noopener noreferrer" title="We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.">AI Workshops</a></li>
+                                    <li><a href="https://www.ai-biz.app" target="_blank" rel="noopener noreferrer" title="Transform your business with ai automation. we build business automation process to automate and enhance your business.">Business Automation</a></li>
+                                    <li><a href="https://insights.ai-biz.app" target="_blank" rel="noopener noreferrer" title="Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.">Topic Insights</a></li>
+                                    <li><a href="https://myjob.ai-biz.app" target="_blank" rel="noopener noreferrer" title="AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.">My Resume</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h3>Company</h3>
+                                <ul>
+                                    <li><a href="/founder/">About Founder</a></li>
+                                    <li><a href="/company/">About Company</a></li>
+                                    <li><a href="/case-studies/">Case Studies</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-section">
+                                <h3>Contact</h3>
+                                <ul>
+                                    <li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p>
+                            <div class="footer-bottom-links">
+                                <a href="/privacy-policy/">Privacy Policy</a>
+                                <a href="/terms-of-service/">Terms of Service</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

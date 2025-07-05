@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "app",
+			"path": "."
+		},
+		{
+			"name": "case-studies",
+			"path": "../ai-business-automation-landing/app/case-studies"
+		},
+		{
+			"name": "company",
+			"path": "../ai-business-automation-landing/app/company"
+		},
+		{
+			"name": "founder",
+			"path": "../ai-business-automation-landing/app/founder"
+		},
+		{
+			"name": "terms-of-service",
+			"path": "../ai-business-automation-landing/app/terms-of-service"
+		},
+		{
+			"name": "privacy-policy",
+			"path": "../ai-business-automation-landing/app/privacy-policy"
+		}
+	],
+	"settings": {}
+}

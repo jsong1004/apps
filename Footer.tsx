@@ -68,12 +68,16 @@ export function createFooter(container: HTMLElement): void {
     const companyLinksHeader = document.createElement('h3');
     companyLinksHeader.textContent = 'Company';
     const companyLinksList = document.createElement('ul');
-    const companyLinkItems = ['About Founder', 'About Company', 'Case Studies'];
-    companyLinkItems.forEach(itemText => {
+    const companyLinkItems = [
+        { name: 'About Founder', url: '/founder/' },
+        { name: 'About Company', url: '/company/' },
+        { name: 'Case Studies', url: '/case-studies/' }
+    ];
+    companyLinkItems.forEach(item => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
-        link.href = '#'; // Placeholder link
-        link.textContent = itemText;
+        link.href = item.url;
+        link.textContent = item.name;
         listItem.appendChild(link);
         companyLinksList.appendChild(listItem);
     });
@@ -124,8 +128,8 @@ export function createFooter(container: HTMLElement): void {
     const legalLinksDiv = document.createElement('div');
     legalLinksDiv.className = 'footer-bottom-links';
     const legalLinks = [
-        { name: 'Privacy Policy', url: '#' },
-        { name: 'Terms of Service', url: '#' }
+        { name: 'Privacy Policy', url: '/privacy-policy/' },
+        { name: 'Terms of Service', url: '/terms-of-service/' }
     ];
     legalLinks.forEach(legal => {
         const link = document.createElement('a');

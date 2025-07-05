@@ -4,6 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Business Tools Showcase</title>
+    <meta name="description" content="Discover and explore AI-powered business tools for automation, insights, and productivity. Compare solutions and find the right AI tool for your business needs.">
+    <meta name="keywords" content="AI, business tools, automation, insights, productivity, resume, workshops, business automation, topic insights">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ai-biz.app/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ai-biz.app/">
+    <meta property="og:title" content="AI Business Tools Showcase">
+    <meta property="og:description" content="Discover and explore AI-powered business tools for automation, insights, and productivity.">
+    <meta property="og:image" content="https://www.ai-biz.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.ai-biz.app/">
+    <meta name="twitter:title" content="AI Business Tools Showcase">
+    <meta name="twitter:description" content="Discover and explore AI-powered business tools for automation, insights, and productivity.">
+    <meta name="twitter:image" content="https://www.ai-biz.app/og-image.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AI Business Tools Showcase",
+      "url": "https://www.ai-biz.app/",
+      "description": "Discover and explore AI-powered business tools for automation, insights, and productivity.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Startup Consulting Inc."
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.ai-biz.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
@@ -277,19 +317,21 @@
     </style>
 </head>
 <body>
-    <header id="app-header-placeholder">
+    <a href="#main-content" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000;background:#fff;color:#000;padding:8px;">Skip to main content</a>
+    <header id="app-header-placeholder" aria-label="Site header" role="banner">
         <!-- Header will be injected here by JavaScript -->
     </header>
 
-    <div class="container">
+    <main id="main-content" role="main" tabindex="-1">
+      <section class="container" aria-label="AI Business Tools Table">
         <h1>AI-Powered Business Solutions</h1>
         <p style="text-align: center;">From concept to deployment: A collection of web services born from everyday needs. Some are elegant single-purpose tools, others are full-scale business solutions with complex workflows and AI integration. Each project showcases different aspects of modern web development and practical problem-solving.</p>
-        <div class="table-container">
+        <div class="table-container" role="region" aria-label="AI Business Tools Table">
             <table id="websitesTable">
                 <thead>
                     <tr>
-                        <th>Web Site</th>
-                        <th>Description</th>
+                        <th scope="col">Web Site</th>
+                        <th scope="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -297,13 +339,13 @@
                 </tbody>
             </table>
         </div>
-    </div>
+      </section>
+    </main>
 
-    <footer id="app-footer-placeholder">
+    <footer id="app-footer-placeholder" aria-label="Site footer" role="contentinfo">
         <!-- Footer will be injected here by JavaScript -->
     </footer>
 
-    
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
