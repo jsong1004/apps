@@ -18,9 +18,7 @@ export function createHeader(container: HTMLElement): void {
 
     const socialLinks: { name: string, url: string }[] = [
         { name: 'Facebook', url: 'https://facebook.com/usa.startup.consulting' },
-        { name: 'LinkedIn', url: 'https://linkedin.com/company/75661993/admin/dashboard/' },
-        { name: 'Twitter', url: 'https://x.com/JaeheeSong1004' },
-        { name: 'Instagram', url: 'https://instagram.com/knft82/' }
+        { name: 'LinkedIn', url: 'https://linkedin.com/company/75661993/admin/dashboard/' }
     ];
 
     socialLinks.forEach(social => {

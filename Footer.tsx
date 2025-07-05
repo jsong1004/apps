@@ -25,12 +25,36 @@ export function createFooter(container: HTMLElement): void {
     const servicesHeader = document.createElement('h3');
     servicesHeader.textContent = 'Services';
     const servicesList = document.createElement('ul');
-    const serviceItems = ['AI Workshops', 'Custom Automation', 'Managed Services', 'Consulting'];
-    serviceItems.forEach(itemText => {
+    const serviceItems = [
+        { 
+            name: 'AI Workshops', 
+            url: 'https://www.ai-biz.app', 
+            tooltip: 'We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.'
+        },
+        { 
+            name: 'Business Automation', 
+            url: 'https://www.ai-biz.app', 
+            tooltip: 'Transform your business with ai automation. we build business automation process to automate and enhance your business.'
+        },
+        { 
+            name: 'Topic Insights', 
+            url: 'https://insights.ai-biz.app', 
+            tooltip: 'Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.'
+        },
+        { 
+            name: 'My Resume', 
+            url: 'https://myjob.ai-biz.app', 
+            tooltip: 'AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.'
+        }
+    ];
+    serviceItems.forEach(item => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
-        link.href = '#'; // Placeholder link
-        link.textContent = itemText;
+        link.href = item.url;
+        link.textContent = item.name;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.title = item.tooltip; // This creates the tooltip on hover
         listItem.appendChild(link);
         servicesList.appendChild(listItem);
     });
