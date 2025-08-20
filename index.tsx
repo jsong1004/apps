@@ -69,7 +69,7 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
-        webSite: "myjob_investment/myjob-presentation.html",
+        webSite: "apps.ai-biz.app/myjob_investment/myjob-presentation.html",
         title: "MyJob Investment Presentation",
         description: "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
         category: "business",
@@ -107,12 +107,6 @@ function populateCards() {
     if (!toolsGrid) {
         console.error("Tools grid not found!");
         return;
-    }
-
-    // Update total tools count
-    const totalToolsElement = document.getElementById('totalTools');
-    if (totalToolsElement) {
-        totalToolsElement.textContent = data.length.toString();
     }
 
     data.forEach(item => {
