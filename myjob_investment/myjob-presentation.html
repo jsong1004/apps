@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MyJob: AI-Powered Job Search Platform - Complete Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: none;
+            transform-origin: center center;
+            padding-bottom: 80px; /* Add space for navigation */
+        }
+        .slide.active {
+            display: block;
+        }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gradient {
+            background: linear-gradient(135deg, #008080 0%, #2F4F4F 100%);
+        }
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 50px;
+            padding: 12px 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 127, 80, 0.8);
+            transform: scale(1.1);
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .slide-counter {
+            color: white;
+            font-weight: bold;
+            min-width: 70px;
+            text-align: center;
+            font-size: 14px;
+        }
+        /* Full-screen mode */
+        .fullscreen-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        /* Shared styles from individual slides */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 127, 80, 0.1);
+            animation: float 8s infinite ease-in-out;
+        }
+        .floating-square {
+            position: absolute;
+            background: rgba(218, 165, 32, 0.1);
+            animation: rotate 15s infinite linear;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .pulse {
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .tech-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .feature-card, .feature-box, .feature-item, .agent-card, .tech-card, .improvement-card, .step-card, .architecture-folder {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover, .feature-box:hover, .feature-item:hover, .agent-card:hover, .tech-card:hover, .improvement-card:hover, .step-card:hover, .architecture-folder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .icon-container, .icon-circle, .tech-icon, .folder-icon {
+            background: rgba(255, 127, 80, 0.2);
+        }
+        .icon-bg {
+            background: rgba(255, 127, 80, 0.2);
+        }
+        .file-icon {
+            background: rgba(218, 165, 32, 0.2);
+        }
+        .category-bug {
+            background: rgba(255, 127, 80, 0.2);
+        }
+        .category-enhancement {
+            background: rgba(218, 165, 32, 0.2);
+        }
+        .category-performance {
+            background: rgba(0, 128, 128, 0.2);
+        }
+        .tech-layer {
+            position: relative;
+            padding-left: 20px;
+        }
+        .tech-layer:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+        .list-item {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .list-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 3px;
+        }
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Courier New', monospace;
+        }
+        .step-number {
+            background: #FF7F50;
+            color: white;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .cover-letter-preview {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #2F4F4F;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .cover-letter-header {
+            border-bottom: 1px solid #DAA520;
+        }
+        .cover-letter-footer {
+            border-top: 1px solid #DAA520;
+        }
+        .resume-image {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .screenshot-container {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .process-arrow {
+            color: #DAA520;
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active bg-gradient" id="slide-1">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="floating-circle" style="width: 300px; height: 300px; top: -50px; left: -100px;"></div>
+            <div class="floating-circle" style="width: 200px; height: 200px; bottom: 100px; right: -50px;"></div>
+            <div class="floating-square" style="width: 150px; height: 150px; top: 200px; left: 50px; transform: rotate(45deg);"></div>
+            <div class="floating-square" style="width: 100px; height: 100px; bottom: 50px; left: 200px; transform: rotate(15deg);"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative w-96 h-96">
+                    <div class="absolute w-4 h-4 bg-[#FF7F50] rounded-full top-1/4 left-1/4"></div>
+                    <div class="absolute w-3 h-3 bg-[#DAA520] rounded-full top-1/3 right-1/4"></div>
+                    <div class="absolute w-5 h-5 bg-[#D3D3D3] rounded-full bottom-1/4 right-1/3"></div>
+                    <div class="absolute w-4 h-4 bg-[#FF7F50] rounded-full bottom-1/3 left-1/3 pulse"></div>
+                    <div class="absolute h-px bg-gradient-to-r from-[#FF7F50] to-[#DAA520] w-32 top-1/4 left-1/4 transform rotate-45"></div>
+                    <div class="absolute h-px bg-gradient-to-r from-[#D3D3D3] to-[#FF7F50] w-40 bottom-1/3 left-1/4 transform -rotate-15"></div>
+                    <div class="absolute h-px bg-gradient-to-r from-[#DAA520] to-[#D3D3D3] w-36 top-1/3 right-1/5 transform rotate-30"></div>
+                </div>
+            </div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                <div class="flex space-x-10 mb-8">
+                    <i class="fas fa-search text-4xl text-[#FF7F50]"></i>
+                    <i class="fas fa-file-alt text-4xl text-[#DAA520]"></i>
+                    <i class="fas fa-robot text-4xl text-[#D3D3D3]"></i>
+                    <i class="fas fa-briefcase text-4xl text-[#FF7F50]"></i>
+                </div>
+                <h1 class="text-6xl font-bold mb-6 text-center tracking-tight">MyJob</h1>
+                <h2 class="text-4xl font-semibold mb-8 text-center">AI-Powered Job Search Platform</h2>
+                <p class="text-xl mb-12 text-center max-w-3xl opacity-90">Revolutionizing career advancement with intelligent matching, personalized optimization, and comprehensive tracking</p>
+                <div class="flex space-x-4 mb-10">
+                    <div class="px-4 py-2 bg-[#2F4F4F] bg-opacity-50 rounded-full text-sm flex items-center">
+                        <i class="fas fa-code-branch mr-2"></i>
+                        <span>Version 2.5.0</span>
+                    </div>
+                    <div class="px-4 py-2 bg-[#2F4F4F] bg-opacity-50 rounded-full text-sm flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>August 2025</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Report Generated: 2025-08-20</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem -->
+        <div class="slide bg-gradient" id="slide-2">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Problem</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10 flex items-center justify-center">
+                <div class="max-w-4xl text-center">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-lg border border-white border-opacity-20">
+                        <h2 class="text-3xl font-semibold text-white mb-6">Problem Statement</h2>
+                        <p class="text-xl text-gray-100 leading-relaxed">
+                            In 2025, ongoing layoffs—especially in tech—have flooded the market with job seekers. Competition is fierce, with applicants sending hundreds of resumes and spending countless hours on job searches, tailoring, and tracking.
+                        </p>
+                        <div class="mt-8 grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-[#FF7F50] mb-2">📈</div>
+                                <p class="text-white font-semibold">Increased Competition</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-[#DAA520] mb-2">⏰</div>
+                                <p class="text-white font-semibold">Time-Consuming Process</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-[#D3D3D3] mb-2">📄</div>
+                                <p class="text-white font-semibold">Manual Resume Tailoring</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 2 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: MyJob Solution -->
+        <div class="slide bg-gradient" id="slide-3">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">MyJob</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10 flex items-center justify-center">
+                <div class="max-w-5xl text-center">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-lg border border-white border-opacity-20">
+                        <h2 class="text-3xl font-semibold text-white mb-6">AI-Powered Job Search Platform</h2>
+                        <p class="text-xl text-gray-100 leading-relaxed mb-8">
+                            MyJob provides intelligent job matching, AI-powered resume optimization, cover letter generation, and comprehensive application tracking for modern job seekers.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white bg-opacity-5 rounded-lg p-6 border border-white border-opacity-10">
+                                <div class="text-3xl mb-3">🤖</div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Intelligent Job Matching</h3>
+                                <p class="text-gray-200 text-sm">AI-powered compatibility analysis across multiple dimensions</p>
+                            </div>
+                            <div class="bg-white bg-opacity-5 rounded-lg p-6 border border-white border-opacity-10">
+                                <div class="text-3xl mb-3">📄</div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Resume Optimization</h3>
+                                <p class="text-gray-200 text-sm">Multi-agent system for targeted resume tailoring</p>
+                            </div>
+                            <div class="bg-white bg-opacity-5 rounded-lg p-6 border border-white border-opacity-10">
+                                <div class="text-3xl mb-3">✉️</div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Cover Letter Generation</h3>
+                                <p class="text-gray-200 text-sm">Personalized cover letters for specific roles and companies</p>
+                            </div>
+                            <div class="bg-white bg-opacity-5 rounded-lg p-6 border border-white border-opacity-10">
+                                <div class="text-3xl mb-3">📊</div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Application Tracking</h3>
+                                <p class="text-gray-200 text-sm">Comprehensive management with 7 tracking stages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 3 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Core Features Overview -->
+        <div class="slide bg-gradient" id="slide-4">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Core Features Overview</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10">
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-search-plus text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">AI-Powered Job Matching</h3>
+                        </div>
+                        <p class="text-gray-200">Multi-agent scoring system with 8 specialized AI agents analyzing job compatibility across technical skills, experience, achievements, education, and more.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-file-alt text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Intelligent Resume Management</h3>
+                        </div>
+                        <p class="text-gray-200">Multi-agent resume tailoring with 8 specialized agents, interactive AI chat for editing, and comprehensive version control with search capabilities.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope-open-text text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Professional Cover Letter Generation</h3>
+                        </div>
+                        <p class="text-gray-200">AI-powered personalized cover letters tailored to specific jobs and companies with interactive refinement and professional formatting.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-tasks text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Comprehensive Application Tracking</h3>
+                        </div>
+                        <p class="text-gray-200">Custom status management with 7 tracking stages, reminder systems, advanced filtering, and smart job deduplication preventing duplicate listings.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-user-circle text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Enhanced Profile Management</h3>
+                        </div>
+                        <p class="text-gray-200">Quick start onboarding, comprehensive professional details, smart autocomplete with 50+ job titles and 100+ locations, and preference management.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-search text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Advanced Search & Discovery</h3>
+                        </div>
+                        <p class="text-gray-200">Unauthenticated public job discovery, full pagination access to hundreds of jobs, smart deduplication, and sortable results by multiple criteria.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 4 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Advanced AI-Powered Job Matching -->
+        <div class="slide bg-gradient" id="slide-5">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Advanced AI-Powered Job Matching</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10">
+                <div class="flex">
+                    <div class="w-1/2 pr-6">
+                        <div class="feature-box rounded-lg p-6 text-white mb-6">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <i class="fas fa-robot text-[#FF7F50] mr-3"></i>
+                                Multi-Agent Scoring System
+                            </h3>
+                            <p class="text-gray-200 mb-4">8 specialized AI agents analyze job compatibility with weighted scoring:</p>
+                            <div class="chart-container" id="chart-slide3"></div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-6">
+                        <div class="feature-box rounded-lg p-6 text-white mb-6">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <i class="fas fa-bolt text-[#FF7F50] mr-3"></i>
+                                Key Technologies
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex">
+                                    <i class="fas fa-microchip text-[#DAA520] mt-1 mr-3"></i>
+                                    <div>
+                                        <p class="font-semibold">Parallel Processing</p>
+                                        <p class="text-gray-200 text-sm">8x faster execution with weighted scoring algorithm providing detailed hiring manager insights</p>
+                                    </div>
+                                </li>
+                                <li class="flex">
+                                    <i class="fas fa-search-plus text-[#DAA520] mt-1 mr-3"></i>
+                                    <div>
+                                        <p class="font-semibold">Smart Job Discovery</p>
+                                        <p class="text-gray-200 text-sm">Comprehensive pagination fetching hundreds of jobs from multiple sources</p>
+                                    </div>
+                                </li>
+                                <li class="flex">
+                                    <i class="fas fa-filter text-[#DAA520] mt-1 mr-3"></i>
+                                    <div>
+                                        <p class="font-semibold">Intelligent Filtering</p>
+                                        <p class="text-gray-200 text-sm">Location-based matching with remote work opportunities and deduplication logic</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="feature-box rounded-lg p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-lightbulb text-[#FF7F50] mr-3"></i>
+                                How It Works
+                            </h3>
+                            <p class="text-gray-200 mb-3">The AI system evaluates candidates across multiple dimensions:</p>
+                            <div class="flex flex-wrap">
+                                <div class="w-1/2 mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#FF7F50] mr-2"></div>
+                                        <p class="text-sm">Technical Skills</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#DAA520] mr-2"></div>
+                                        <p class="text-sm">Experience Depth</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#D3D3D3] mr-2"></div>
+                                        <p class="text-sm">Achievements</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#008080] mr-2"></div>
+                                        <p class="text-sm">Education</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 mb-3">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#FF7F50] mr-2"></div>
+                                        <p class="text-sm">Soft Skills</p>
+                                    </div>
+                                </div>
+                                <div class="w-1/2">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 rounded-full bg-[#DAA520] mr-2"></div>
+                                        <p class="text-sm">Career Progression</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 5 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Intelligent Resume Management -->
+        <div class="slide bg-gradient" id="slide-6">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Intelligent Resume Management</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10 flex">
+                <div class="w-1/2 pr-8">
+                    <div class="feature-box rounded-lg p-4 mb-5 text-white flex items-start">
+                        <div class="icon-circle p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-robot text-xl text-[#FF7F50]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Multi-Agent Resume Tailoring</h3>
+                            <p class="text-gray-200 text-sm">8 specialized agents for targeted optimization: Technical Skills, Experience, Achievement, Education, Soft Skills, Career Progression, ATS Optimization, and Strategic Orchestration.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box rounded-lg p-4 mb-5 text-white flex items-start">
+                        <div class="icon-circle p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-file-alt text-xl text-[#FF7F50]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Advanced File Processing</h3>
+                            <p class="text-gray-200 text-sm">Support for PDF, DOCX, TXT, and Markdown with intelligent formatting preservation and content extraction capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box rounded-lg p-4 mb-5 text-white flex items-start">
+                        <div class="icon-circle p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-comments text-xl text-[#FF7F50]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Interactive AI Chat</h3>
+                            <p class="text-gray-200 text-sm">Real-time resume editing and optimization with AI assistance, allowing for personalized refinement of content and formatting.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box rounded-lg p-4 text-white flex items-start">
+                        <div class="icon-circle p-3 rounded-full mr-4 flex-shrink-0">
+                            <i class="fas fa-code-branch text-xl text-[#FF7F50]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Version Control & Search</h3>
+                            <p class="text-gray-200 text-sm">Multiple resume management with default selection, search by name, sort by job title or creation date, and efficient batch operations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 pl-8 flex flex-col items-center">
+                    <div class="feature-box rounded-lg p-5 text-white w-full">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-[#DAA520] mr-2"></i>
+                            Key Benefits
+                        </h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Professional formatting with visual hierarchy</li>
+                            <li>Strategic tailoring for specific job descriptions</li>
+                            <li>ATS optimization to pass through applicant tracking systems</li>
+                            <li>Remote access and collaboration capabilities</li>
+                            <li>Comprehensive history and revert options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 6 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Professional Cover Letter Generation -->
+        <div class="slide bg-gradient" id="slide-7">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Professional Cover Letter Generation</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10">
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- First Row -->
+                    <div class="feature-box rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-bg p-3 rounded-full mr-4">
+                                <i class="fas fa-robot text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">AI-Powered Creation</h3>
+                        </div>
+                        <p class="text-gray-200">Personalized cover letters tailored to specific jobs and companies with intelligent content generation based on job requirements and user profiles.</p>
+                    </div>
+                    
+                    <div class="feature-box rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-bg p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Interactive Refinement</h3>
+                        </div>
+                        <p class="text-gray-200">Chat-based editing and optimization with AI assistance, allowing users to collaboratively refine their cover letters through iterative feedback.</p>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="feature-box rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-bg p-3 rounded-full mr-4">
+                                <i class="fas fa-file-alt text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Professional Formatting</h3>
+                        </div>
+                        <p class="text-gray-200">Modern format without outdated traditional headers, with intelligent spacing and professional layout optimized for readability and impact.</p>
+                    </div>
+                    
+                    <div class="feature-box rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-bg p-3 rounded-full mr-4">
+                                <i class="fas fa-layer-group text-2xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Template Variants</h3>
+                        </div>
+                        <p class="text-gray-200">Professional, Creative, Technical, and Entry-Level templates tailored to different job categories and career stages.</p>
+                    </div>
+                </div>
+                
+                <!-- Process Flow -->
+                <div class="flex items-center justify-center w-full mt-8">
+                    <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2 text-white text-center">
+                        <i class="fas fa-file-alt text-[#FF7F50]"></i>
+                        <p class="text-sm">Input</p>
+                    </div>
+                    <i class="fas fa-arrow-right mx-3 process-arrow"></i>
+                    <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2 text-white text-center">
+                        <i class="fas fa-robot text-[#FF7F50]"></i>
+                        <p class="text-sm">AI Processing</p>
+                    </div>
+                    <i class="fas fa-arrow-right mx-3 process-arrow"></i>
+                    <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2 text-white text-center">
+                        <i class="fas fa-edit text-[#FF7F50]"></i>
+                        <p class="text-sm">Refinement</p>
+                    </div>
+                    <i class="fas fa-arrow-right mx-3 process-arrow"></i>
+                    <div class="bg-white bg-opacity-20 rounded-lg px-4 py-2 text-white text-center">
+                        <i class="fas fa-file-pdf text-[#FF7F50]"></i>
+                        <p class="text-sm">Output</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 7 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Comprehensive Application Tracking -->
+        <div class="slide bg-gradient" id="slide-8">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Comprehensive Application Tracking</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10">
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <!-- First Row -->
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-layer-group text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Status Management</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Custom tracking with 7 stages: Saved, Applied, Interviewing, Offer, Rejected, Withdrawn, and No Longer Available. Each status has color-coded indicators for easy visualization.</p>
+                    </div>
+                    
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-bell text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Reminder System</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Set follow-up reminders with custom notes and notifications for each job application. Never miss an important deadline or next steps.</p>
+                    </div>
+                    
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-filter text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Advanced Filtering</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Filter by job title, company, status with sortable columns. Default "Saved" view for new users to focus on opportunities.</p>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-plus-circle text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Manual Job Addition</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Add custom job opportunities with full AI scoring integration. Perfect for referrals and internal job boards.</p>
+                    </div>
+                    
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-magic text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Smart Job Filtering</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Content-based deduplication prevents duplicate job listings from appearing in your search results.</p>
+                    </div>
+                    
+                    <div class="feature-item rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-spinner text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Visual Feedback</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Loading states and completion indicators for all user actions. Real-time feedback for a seamless experience.</p>
+                    </div>
+                </div>
+                
+                <!-- Status Categories -->
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 mx-auto max-w-4xl">
+                    <h3 class="text-white text-xl font-semibold mb-4 text-center">Status Categories</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <div class="status-badge bg-green-500 text-white">Saved</div>
+                        <div class="status-badge bg-blue-500 text-white">Applied</div>
+                        <div class="status-badge bg-purple-500 text-white">Interviewing</div>
+                        <div class="status-badge bg-yellow-500 text-white">Offer</div>
+                        <div class="status-badge bg-red-500 text-white">Rejected</div>
+                        <div class="status-badge bg-gray-500 text-white">Withdrawn</div>
+                        <div class="status-badge bg-gray-400 text-gray-800">No Longer Available</div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 8 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Multi-Agent AI Architecture -->
+        <div class="slide bg-gradient" id="slide-9">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Multi-Agent AI Architecture</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-32 left-0 w-full px-10">
+                <div class="mb-6">
+                    <p class="text-white text-lg text-center">Our AI-powered Job Matching Scoring system leverages eight specialized agents to evaluate job compatibility across multiple dimensions, delivering a comprehensive and transparent assessment of a job seeker's readiness and alignment with the role while highlighting strengths, weaknesses, and areas for growth.</p>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <!-- First Row -->
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-code text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Technical Skills</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Assesses framework proficiency, programming languages, and technical competencies with 25% weight.</p>
+                    </div>
+                    
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-line text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Experience Depth</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Evaluates years of experience, role progression, and industry alignment with 25% weight.</p>
+                    </div>
+                    
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-trophy text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Achievements</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Analyzes quantifiable accomplishments, impact metrics, and leadership examples with 20% weight.</p>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Education</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Verifies degree relevance, certifications, and continuous learning with 10% weight.</p>
+                    </div>
+                    
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Soft Skills</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Assesses communication, teamwork, and problem-solving capabilities with 10% weight.</p>
+                    </div>
+                    
+                    <div class="agent-card rounded-lg p-5 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-container p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-bar text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Career Progression</h3>
+                        </div>
+                        <p class="text-gray-200 text-sm">Reviews growth trajectory, role advancement, and skill development with 10% weight.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 9 of 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: Future Enhancement Plan - Phase 1 -->
+        <div class="slide bg-gradient" id="slide-10">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Future Enhancement Plan</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            
+            <!-- Phase Indicators -->
+            <div class="absolute top-24 left-10 right-10">
+                <div class="flex justify-center mb-8">
+                    <div class="flex items-center bg-white bg-opacity-10 rounded-full px-2 py-1">
+                        <div class="px-4 py-2 bg-[#8B5A8C] rounded-full text-white font-semibold mr-2">Phase 1</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 2</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 3</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300">Phase 4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-44 left-0 w-full px-10">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 border border-white border-opacity-20 max-w-4xl mx-auto">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-white">User Experience & Mobile Optimization</h2>
+                        <span class="bg-[#B56576] text-white px-4 py-2 rounded-full text-sm font-semibold">2-3 weeks</span>
+                    </div>
+                    
+                    <p class="text-gray-100 text-lg mb-6">
+                        This initial phase focuses on foundational improvements to the user interface and mobile experience, ensuring the platform is accessible, intuitive, and available on any device.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-white mb-4">Key Features & Objectives:</h3>
+                    <ul class="space-y-3 text-gray-100">
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Progressive Web App (PWA) support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Mobile push notifications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Touch-optimized job browsing (Swipe gestures)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Dark mode support & Accessibility enhancements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Personalized dashboard</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 10 of 14</p>
+            </div>
+        </div>
+
+        <!-- Slide 11: Future Enhancement Plan - Phase 2 -->
+        <div class="slide bg-gradient" id="slide-11">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Future Enhancement Plan</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            
+            <!-- Phase Indicators -->
+            <div class="absolute top-24 left-10 right-10">
+                <div class="flex justify-center mb-8">
+                    <div class="flex items-center bg-white bg-opacity-10 rounded-full px-2 py-1">
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 1</div>
+                        <div class="px-4 py-2 bg-[#8B5A8C] rounded-full text-white font-semibold mr-2">Phase 2</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 3</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300">Phase 4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-44 left-0 w-full px-10">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 border border-white border-opacity-20 max-w-4xl mx-auto">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-white">Analytics & Interview Preparation</h2>
+                        <span class="bg-[#B56576] text-white px-4 py-2 rounded-full text-sm font-semibold">4-6 weeks</span>
+                    </div>
+                    
+                    <p class="text-gray-100 text-lg mb-6">
+                        Phase 2 introduces data-driven insights for users and a suite of tools to help them prepare for interviews, turning MyJob into a proactive career partner.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-white mb-4">Key Features & Objectives:</h3>
+                    <ul class="space-y-3 text-gray-100">
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Real-time job market analytics dashboard</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>AI-powered interview simulator</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Automated feedback on interview performance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Personalized skill gap analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Company insights and culture reports</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 11 of 14</p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Future Enhancement Plan - Phase 3 -->
+        <div class="slide bg-gradient" id="slide-12">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Future Enhancement Plan</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            
+            <!-- Phase Indicators -->
+            <div class="absolute top-24 left-10 right-10">
+                <div class="flex justify-center mb-8">
+                    <div class="flex items-center bg-white bg-opacity-10 rounded-full px-2 py-1">
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 1</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 2</div>
+                        <div class="px-4 py-2 bg-[#8B5A8C] rounded-full text-white font-semibold mr-2">Phase 3</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300">Phase 4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-44 left-0 w-full px-10">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 border border-white border-opacity-20 max-w-4xl mx-auto">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-white">Networking & Career Development</h2>
+                        <span class="bg-[#B56576] text-white px-4 py-2 rounded-full text-sm font-semibold">3-5 weeks</span>
+                    </div>
+                    
+                    <p class="text-gray-100 text-lg mb-6">
+                        This phase expands MyJob from a job search tool to a career development platform, integrating professional networking and continuous learning resources.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-white mb-4">Key Features & Objectives:</h3>
+                    <ul class="space-y-3 text-gray-100">
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Integrated professional networking module</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>AI-powered mentorship matching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Personalized learning paths with course recommendations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Skill certification and verification system</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Career path visualization tool</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 12 of 14</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: Future Enhancement Plan - Phase 4 -->
+        <div class="slide bg-gradient" id="slide-13">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Future Enhancement Plan</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            
+            <!-- Phase Indicators -->
+            <div class="absolute top-24 left-10 right-10">
+                <div class="flex justify-center mb-8">
+                    <div class="flex items-center bg-white bg-opacity-10 rounded-full px-2 py-1">
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 1</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 2</div>
+                        <div class="px-4 py-2 bg-gray-500 bg-opacity-30 rounded-full text-gray-300 mr-2">Phase 3</div>
+                        <div class="px-4 py-2 bg-[#8B5A8C] rounded-full text-white font-semibold">Phase 4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-44 left-0 w-full px-10">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 border border-white border-opacity-20 max-w-4xl mx-auto">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-white">Advanced AI & Automation</h2>
+                        <span class="bg-[#B56576] text-white px-4 py-2 rounded-full text-sm font-semibold">5-8 weeks</span>
+                    </div>
+                    
+                    <p class="text-gray-100 text-lg mb-6">
+                        The final phase implements cutting-edge AI features to automate and optimize the job search process, providing a highly personalized and efficient experience.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-white mb-4">Key Features & Objectives:</h3>
+                    <ul class="space-y-3 text-gray-100">
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Automated job application system</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>AI-powered salary negotiation chatbot</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Predictive analytics for career trajectory</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Gamified skill challenges</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#FF7F50] mr-3 mt-1">•</span>
+                            <span>Proactive career opportunity alerts</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 13 of 14</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: 6 Month Budget -->
+        <div class="slide bg-gradient" id="slide-14">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">6 Month Budget</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            
+            <div class="absolute top-28 left-0 w-full px-10">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Human Resources Section -->
+                    <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 border border-white border-opacity-20 mb-4">
+                        <h2 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-users text-[#FF7F50] mr-3"></i>
+                            Human Resources
+                        </h2>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#FF7F50] mr-3"></div>
+                                    <span class="text-white">PM/Data Engineer (Jaehee)</span>
+                                </div>
+                                <span class="text-white font-semibold">$70,000</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#DAA520] mr-3"></div>
+                                    <span class="text-white">Full Stack Developer</span>
+                                </div>
+                                <span class="text-white font-semibold">$50,000</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#D3D3D3] mr-3"></div>
+                                    <span class="text-white">Designer</span>
+                                </div>
+                                <span class="text-white font-semibold">$40,000</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#008080] mr-3"></div>
+                                    <span class="text-white">Marketing/Community Builder</span>
+                                </div>
+                                <span class="text-white font-semibold">$40,000</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="text-white text-lg font-bold">Subtotal</span>
+                                <span class="text-[#FF7F50] text-lg font-bold">$200,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing/Tools/Operation Cost Section -->
+                    <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 border border-white border-opacity-20 mb-4">
+                        <h2 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-chart-line text-[#FF7F50] mr-3"></i>
+                            Marketing/Tools/Operation Cost
+                        </h2>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white">Total Operating Expenses</span>
+                            <span class="text-[#FF7F50] text-lg font-bold">$90,000</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Budget -->
+                    <div class="bg-gradient-to-r from-[#FF7F50] to-[#DAA520] rounded-lg p-6">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-white">Total 6-Month Budget</h2>
+                            <span class="text-white text-3xl font-bold">$300,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 14 of 15</p>
+            </div>
+        </div>
+
+        <!-- Slide 15: Technology Stack -->
+        <div class="slide bg-gradient" id="slide-15">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full p-10">
+                <h1 class="text-4xl font-bold text-white mb-2">Technology Stack</h1>
+                <div class="w-24 h-1 bg-[#FF7F50]"></div>
+            </div>
+            <div class="absolute top-28 left-0 w-full px-10">
+                <div class="grid grid-cols-3 gap-5">
+                    <div class="tech-card rounded-lg p-4 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-laptop-code text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Frontend & Framework</h3>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fab fa-react text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Next.js 15</span>
+                                <span class="text-sm text-gray-300 ml-2">App Router with TypeScript</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-palette text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Tailwind CSS</span>
+                                <span class="text-sm text-gray-300 ml-2">Custom design system</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-th-large text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">shadcn/ui</span>
+                                <span class="text-sm text-gray-300 ml-2">Component library on Radix UI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card rounded-lg p-4 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-database text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Backend & Database</h3>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-user-shield text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Firebase Authentication</span>
+                                <span class="text-sm text-gray-300 ml-2">Multi-provider authentication</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-fire-alt text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Cloud Firestore</span>
+                                <span class="text-sm text-gray-300 ml-2">Document database with composite indexes</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-cloud-upload-alt text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Firebase Storage</span>
+                                <span class="text-sm text-gray-300 ml-2">File storage for photos and documents</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card rounded-lg p-4 text-white">
+                        <div class="flex items-center mb-3">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-brain text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">AI & External Services</h3>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-robot text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">OpenRouter API</span>
+                                <span class="text-sm text-gray-300 ml-2">GPT-4o-mini for matching and content generation</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-search text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">SerpApi</span>
+                                <span class="text-sm text-gray-300 ml-2">Comprehensive job listing aggregation</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-building text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">The Companies API</span>
+                                <span class="text-sm text-gray-300 ml-2">Company information and metrics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card rounded-lg p-3 text-white mt-1">
+                        <div class="flex items-center mb-2">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-file-alt text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Document Processing</h3>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-pdf text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">Puppeteer</span>
+                                    <span class="text-sm text-gray-300 ml-2">PDF generation</span>
+                                </div>
+                            </div>
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-markdown text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">Marked</span>
+                                    <span class="text-sm text-gray-300 ml-2">Markdown parsing</span>
+                                </div>
+                            </div>
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-code text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">pdf-parse</span>
+                                    <span class="text-sm text-gray-300 ml-2">PDF text extraction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card rounded-lg p-3 text-white mt-1">
+                        <div class="flex items-center mb-3">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-tools text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Development Tools</h3>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fab fa-typescript text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">TypeScript</span>
+                                    <span class="text-sm text-gray-300 ml-2">Strict mode with types</span>
+                                </div>
+                            </div>
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">pnpm</span>
+                                    <span class="text-sm text-gray-300 ml-2">Fast package management</span>
+                                </div>
+                            </div>
+                            <div class="tech-layer pl-4 py-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-code text-[#DAA520] mr-2"></i>
+                                    <span class="font-semibold">ESLint & Prettier</span>
+                                    <span class="text-sm text-gray-300 ml-2">Code quality & formatting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card rounded-lg p-3 text-white mt-1">
+                        <div class="flex items-center mb-3">
+                            <div class="tech-icon p-2 rounded-full mr-3">
+                                <i class="fas fa-cloud text-xl text-[#FF7F50]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Cloud Infrastructure</h3>
+                        </div>
+                        <div class="tech-layer pl-4 py-2 mb-2">
+                            <div class="flex items-center">
+                                <i class="fab fa-google text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Google Cloud Run</span>
+                                <span class="text-sm text-gray-300 ml-2">Production deployment</span>
+                            </div>
+                        </div>
+                        <div class="tech-layer pl-4 py-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-tasks text-[#DAA520] mr-2"></i>
+                                <span class="font-semibold">Cloud Scheduler</span>
+                                <span class="text-sm text-gray-300 ml-2">Automated batch processing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 15 of 16</p>
+            </div>
+        </div>
+
+        <!-- Slide 16: Contact Us -->
+        <div class="slide bg-gradient" id="slide-16">
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
+            <div class="floating-circle" style="width: 200px; height: 200px; top: -50px; right: -100px;"></div>
+            <div class="floating-circle" style="width: 150px; height: 150px; bottom: 100px; left: -75px;"></div>
+            <div class="floating-square" style="width: 100px; height: 100px; top: 200px; right: 100px; transform: rotate(30deg);"></div>
+            
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                <div class="text-center mb-10">
+                    <h1 class="text-5xl font-bold mb-4">Contact Us</h1>
+                    <div class="w-32 h-1 bg-[#FF7F50] mx-auto mb-8"></div>
+                    
+                    <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-8 border border-white border-opacity-20 max-w-lg">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="w-16 h-16 bg-[#FF7F50] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user-tie text-2xl text-[#FF7F50]"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h2 class="text-xl font-semibold text-white">CEO</h2>
+                                    <p class="text-2xl font-bold text-[#FF7F50]">Jaehee Song</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-center">
+                                <div class="w-10 h-10 bg-[#DAA520] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-[#DAA520]"></i>
+                                </div>
+                                <a href="mailto:jsong@koreatous.com" class="text-white hover:text-[#DAA520] transition-colors text-lg">
+                                    jsong@koreatous.com
+                                </a>
+                            </div>
+                            
+                            <div class="flex items-center justify-center">
+                                <div class="w-10 h-10 bg-[#D3D3D3] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-globe text-[#D3D3D3]"></i>
+                                </div>
+                                <a href="https://myjob.ai-biz.app" target="_blank" class="text-white hover:text-[#D3D3D3] transition-colors text-lg">
+                                    myjob.ai-biz.app
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center opacity-80">
+                    <p class="text-lg">Ready to revolutionize your job search experience?</p>
+                    <p class="text-xl font-semibold mt-2">Let's connect and build the future together!</p>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-20 right-8 text-white opacity-70 text-sm">
+                <p>Page 16 of 16</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="previousSlide()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">16</span>
+        </div>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Full-screen toggle -->
+    <button class="nav-btn fullscreen-toggle" onclick="toggleFullscreen()">
+        <i class="fas fa-expand"></i>
+    </button>
+
+    <script>
+        let currentSlideIndex = 1;
+        const totalSlides = 16;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            if (n > totalSlides) currentSlideIndex = 1;
+            if (n < 1) currentSlideIndex = totalSlides;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.getElementById(`slide-${currentSlideIndex}`).classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlideIndex;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 1;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides;
+            
+            // Initialize charts if needed
+            if (currentSlideIndex === 5) {
+                setTimeout(() => initSlide3Chart(), 100);
+            } else if (currentSlideIndex === 9) {
+                setTimeout(() => initSlide7Chart(), 100);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 1) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'f' || event.key === 'F') {
+                toggleFullscreen();
+            } else if (event.key === 'Escape') {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        // Initialize D3 chart for slide 3
+        function initSlide3Chart() {
+            const container = document.getElementById('chart-slide3');
+            if (!container || container.querySelector('svg')) return;
+            
+            const data = [
+                { name: "Technical Skills", value: 25, color: "#FF7F50" },
+                { name: "Experience Depth", value: 25, color: "#DAA520" },
+                { name: "Achievements", value: 20, color: "#D3D3D3" },
+                { name: "Education", value: 10, color: "#008080" },
+                { name: "Soft Skills", value: 10, color: "#FF7F50" },
+                { name: "Career Progression", value: 10, color: "#DAA520" }
+            ];
+            
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const margin = { top: 20, right: 20, bottom: 60, left: 120 };
+            
+            const svg = d3.select(container)
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+            
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
+            
+            const g = svg.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            const xScale = d3.scaleLinear()
+                .domain([0, 30])
+                .range([0, chartWidth]);
+            
+            const yScale = d3.scaleBand()
+                .domain(data.map(d => d.name))
+                .range([0, chartHeight])
+                .padding(0.2);
+            
+            g.selectAll(".bar")
+                .data(data)
+                .enter()
+                .append("rect")
+                .attr("class", "bar")
+                .attr("x", 0)
+                .attr("y", d => yScale(d.name))
+                .attr("width", d => xScale(d.value))
+                .attr("height", yScale.bandwidth())
+                .attr("fill", d => d.color)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            
+            g.selectAll(".label")
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("class", "label")
+                .attr("x", d => xScale(d.value) - 35)
+                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2)
+                .attr("dy", "0.35em")
+                .text(d => d.value + "%")
+                .attr("fill", "white")
+                .attr("font-size", "12px")
+                .attr("font-weight", "bold");
+            
+            g.append("g")
+                .call(d3.axisLeft(yScale))
+                .selectAll("text")
+                .attr("fill", "white")
+                .attr("font-size", "10px");
+            
+            g.selectAll(".domain, .tick line")
+                .attr("stroke", "rgba(255, 255, 255, 0.3)");
+        }
+
+        // Initialize D3 chart for slide 7
+        function initSlide7Chart() {
+            const container = document.getElementById('chart-container-slide7');
+            if (!container || container.querySelector('svg')) return;
+            
+            const data = [
+                { name: "Technical Skills", value: 25, color: "#FF7F50" },
+                { name: "Experience Depth", value: 25, color: "#DAA520" },
+                { name: "Achievements", value: 20, color: "#D3D3D3" },
+                { name: "Education", value: 10, color: "#008080" },
+                { name: "Soft Skills", value: 10, color: "#2F4F4F" },
+                { name: "Career Progression", value: 10, color: "#FF6347" }
+            ];
+            
+            const width = 350;
+            const height = 320;
+            const margin = { top: 20, right: 20, bottom: 60, left: 40 };
+            
+            const svg = d3.select(container)
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            const x = d3.scaleBand()
+                .domain(data.map(d => d.name))
+                .range([0, width - margin.left - margin.right])
+                .padding(0.3);
+            
+            const y = d3.scaleLinear()
+                .domain([0, 30])
+                .range([height - margin.top - margin.bottom, 0]);
+            
+            svg.selectAll(".bar")
+                .data(data)
+                .enter()
+                .append("rect")
+                .attr("class", "bar")
+                .attr("x", d => x(d.name))
+                .attr("width", x.bandwidth())
+                .attr("y", d => y(d.value))
+                .attr("height", d => height - margin.top - margin.bottom - y(d.value))
+                .attr("fill", d => d.color)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            
+            svg.selectAll(".label")
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("class", "label")
+                .attr("x", d => x(d.name) + x.bandwidth() / 2)
+                .attr("y", d => y(d.value) - 5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .text(d => d.value + "%");
+            
+            svg.selectAll(".x-label")
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("class", "x-label")
+                .attr("x", d => x(d.name) + x.bandwidth() / 2)
+                .attr("y", height - margin.top - margin.bottom + 25)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "10px")
+                .text(d => d.name);
+            
+            svg.append("text")
+                .attr("x", (width - margin.left - margin.right) / 2)
+                .attr("y", -5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "14px")
+                .attr("font-weight", "bold")
+                .text("AI Agent Weight Distribution");
+        }
+
+        // Initialize presentation
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(1);
+        });
+    </script>
+</body>
+</html>

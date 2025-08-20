@@ -5,83 +5,211 @@ interface WebsiteData {
     webSite: string;
     title: string;
     description: string;
+    category: string;
+    icon: string;
+    badge: string;
 }
 
 const data: WebsiteData[] = [
     {
         webSite: "contents.ai-biz.app",
         title: "AI Content Generation Hub",
-        description: "Effortlessly convert your presentations, scripts, audio, and YouTube videos into engaging scripts, podcasts, blog posts, and accurate transcripts with the power of AI."
+        description: "Effortlessly convert your presentations, scripts, audio, and YouTube videos into engaging scripts, podcasts, blog posts, and accurate transcripts with the power of AI.",
+        category: "ai",
+        icon: "ai-content",
+        badge: "live"
     },
     {
         webSite: "investorhub-dash.ai-biz.app",
         title: "InvestorHub Dashboard",
-        description: "Dashboard for InvestorHub."
+        description: "Dashboard for InvestorHub.",
+        category: "business",
+        icon: "investment",
+        badge: "live"
     },
     {
         webSite: "investorhub.ai-biz.app",
         title: "InvestorHub Platform",
-        description: "Your hub for smart, transparent investments, and investment scoring."
+        description: "Your hub for smart, transparent investments, and investment scoring.",
+        category: "business",
+        icon: "investment",
+        badge: "live"
     },
     {
         webSite: "qrcode.ai-biz.app",
         title: "QR Code Generator",
-        description: "Generate a QR code for any website."
+        description: "Generate a QR code for any website.",
+        category: "utility",
+        icon: "utilities",
+        badge: "live"
     },
     {
         webSite: "video-synthesizer.ai-biz.app",
         title: "Video Audio Synthesizer",
-        description: "Combine video and audio directly in your browser."
+        description: "Combine video and audio directly in your browser.",
+        category: "utility",
+        icon: "utilities",
+        badge: "live"
     },
    
     {
         webSite: "insights.ai-biz.app",
         title: "AI-Powered Insights for Every Topic",
-        description: "Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence."
+        description: "Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.",
+        category: "ai",
+        icon: "insights",
+        badge: "live"
     },
     {
         webSite: "myjob.ai-biz.app",
         title: "MyJob: AI-Powered Job Search",
-        description: "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance."
+        description: "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.",
+        category: "ai",
+        icon: "job-search",
+        badge: "live"
+    },
+    {
+        webSite: "myjob_investment/myjob-presentation.html",
+        title: "MyJob Investment Presentation",
+        description: "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
+        category: "business",
+        icon: "job-search",
+        badge: "demo"
     },
     {
         webSite: "screen-capture.ai-biz.app",
         title: "Website Screenshot Capture",
-        description: "Capture full-page screenshots of any website instantly."
+        description: "Capture full-page screenshots of any website instantly.",
+        category: "utility",
+        icon: "utilities",
+        badge: "live"
     },
     {
         webSite: "workshop.ai-biz.app",
         title: "AI Workshop Landing Page",
-        description: "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions."
+        description: "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.",
+        category: "business",
+        icon: "workshop",
+        badge: "live"
     },
     {
         webSite: "www.ai-biz.app",
         title: "Transform Your Business with AI Automation",
-        description: "Leverage AI to automate and enhance your business operations."
+        description: "Leverage AI to automate and enhance your business operations.",
+        category: "business",
+        icon: "workshop",
+        badge: "live"
     }
 ];
 
-function populateTable() {
-    const tableBody = document.getElementById('websitesTable')?.getElementsByTagName('tbody')[0];
-    if (!tableBody) {
-        console.error("Table body not found!");
+function populateCards() {
+    const toolsGrid = document.getElementById('toolsGrid');
+    if (!toolsGrid) {
+        console.error("Tools grid not found!");
         return;
     }
 
+    // Update total tools count
+    const totalToolsElement = document.getElementById('totalTools');
+    if (totalToolsElement) {
+        totalToolsElement.textContent = data.length.toString();
+    }
+
     data.forEach(item => {
-        const row = tableBody.insertRow();
+        const card = document.createElement('div');
+        card.className = 'tool-card';
+        card.setAttribute('data-category', item.category);
 
-        const cellWebSite = row.insertCell();
-        const link = document.createElement('a');
-        link.href = `https://${item.webSite}`;
-        link.textContent = item.title;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        cellWebSite.appendChild(link);
+        const iconMap: { [key: string]: string } = {
+            'ai-content': '🎨',
+            'investment': '📊',
+            'utilities': '🔧',
+            'insights': '🔍',
+            'job-search': '💼',
+            'workshop': '🎓'
+        };
 
-        const cellDescription = row.insertCell();
-        cellDescription.textContent = item.description;
-        cellDescription.classList.add('description-cell');
+        const categoryMap: { [key: string]: string } = {
+            'ai': 'AI & ML',
+            'business': 'Business',
+            'utility': 'Utilities'
+        };
+
+        card.innerHTML = `
+            <div class="tool-category category-${item.category}">${categoryMap[item.category] || item.category}</div>
+            <div class="tool-icon ${item.icon}">${iconMap[item.icon] || '🚀'}</div>
+            <h3 class="tool-title">${item.title}</h3>
+            <p class="tool-description">${item.description}</p>
+            <div class="tool-meta">
+                <span class="tool-badge badge-${item.badge}">${item.badge}</span>
+            </div>
+            <div class="tool-actions">
+                <a href="https://${item.webSite}" target="_blank" rel="noopener noreferrer" class="btn-primary">Visit Tool</a>
+                <button class="btn-secondary" onclick="copyToClipboard('${item.webSite}')">Copy URL</button>
+            </div>
+        `;
+
+        toolsGrid.appendChild(card);
+    });
+}
+
+function copyToClipboard(url: string) {
+    navigator.clipboard.writeText(`https://${url}`).then(() => {
+        // You could add a toast notification here
+        console.log('URL copied to clipboard');
+    });
+}
+
+function setupSearchAndFilter() {
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    // Search functionality
+    searchInput?.addEventListener('input', (e) => {
+        const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+        const activeCategory = document.querySelector('.filter-tab.active')?.getAttribute('data-category');
+
+        toolCards.forEach(card => {
+            const title = card.querySelector('.tool-title')?.textContent?.toLowerCase() || '';
+            const description = card.querySelector('.tool-description')?.textContent?.toLowerCase() || '';
+            const category = card.getAttribute('data-category');
+
+            const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+            const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+            if (matchesSearch && matchesCategory) {
+                (card as HTMLElement).style.display = 'block';
+            } else {
+                (card as HTMLElement).style.display = 'none';
+            }
+        });
+    });
+
+    // Filter functionality
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.getAttribute('data-category');
+            
+            // Update active tab
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Filter cards
+            toolCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    (card as HTMLElement).style.display = 'block';
+                } else {
+                    (card as HTMLElement).style.display = 'none';
+                }
+            });
+
+            // Clear search when filter changes
+            if (searchInput) {
+                searchInput.value = '';
+            }
+        });
     });
 }
 
@@ -100,5 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Footer placeholder not found!");
     }
 
-    populateTable();
+    populateCards();
+    setupSearchAndFilter();
 });

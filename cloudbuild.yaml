@@ -1,11 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/myresume-457817/apps', '.']
+    args: ['build', '-t', 'gcr.io/myresume-457817/app', '.']
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/myresume-457817/apps']
+    args: ['push', 'gcr.io/myresume-457817/app']
 
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'app'
       - '--image'
-      - 'gcr.io/myresume-457817/apps'
+      - 'gcr.io/myresume-457817/app'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -37,7 +37,7 @@ steps:
       - '80'
 
 images:
-  - 'gcr.io/myresume-457817/apps'
+  - 'gcr.io/myresume-457817/app'
 
 options:
   logging: CLOUD_LOGGING_ONLY 

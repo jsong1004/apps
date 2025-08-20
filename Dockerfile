@@ -26,6 +26,7 @@ COPY company/ ./company/
 COPY case-studies/ ./case-studies/
 COPY privacy-policy/ ./privacy-policy/
 COPY terms-of-service/ ./terms-of-service/
+COPY myjob_investment/ ./myjob_investment/
 
 # Build the application
 RUN npm run build
@@ -42,6 +43,7 @@ COPY --from=builder /app/company/ /usr/share/nginx/html/company/
 COPY --from=builder /app/case-studies/ /usr/share/nginx/html/case-studies/
 COPY --from=builder /app/privacy-policy/ /usr/share/nginx/html/privacy-policy/
 COPY --from=builder /app/terms-of-service/ /usr/share/nginx/html/terms-of-service/
+COPY --from=builder /app/myjob_investment/ /usr/share/nginx/html/myjob_investment/
 
 # Copy SEO files to nginx html root
 COPY --from=builder /app/robots.txt /usr/share/nginx/html/
