@@ -2,6 +2,18 @@
 
 This project showcases AI-powered business tools in a modern web app.
 
+## Live Demo
+
+- **Main App**: https://apps.ai-biz.app/
+- **High School Special Lecture**: https://apps.ai-biz.app/presentations/highschool-special-lecture.html
+
+## Features
+
+- **Interactive Presentations**: AI-powered educational content with modern slide-based interface
+- **Business Tools**: Various AI-integrated business applications
+- **Responsive Design**: Mobile-first design with dark theme support
+- **SEO Optimized**: Complete with sitemap, robots.txt, and metadata
+
 ## Run Locally
 
 **Prerequisites:** Node.js (v18+ recommended)
@@ -77,8 +89,30 @@ npm run build
 
 After deployment, Cloud Run will provide a public URL for your app.
 
+## Project Structure
+
+```
+├── presentations/          # Educational presentations
+│   └── highschool-special-lecture.html
+├── founder/               # Founder page
+├── company/               # Company information
+├── case-studies/          # Business case studies
+├── myjob_investment/      # Investment presentations
+├── privacy-policy/        # Privacy policy
+├── terms-of-service/      # Terms of service
+├── dist/                  # Built assets
+├── Dockerfile            # Docker configuration
+├── cloudbuild.yaml       # Google Cloud Build configuration
+└── deploy.sh             # Deployment script
+```
+
 ## Environment Variables
 - `GEMINI_API_KEY`: Required for Gemini API integration. Set this in `.env.local` for local development.
+
+## Recent Updates
+- Added interactive presentation: "AI와 함께 꿈을 찾는 법" (Finding Dreams with AI)
+- Updated Dockerfile to include presentations directory
+- Enhanced deployment pipeline with proper static file handling
 
 ---
 

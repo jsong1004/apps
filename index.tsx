@@ -72,7 +72,7 @@ const data: WebsiteData[] = [
         webSite: "apps.ai-biz.app/myjob_investment/myjob-presentation.html",
         title: "MyJob Investment Presentation",
         description: "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
-        category: "business",
+        category: "presentation",
         icon: "job-search",
         badge: "demo"
     },
@@ -99,6 +99,14 @@ const data: WebsiteData[] = [
         category: "business",
         icon: "workshop",
         badge: "live"
+    },
+    {
+        webSite: "apps.ai-biz.app/presentations/highschool-special-lecture.html",
+        title: "AI와 함께 꿈을 찾는 법 (프레젠테ATION)",
+        description: "고등학생 특별 강의 슬라이드: 인생 롤러코스터, 산 너머 산, 꿈의 연속, 다양한 목표 달성법으로 동기부여, 미래 사회가 원하는 인재의 역량, AI 시대를 주도할 핵심 역량.",
+        category: "presentation",
+        icon: "presentation",
+        badge: "live"
     }
 ];
 
@@ -120,13 +128,15 @@ function populateCards() {
             'utilities': '🔧',
             'insights': '🔍',
             'job-search': '💼',
-            'workshop': '🎓'
+            'workshop': '🎓',
+            'presentation': '📝'
         };
 
         const categoryMap: { [key: string]: string } = {
             'ai': 'AI & ML',
             'business': 'Business',
-            'utility': 'Utilities'
+            'utility': 'Utilities',
+            'presentation': 'Presentation'
         };
 
         card.innerHTML = `

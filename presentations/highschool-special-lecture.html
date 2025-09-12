@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI와 함께 꿈을 찾는 법 (슬라이드)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Soft Blue -->
+    <!-- Application Structure Plan: A slide-based presentation structure controlled by JavaScript. Each slide (<div class="slide">) is a full-screen section. Navigation is handled by 'previous' and 'next' buttons, and a progress bar at the bottom shows the user's location within the presentation. This structure is fundamentally different from the previous scrolling website, as it is optimized for a linear, step-by-step lecture format. It breaks down the original content into digestible chunks, perfect for a classroom setting, focusing the audience's attention on one key message per slide. -->
+    <!-- Visualization & Content Choices: Content is adapted for a presentation format with larger fonts, more whitespace, and bullet points. Complex interactive elements are simplified. For instance, the '5 Secrets' section, instead of being a clickable tab system, is broken down into five separate, sequential slides. The bar chart from the original is recreated as a simplified visual using styled divs to maintain the core message (value of foundational skills) without the need for a chart library, making the presentation lighter and more focused. All choices prioritize clarity and focus for a live audience. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* Adopt dark presentation style from vibe-coding.html (style-only) */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+
+        /* Container sizing similar to vibe version */
+        .container-fixed { 
+            width: 100% !important; 
+            margin-left: 300px !important; 
+            padding-left: 1rem !important; 
+        }
+        
+        /* Centered container for bottom navigation */
+        .container-centered { 
+            width: 1000px !important; 
+            margin-left: 300px !important; 
+            padding-left: 1rem !important; 
+        }
+        #presentation-container { 
+            background-color: transparent; 
+            height: 600px;
+            position: relative;
+        }
+
+        /* Slides */
+        .slide {
+            display: none;
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1f2937;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid #374151;
+            animation: fadeIn 0.7s ease-in-out;
+            height: 600px;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .slide.active { display: flex; }
+
+        /* Typography override for dark theme */
+        .slide :where(h1,h2,h3,h4,p,li,blockquote,span) { color: #e5e7eb !important; }
+        .slide :where(.bg-white,.bg-gray-50,.bg-red-50,.bg-green-50,.bg-blue-50) {
+            background-color: #111827 !important;
+            border-color: #374151 !important;
+        }
+        .slide :where(.text-gray-800,.text-gray-700,.text-gray-600) { color: #e5e7eb !important; }
+
+        /* Buttons (prev/next) */
+        #prev-btn,#next-btn {
+            background-color: #374151;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 600;
+        }
+        #prev-btn:hover,#next-btn:hover { background-color: #4b5563; transform: translateY(-2px); }
+        #prev-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Progress bar */
+        .progress-track {
+            width: 100%;
+            background-color: #374151;
+            border-radius: 9999px;
+            height: 8px;
+        }
+        #progress-bar {
+            background-color: #3b82f6;
+            height: 8px;
+            border-radius: 9999px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* Slide index (left) copied-style */
+        .slide-index {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background-color: rgba(31, 41, 55, 0.9);
+            border: 1px solid #374151;
+            border-radius: 1rem;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            width: 260px;
+        }
+        .slide-index h3 {
+            color: #93c5fd;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        .slide-numbers { display: flex; flex-direction: column; gap: 0.5rem; max-height: 70vh; overflow-y: auto; padding-right: 0.5rem; }
+        .slide-number { background-color: #374151; color: #d1d5db; border: 1px solid #4b5563; border-radius: 0.5rem; display: flex; align-items: center; cursor: pointer; transition: all 0.2s; font-weight: 500; font-size: 0.75rem; padding: 0.5rem; min-height: 2.5rem; }
+        .slide-number .number { background-color: #4b5563; color: white; border-radius: 0.25rem; width: 1.5rem; height: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; flex-shrink: 0; }
+        .slide-number .title { flex: 1; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .slide-number:hover { background-color: #4b5563; border-color: #6b7280; transform: translateY(-1px); }
+        .slide-number.active { background-color: #3b82f6; border-color: #2563eb; color: white; }
+        .slide-number.active .number { background-color: #1d4ed8; }
+
+        /* Responsive: stack index on small screens */
+        @media (max-width: 1200px) {
+            .container-fixed { width: 100%; margin-left: 0; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .container-centered { width: 100%; margin-left: 0; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .slide-index { position: static; width: auto; margin: 1rem auto; }
+        }
+        /* Fade-in animation */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Slide Index (left) -->
+    <div class="slide-index">
+        <h3>슬라이드</h3>
+        <div class="slide-numbers" id="slide-numbers"></div>
+    </div>
+
+    <main class="container-fixed p-4 md:p-8">
+        <div id="presentation-container" class="relative">
+            
+            <!-- Slides will be injected here by JavaScript -->
+
+        </div>
+    </main>
+
+    <!-- Navigation (bottom) -->
+    <div class="mt-2 flex justify-between items-center container-centered p-4">
+        <button id="prev-btn">이전</button>
+        <div class="w-1/2 progress-track">
+            <div id="progress-bar" style="width: 0%"></div>
+        </div>
+        <button id="next-btn">다음</button>
+    </div>
+
+    <script>
+        const slidesData = [
+            {
+                type: 'title',
+                title: 'AI와 함께 꿈을 찾는 법',
+                subtitle: '미래 사회가 원하는 인재의 비밀'
+            },
+            {
+                type: 'intro',
+                emoji: '🌱',
+                title: '인생에서 가장 중요한 것',
+                text: '행복, 의미, 공생'
+            },
+            {
+                type: 'intro',
+                emoji: '😊',
+                title: '행복한 인생을 살기 위해 중요한 것',
+                text: '목표, 재미'
+            },
+            {
+                type: 'intro',
+                emoji: '⚠️',
+                title: '목표가 없으면',
+                text: '방향 없이 방황하거나 인생을 낭비하기 쉽다'
+            },
+            {
+                type: 'intro',
+                emoji: '🚫',
+                title: '재미가 없으면',
+                text: '목표를 위해 끝까지 노력하지 못하고 중도 포기하기 쉽다'
+            },
+            {
+                type: 'standard',
+                title: '인생은 롤러코스터와 같다',
+                text: '',
+                backgroundImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop',
+                items: [
+                    { icon: '🎢', role: '오르막과 내리막의 반복', desc: '인생은 롤러코스터처럼 높은 순간(성공, 기쁨)과 낮은 순간(실패, 어려움)이 번갈아 옵니다. 중요한 건 멈추지 않고 앞으로 나아가는 거예요.' },
+                    { icon: '🔄', role: '예상치 못한 턴', desc: '계획대로 되지 않을 때가 많아요. 하지만 그 턴이 새로운 기회를 가져다줍니다. 예를 들어, 시험 실패가 더 열심히 공부하는 동기가 될 수 있죠.' },
+                    { icon: '💪', role: '즐기며 극복하기', desc: '롤러코스터를 타면서 무섭지만 재미있듯이, 인생의 도전을 즐기세요. 긍정적인 마인드와 지지하는 친구들이 큰 도움이 됩니다.' },
+                    { icon: '✨', role: '교훈', desc: '"인생의 속도는 당신이 결정해요. 안전벨트를 매고, 미소를 지으며 타세요!"' }
+                ]
+            },
+
+            {
+                type: 'standard',
+                title: '산 너머 산, 꿈 너머 꿈',
+                text: '정상은 하나가 아니에요. 여정 자체가 꿈입니다. 산을 즐기며 오르세요!',
+                backgroundImage: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop',
+                items: [
+                    { icon: '🏔️', role: '봉우리 너머 또 다른 봉우리', desc: '등산처럼 인생에서 한 목표를 달성했다고 생각하면, 새로운 도전이 기다립니다. 예를 들어, 시험 합격 후 더 큰 목표(대학 입시)가 나타나죠.' },
+                    { icon: '🥾', role: '실망과 좌절의 순간', desc: '정상에 올랐는데 또 산이 보일 때, 포기하고 싶어질 수 있어요. 하지만 그게 성장의 과정입니다. "이게 끝이 아니야"라고 자신을 다독이세요.' },
+                    { icon: '👣', role: '끈기와 지속', desc: '산 너머 산이 계속되듯, 꿈 너머 꿈을 추구하세요. 작은 승리가 쌓여 큰 산을 넘을 수 있습니다. 포기하지 말고 한 걸음씩!' }
+                ]
+            },
+
+            {
+                type: 'standard',
+                title: '꿈을 이루는 다양한 길',
+                text: '모든 길은 꿈으로 통합니다. 당신의 길을 믿고 걸어가세요!',
+                backgroundImage: 'https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=1600&auto=format&fit=crop',
+                items: [
+                    { icon: '⛰️', role: '여러 가지 방법', desc: '꿈(목표)을 향해 산을 직선으로 넘을 수도, 안전하게 돌아갈 수도 있습니다. 걸어서 갈 수 있고, 전기 자전거나 차를 타고 빠르게 갈 수도 있어요.' },
+                    { icon: '🚴', role: '타인의 길이 정답은 아니다', desc: '많은 사람들이 따르는 길(예: 표준 진로)이 반드시 옳은 건 아니에요. 당신만의 독창적인 경로를 선택하세요.' },
+                    { icon: '👣', role: '내 능력과 페이스에 맞게', desc: '자신의 속도대로 가세요. 느리더라도, 다르더라도 꾸준히 나아가면 됩니다. 중요한 건 도착하는 거예요.' }
+                ]
+            },
+
+            {
+                type: 'standard',
+                title: '꿈 너머 꿈: 인생의 끝없는 여정',
+                text: '현재 꿈을 이루면 다음 꿈이 기다립니다. 포기하지 말고, 항상 한 걸음 앞을 내다보세요!',
+                backgroundImage: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop',
+                items: [
+                    { icon: '🎓', role: '대학 입학이 끝이 아니다', desc: '좋은 대학에 들어가는 건 하나의 이정표일 뿐입니다. 입학 후, 더 큰 꿈(예: 전문 분야 탐구나 사회 기여)을 세우세요.' },
+                    { icon: '💼', role: '취업이 전부가 아니다', desc: '대학 졸업 후 좋은 직장에 취업했다고 만족하지 마세요. 직장 생활 중에 다음 꿈(예: 리더십 발휘, 창업, 또는 삶의 균형)을 생각하세요.' },
+                    { icon: '🎯', role: '궁극적인 꿈을 가져라', desc: '인생은 한 번의 목표로 끝나지 않습니다. 끊임없이 "꿈 너머 꿈"을 추구하며, 행복, 성장, 영향력을 향한 장기적인 비전을 세우세요.' },
+                    { icon: '➡️', role: '연속성', desc: '대학 ➜ 취업 ➜ 궁극적 꿈' }
+
+                ]
+            },
+
+
+            {
+                type: 'standard',
+                title: '세상이 바뀌고 있어요',
+                text: '대량해고 - 일하는 방식이 바뀌고 있다.',
+                stats: [
+                    { number: '892,000', label: '2025년 미국 일자리 감소<br>(1-9월)' },
+                    { number: '10,000+', label: 'AI로 인한 직접 해고' },
+                    { number: '58%', label: '2024년 졸업생<br>미취업 상태' },
+                    { number: '170M', label: '2030년까지<br>새로운 일자리 창출' }
+                ]
+            },            
+
+            {
+                type: 'layoff_reasons',
+                title: '테크 대량 해고의 진짜 이유'
+            },
+              {
+                type: 'standard',
+                title: '업무 방식이 달라지고 있다',
+                text: 'AI-퍼스트 협업과 자동화 중심으로 급격히 전환되고 있습니다.',
+                items: [
+                    { icon: '🤖', role: 'AI와 인간 협업', desc: 'AI가 초안을 만들고 인간이 검증·의사결정을 합니다.' },
+                    { icon: '⚙️', role: '반복 업무 자동화', desc: '봇·워크플로우로 반복 작업을 자동화합니다.' },
+                    { icon: '📊', role: '데이터 기반 운영', desc: '실험-측정-개선의 루프로 일합니다.' },
+                    { icon: '🚀', role: '작은 팀·빠른 반복', desc: '프롬프트·툴 조합으로 빠르게 출시·개선합니다.' }
+                ]
+            },
+            {
+                type: 'analogy',
+                title: '업무 변화의 핵심 - 바이브 코딩',
+                text: '정확한 명세 대신 의도·톤·맥락을 전달해 AI와 함께 결과를 만들어 가는 방식입니다. 팀은 AI 초안 → 인간 검토 → 피드백 개선 루프를 빠르게 돌며 품질을 높입니다.',
+                analogy: {
+                    context: '개발·마케팅·디자인 전 분야 공통 작동 원리',
+                    detail: '"톤을 더 따뜻하고 희망적으로, 10대가 공감하도록 바꿔줘"'
+                }
+            },
+            {
+                type: 'comparison',
+                title: '핵심 역량 - AI와의 소통',
+                text: '사람과 협력에서 명확한 커뮤니케이션이 중요하듯, AI와의 협력에서도 AI가 이해할 수 있는 언어로 소통해야 한다.',
+                bad: {
+                    label: '나쁜 질문 👎',
+                    text: '"쇼핑몰 만들어줘."'
+                },
+                good: {
+                    label: '좋은 질문 👍',
+                    text: '"10대 여학생들이 좋아할 만한, 사용하기 쉽고 아기자기한 디자인의 옷 쇼핑몰을 만들어줘."'
+                }
+            },
+            {
+                type: 'split',
+                title: 'AI의 두 얼굴: 친구인가, 경쟁자인가?',
+                left: {
+                    title: '💡 똑똑한 친구',
+                    points: ['엄청난 속도', '새로운 기회', '창의력 UP!']
+                },
+                right: {
+                    title: '⚠️ 위험한 경쟁자',
+                    points: ['숨겨진 오류와 함정', 'AI 의존 위험', 'AI는 만능이 아님']
+                },
+                conclusion: "결국 AI는 강력한 '도구'일 뿐, 어떻게 사용하느냐에 따라 결과가 달라집니다."
+            },
+            {
+                type: 'standard',
+                title: 'AI가 대체할 수 없는 인간의 영역',
+                text: '기술이 발전해도 인간만이 할 수 있는 고유한 영역들이 있습니다.',
+                items: [
+                    { icon: '🎨', role: '창의성과 혁신', desc: '패러다임 전환, 예술적 영감, 독창적 아이디어' },
+                    { icon: '❤️', role: '감정적 지능', desc: '진정한 공감, 신뢰 관계 구축, 리더십과 영향력' },
+                    { icon: '⚖️', role: '윤리적 판단', desc: '가치 판단, 도덕적 딜레마, 사회적 책임' },
+                    { icon: '🔮', role: '비전 제시', desc: '미래 상상, 영감 부여, 문화 창조' }
+                ]
+            },
+            {
+                type: 'pi_talent',
+                title: '새로운 인재상: π자형 인재'
+            },            
+            {
+                type: 'title',
+                title: '미래 인재가 되는 5가지 비밀',
+                subtitle: 'AI 시대를 주도할 핵심 역량'
+            },
+            {
+                type: 'skill',
+                skillNumber: 1,
+                title: "흔들리지 않는 '기초 실력'",
+                text: '기초가 튼튼해야 AI를 지휘하고, AI가 내놓은 결과가 좋은지 나쁜지 판단할 수 있습니다.',
+                viz: 'bar_chart'
+            },
+            {
+                type: 'skill',
+                skillNumber: 2,
+                title: "'좋은 질문'과 소통 능력",
+                text: '정답을 아는 것보다, 문제를 해결할 좋은 질문을 하는 능력이 훨씬 중요합니다.',
+                viz: 'comparison_box'
+            },
+            {
+                type: 'skill',
+                skillNumber: 3,
+                title: "'왜?'라고 묻는 비판적 사고",
+                text: "AI의 답변을 그대로 믿지 말고, 끊임없이 의심하고 검증하는 습관이 중요합니다. 모든 결정의 책임은 '나'에게 있습니다."
+            },
+            {
+                type: 'skill',
+                skillNumber: 4,
+                title: "나만의 '창의성'",
+                text: "AI는 흉내 낼 뿐, 창조하지 못합니다. 여러분의 독특한 경험과 생각이 가장 강력한 무기입니다.",
+                viz: 'emoji_equation'
+            },
+            {
+                type: 'skill',
+                skillNumber: 5,
+                title: "'성장하는 마음'",
+                text: "최고의 능력은 새로운 것을 두려워하지 않고, 평생 배우고 도전하려는 태도(Growth Mindset)입니다."
+            },
+
+            {
+                type: 'standard',
+                title: '인생은 롤러코스터와 같다',
+                text: '',
+                backgroundImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop',
+                items: [
+                    { icon: '🎢', role: '오르막과 내리막의 반복', desc: '인생은 롤러코스터처럼 높은 순간(성공, 기쁨)과 낮은 순간(실패, 어려움)이 번갈아 옵니다. 중요한 건 멈추지 않고 앞으로 나아가는 거예요.' },
+                    { icon: '🔄', role: '예상치 못한 턴', desc: '계획대로 되지 않을 때가 많아요. 하지만 그 턴이 새로운 기회를 가져다줍니다. 예를 들어, 시험 실패가 더 열심히 공부하는 동기가 될 수 있죠.' },
+                    { icon: '💪', role: '즐기며 극복하기', desc: '롤러코스터를 타면서 무섭지만 재미있듯이, 인생의 도전을 즐기세요. 긍정적인 마인드와 지지하는 친구들이 큰 도움이 됩니다.' },
+                    { icon: '✨', role: '교훈', desc: '"인생의 속도는 당신이 결정해요. 안전벨트를 매고, 미소를 지으며 타세요!"' }
+                ]
+            },
+
+            {
+                type: 'conclusion',
+                title: '여러분의 미래, 무엇이든 될 수 있습니다',
+                text: 'AI는 인간 고유의 가치를 더욱 빛나게 할 기회입니다. 여러분이 꿈을 꾸고 기획하면, AI가 최고의 파트너가 되어줄 것입니다.',
+                quote: {
+                    text: '"인간인 제가 기획하고, AI가 그린 합작품입니다."',
+                    author: '- KAIST 교수 -'
+                }
+            },
+            {
+                type: 'end',
+                title: '감사합니다',
+                subtitle: 'Q & A'
+            }
+        ];
+
+        const presentationContainer = document.getElementById('presentation-container');
+        const slideNumbersContainer = document.getElementById('slide-numbers');
+        let currentSlide = 0;
+
+        function renderSlides() {
+            slidesData.forEach((slide, index) => {
+                const bgStyle = slide.backgroundImage ? ` style="background-image: linear-gradient(rgba(17,24,39,0.6), rgba(17,24,39,0.6)), url('${slide.backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;"` : '';
+                let slideHTML = `<div class="slide absolute inset-0 p-8 md:p-16 flex-col justify-center items-center text-center ${index === 0 ? 'active' : ''}" data-slide="${index}"${bgStyle}>`;
+                
+                if (slide.type === 'title') {
+                    slideHTML += `<h1 class="text-5xl md:text-7xl font-black text-gray-800">${slide.title}</h1><p class="mt-6 text-xl md:text-2xl text-gray-600">${slide.subtitle}</p>`;
+                } else if (slide.type === 'intro') {
+                    slideHTML += `<span class="text-7xl mb-6">${slide.emoji}</span><h2 class="text-3xl md:text-5xl font-bold text-gray-800">${slide.title}</h2><p class="mt-6 text-lg md:text-xl max-w-3xl text-gray-700">${slide.text}</p>`;
+                } else if (slide.type === 'standard') {
+                    slideHTML += `<h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">${slide.title}</h2><p class="text-xl text-gray-600 mb-12">${slide.text}</p>`;
+                    if (slide.items) {
+                        const itemCount = slide.items.length;
+                        let mdCols = 'md:grid-cols-4';
+                        if (itemCount === 1) mdCols = 'md:grid-cols-1';
+                        else if (itemCount === 2) mdCols = 'md:grid-cols-2';
+                        else if (itemCount === 3) mdCols = 'md:grid-cols-3';
+                        else mdCols = 'md:grid-cols-4';
+                        slideHTML += `<div class="grid grid-cols-1 sm:grid-cols-2 ${mdCols} gap-6 w-full max-w-5xl mx-auto">`;
+                        slide.items.forEach(item => {
+                            slideHTML += `<div class=\"bg-gray-50 p-6 rounded-xl border\"><span class=\"text-5xl\">${item.icon}</span><h3 class=\"font-bold text-xl mt-3\">${item.role}</h3><p class=\"text-gray-600\">${item.desc}</p></div>`;
+                        });
+                        slideHTML += `</div>`;
+                    } else if (slide.stats) {
+                        slideHTML += `<div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-5xl">`;
+                        slide.stats.forEach(stat => {
+                            slideHTML += `<div class=\"bg-white p-8 rounded-xl border text-center\"><div class=\"text-3xl md:text-4xl font-extrabold stat-number\">${stat.number}</div><div class=\"mt-2 text-sm md:text-base text-gray-600 stat-label\">${stat.label}</div></div>`;
+                        });
+                        slideHTML += `</div>`;
+                    }
+                } else if (slide.type === 'analogy') {
+                    slideHTML += `<div class="w-full max-w-4xl"><h2 class="text-3xl md:text-5xl font-bold text-gray-800">${slide.title}</h2><p class="mt-6 text-lg md:text-xl text-gray-700">${slide.text}</p><div class="mt-12 bg-blue-50 border-l-4 border-blue-500 text-left p-8 rounded-lg"><p class="text-xl font-bold text-blue-800">${slide.analogy.context}</p><p class="text-2xl italic mt-2 text-blue-700">"${slide.analogy.detail}"</p></div></div>`;
+                } else if (slide.type === 'comparison') {
+                    slideHTML += `<h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">${slide.title}</h2>`;
+                    if (slide.text) {
+                        slideHTML += `<p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">${slide.text}</p>`;
+                    } else {
+                        slideHTML += `<div class="mb-6"></div>`;
+                    }
+                    slideHTML += `<div class="flex flex-col md:flex-row gap-8 w-full max-w-4xl"><div class="flex-1 bg-red-50 border border-red-200 p-6 rounded-lg"><h3 class="font-bold text-xl text-red-700">${slide.bad.label}</h3><p class="mt-4 text-lg text-gray-800">${slide.bad.text}</p></div><div class="flex-1 bg-green-50 border border-green-200 p-6 rounded-lg"><h3 class="font-bold text-xl text-green-700">${slide.good.label}</h3><p class="mt-4 text-lg text-gray-800">${slide.good.text}</p></div></div>`;
+                } else if (slide.type === 'split') {
+                     slideHTML += `<h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-12">${slide.title}</h2><div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl"><div class="flex-1 bg-white p-8 rounded-lg shadow-lg border-t-4 border-green-500"><h3 class="text-2xl font-bold text-green-600">${slide.left.title}</h3><ul class="mt-6 space-y-3 text-lg text-left list-disc list-inside">`;
+                    slide.left.points.forEach(p => slideHTML += `<li>${p}</li>`);
+                    slideHTML += `</ul></div><div class="flex-1 bg-white p-8 rounded-lg shadow-lg border-t-4 border-red-500"><h3 class="text-2xl font-bold text-red-600">${slide.right.title}</h3><ul class="mt-6 space-y-3 text-lg text-left list-disc list-inside">`;
+                    slide.right.points.forEach(p => slideHTML += `<li>${p}</li>`);
+                    slideHTML += `</ul></div></div><p class="mt-12 text-xl font-semibold text-gray-700">${slide.conclusion}</p>`;
+                } else if (slide.type === 'layoff_reasons') {
+                    slideHTML += `<h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-8">${slide.title}</h2>`;
+                    slideHTML += `<div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 text-left">`;
+                    slideHTML += `<div class="bg-white p-6 rounded-lg shadow border"><div class="text-xl font-bold mb-3">📢 공식 발표</div><ul class="list-disc list-inside space-y-2 text-gray-700"><li>경제 불확실성</li><li>구조조정</li><li>효율성 개선</li></ul></div>`;
+                    slideHTML += `<div class="bg-white p-6 rounded-lg shadow border"><div class="text-xl font-bold mb-3">🔍 실제 현실</div><ul class="list-disc list-inside space-y-2 text-gray-700"><li>AI가 업무 대체</li><li>스킬 미스매치</li><li>AI 네이티브 인재 교체</li></ul></div>`;
+                    slideHTML += `</div>`;
+                } else if (slide.type === 'skill') {
+                    slideHTML += `<div class="w-full max-w-4xl"><p class="text-blue-600 font-bold text-xl mb-2">비밀 ${slide.skillNumber}</p><h2 class="text-3xl md:text-5xl font-bold text-gray-800">${slide.title}</h2><p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-700">${slide.text}</p>`;
+                    if(slide.viz === 'bar_chart') {
+                        slideHTML += `<div class="mt-8 space-y-4 w-full max-w-lg mx-auto text-left"><p class="font-semibold">장기적 가치 비교</p><div class="flex items-center"><span class="w-32 font-medium">기초 원리</span><div class="w-full bg-gray-200 rounded-full h-8"><div class="bg-blue-600 h-8 rounded-full" style="width: 95%"></div></div></div><div class="flex items-center"><span class="w-32 font-medium">특정 도구</span><div class="w-full bg-gray-200 rounded-full h-8"><div class="bg-blue-300 h-8 rounded-full" style="width: 40%"></div></div></div></div>`;
+                    } else if (slide.viz === 'comparison_box') {
+                        slideHTML += `<div class="mt-8 flex flex-col md:flex-row gap-4 w-full"><div class="flex-1 bg-red-50 border border-red-200 p-4 rounded-lg"><h3 class="font-bold text-lg text-red-700">나쁜 질문 👎</h3><p class="mt-2 text-md">"쇼핑몰 만들어줘."</p></div><div class="flex-1 bg-green-50 border border-green-200 p-4 rounded-lg"><h3 class="font-bold text-lg text-green-700">좋은 질문 👍</h3><p class="mt-2 text-md">"10대 여학생들이 좋아할 만한..."</p></div></div>`;
+                    } else if (slide.viz === 'emoji_equation') {
+                        slideHTML += `<div class="mt-8 text-5xl p-6 bg-purple-50 rounded-xl inline-block">🧠 + ❤️ + ✨</div><p class="mt-4 text-lg font-semibold">생각 + 마음 + 경험 = 진짜 창의성</p>`;
+                    }
+                    slideHTML += `</div>`;
+                } else if (slide.type === 'pi_talent') {
+                    slideHTML += `<h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-8">${slide.title}</h2>`;
+                    slideHTML += `<div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">`;
+                    slideHTML += `<div class="bg-white p-6 rounded-lg shadow border"><h3 class="text-2xl font-bold mb-4 text-center">T자형 인재 (과거)</h3><div class="text-center mb-4"><div class="text-4xl font-mono">━━━━━</div><div class="text-4xl font-mono">|</div></div><p class="text-lg text-center">한 분야 전문성<br>+<br>넓은 일반 지식</p></div>`;
+                    slideHTML += `<div class="bg-white p-6 rounded-lg shadow border"><h3 class="text-2xl font-bold mb-4 text-center">π자형 인재 (현재)</h3><div class="text-center mb-4"><div class="text-4xl font-mono">━━━━━</div><div class="text-4xl font-mono">| |</div></div><p class="text-lg text-center">두 분야 전문성<br>+ AI 활용<br>+ 넓은 지식</p></div>`;
+                    slideHTML += `</div>`;
+                    slideHTML += `<div class="bg-blue-50 p-6 rounded-lg max-w-2xl mx-auto text-center">`;
+                    slideHTML += `<h3 class="text-xl font-bold mb-3">예시: 마케팅 + 데이터 사이언스 + AI</h3>`;
+                    slideHTML += `<p class="text-lg mb-2"><strong>연봉:</strong> $150,000 - $250,000</p>`;
+                    slideHTML += `<p class="text-lg"><strong>경쟁력:</strong> 전통 마케터 대비 3배 생산성</p>`;
+                    slideHTML += `</div>`;
+                } else if (slide.type === 'conclusion') {
+                    slideHTML += `<h2 class="text-4xl md:text-5xl font-bold text-gray-800">${slide.title}</h2><p class="mt-6 text-xl max-w-3xl text-gray-700">${slide.text}</p><div class="mt-12 bg-blue-50 p-6 rounded-lg max-w-2xl mx-auto"><p class="text-2xl italic text-blue-800">"${slide.quote.text}"</p><p class="mt-2 text-blue-600 font-semibold">${slide.quote.author}</p></div>`;
+                } else if (slide.type === 'end') {
+                    slideHTML += `<h1 class="text-6xl font-black text-gray-800">${slide.title}</h1><p class="mt-6 text-3xl text-gray-600">${slide.subtitle}</p>`;
+                }
+
+                slideHTML += '</div>';
+                presentationContainer.innerHTML += slideHTML;
+            });
+        }
+
+        function createSlideIndex() {
+            slideNumbersContainer.innerHTML = '';
+            slidesData.forEach((slide, idx) => {
+                const title = slide.title || (slide.type === 'intro' ? slide.title : `슬라이드 ${idx + 1}`);
+                const item = document.createElement('div');
+                item.className = 'slide-number';
+                const num = document.createElement('span');
+                num.className = 'number';
+                num.textContent = idx + 1;
+                const t = document.createElement('span');
+                t.className = 'title';
+                t.textContent = title || `슬라이드 ${idx + 1}`;
+                item.appendChild(num);
+                item.appendChild(t);
+                item.addEventListener('click', () => {
+                    currentSlide = idx;
+                    updatePresentation();
+                    updateSlideIndex();
+                });
+                slideNumbersContainer.appendChild(item);
+            });
+        }
+
+        function updateSlideIndex() {
+            const items = document.querySelectorAll('.slide-number');
+            items.forEach((el, i) => {
+                if (i === currentSlide) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+        }
+        
+        function updatePresentation() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            const progressBar = document.getElementById('progress-bar');
+            const progress = ((currentSlide + 1) / slidesData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slidesData.length - 1;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSlides();
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            createSlideIndex();
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updatePresentation();
+                    updateSlideIndex();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < slidesData.length - 1) {
+                    currentSlide++;
+                    updatePresentation();
+                    updateSlideIndex();
+                }
+            });
+            
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                }
+            });
+
+            updatePresentation();
+            updateSlideIndex();
+        });
+    </script>
+</body>
+</html>
