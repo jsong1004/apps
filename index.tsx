@@ -96,18 +96,26 @@ const data: WebsiteData[] = [
         webSite: "www.ai-biz.app",
         title: "Transform Your Business with AI Automation",
         description: "Leverage AI to automate and enhance your business operations.",
-        category: "business",
+        category: "ai",
         icon: "workshop",
         badge: "live"
     },
     {
         webSite: "apps.ai-biz.app/presentations/highschool-special-lecture.html",
-        title: "AI와 함께 꿈을 찾는 법 (프레젠테ATION)",
+        title: "AI와 함께 꿈을 찾는 법",
         description: "고등학생 특별 강의 슬라이드: 인생 롤러코스터, 산 너머 산, 꿈의 연속, 다양한 목표 달성법으로 동기부여, 미래 사회가 원하는 인재의 역량, AI 시대를 주도할 핵심 역량.",
         category: "presentation",
         icon: "presentation",
         badge: "live"
-    }
+    },
+    {
+        webSite: "storybook.ai-biz.app",
+        title: "아이들을 위한 맞춤형 동화책",
+        description: "AI가 도와주는 쉽고 재미있는 동화책 제작 도구로, 아이들의 상상력을 아름다운 이야기와 그림으로 만들어보세요..",
+        category: "ai",
+        icon: "ai-content",
+        badge: "live"
+    }    
 ];
 
 function populateCards() {

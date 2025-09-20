@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브 코딩: 개발의 새로운 미래</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* 다크 모드 배경 */
+            color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        /* 공통 고정 너비 컨테이너 (페이지 7 기준) */
+        .container-fixed { width: 100%; max-width: 1000px; margin-left: 300px; }
+        
+        /* 하단 네비게이션용 컨테이너 (중앙 정렬) */
+        .container-centered { width: 100%; max-width: 1000px; margin: 0 auto; }
+
+        /* 각 슬라이드의 기본 스타일 */
+        .slide {
+            display: none; /* 기본적으로 모든 슬라이드를 숨김 */
+            width: 100%;
+            background-color: #1f2937; /* 슬라이드 배경 */
+            border-radius: 1.5rem; /* 둥근 모서리 */
+            padding: 2rem; /* 패딩 조정 */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid #374151;
+            animation: fadeIn 0.7s ease-in-out;
+            height: 600px; /* 고정 높이로 변경 */
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden; /* 내용이 넘치면 숨김 */
+        }
+        /* 활성화된 슬라이드만 보이게 설정 */
+        .slide.active {
+            display: flex;
+        }
+
+        /* 페이드인 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 네비게이션 버튼 스타일 */
+        .nav-button {
+            background-color: #374151;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* 완전 둥근 버튼 */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
+        }
+        .nav-button:hover {
+            background-color: #4b5563;
+            transform: translateY(-2px);
+        }
+        .nav-button:disabled {
+            background-color: #4b5563;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        img.slide-image {
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            object-fit: cover;
+            width: 100%;
+            max-height: 200px; /* 이미지 높이 더 줄임 */
+        }
+        .slide-content {
+            flex-grow: 1;
+            overflow-y: auto; /* 내용이 많으면 스크롤 가능 */
+            padding-right: 0.5rem; /* 스크롤바 공간 확보 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* 텍스트 내용과 이미지 간격 조정 */
+        .slide-content > *:not(img) {
+            margin-bottom: 0.75rem;
+        }
+        
+        .slide-content > *:last-child:not(img) {
+            margin-bottom: 0;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #374151;
+            border-radius: 9999px;
+            height: 8px;
+            margin-top: 1.5rem;
+        }
+        .progress {
+           background-color: #3b82f6;
+           height: 8px;
+           border-radius: 9999px;
+           transition: width 0.3s ease-in-out;
+        }
+        
+        /* 슬라이드 인덱스 스타일 */
+        .slide-index {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background-color: rgba(31, 41, 55, 0.9);
+            border: 1px solid #374151;
+            border-radius: 1rem;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            width: 260px;
+        }
+
+        /* 반응형 - 좁은 화면에서는 좌측 인덱스 겹침 방지 */
+        @media (max-width: 1200px) {
+            .container-fixed { margin-left: 0; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .container-centered { padding-left: 0.5rem; padding-right: 0.5rem; }
+            .slide-index { position: static; width: auto; margin-bottom: 1rem; }
+        }
+        
+        .slide-index h3 {
+            color: #93c5fd;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        
+        .slide-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .slide-number {
+            background-color: #374151;
+            color: #d1d5db;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.75rem;
+            padding: 0.5rem;
+            min-height: 2.5rem;
+        }
+        
+        .slide-number .number {
+            background-color: #4b5563;
+            color: white;
+            border-radius: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        .slide-number .title {
+            flex: 1;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .slide-number:hover {
+            background-color: #4b5563;
+            border-color: #6b7280;
+            transform: translateY(-1px);
+        }
+        
+        .slide-number.active {
+            background-color: #3b82f6;
+            border-color: #2563eb;
+            color: white;
+        }
+        
+        .slide-number.active .number {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 슬라이드 인덱스 -->
+    <div class="slide-index">
+        <h3>슬라이드</h3>
+        <div class="slide-numbers" id="slide-numbers">
+            <!-- JavaScript로 동적 생성 -->
+        </div>
+    </div>
+
+    <div id="presentation-container" class="container-fixed">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <div class="slide-content text-center">
+                <h1 class="text-5xl font-bold text-blue-400 mb-4">바이브 코딩: 개발의 새로운 미래</h1>
+                <p class="text-2xl text-gray-300">AI와 인간의 새로운 협업 패러다임</p>
+                <img src="https://placehold.co/800x400/1f2937/93c5fd?text=AI+%26+Human+Collaboration" alt="AI와 협업하는 개발자" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">바이브 코딩이란?</h2>
+                <p class="text-xl mb-6 text-gray-300"><strong>'느낌'</strong>으로 코딩하는 시대의 시작</p>
+                <p class="mb-6">단순한 '음성 코딩'이 아닌, 개발자의 <strong>의도, 맥락, 분위기(Vibe)</strong>를 AI에 전달하는 고차원적인 협업 과정입니다.</p>
+                <blockquote class="border-l-4 border-blue-400 pl-4 py-2 italic text-gray-400">
+                    "가장 핫한 새로운 프로그래밍 언어는 영어입니다."
+                    <cite class="block text-right not-italic mt-2">- 안드레이 카르파시 (Andrej Karpathy)</cite>
+                </blockquote>
+                 <img src="https://placehold.co/800x300/1f2937/93c5fd?text=Orchestra+Conductor" alt="오케스트라 지휘자" class="slide-image">
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="slide">
+             <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">무엇이 가능해지는가? (기회)</h2>
+                <ul class="list-disc list-inside space-y-4 text-lg">
+                    <li><strong>개발의 민주화:</strong> 아이디어만 있다면 누구나!</li>
+                    <li><strong>혁신적인 생산성:</strong> 몇 달 걸릴 MVP 개발을 며칠 만에.</li>
+                    <li><strong>창의성의 극대화:</strong> '어떻게'가 아닌 '<strong>무엇을</strong>' 만들지 집중.</li>
+                </ul>
+                <img src="https://placehold.co/800x350/1f2937/93c5fd?text=Democratization+of+Development" alt="함께 기뻐하는 다양한 사람들" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+             <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4 text-red-400">현실적인 과제는? (위험)</h2>
+                <ul class="list-disc list-inside space-y-4 text-lg">
+                    <li><strong>코드 품질 저하:</strong> 비효율적이거나 오류가 포함된 코드 생성.</li>
+                    <li><strong>심각한 보안 취약점:</strong> AI 생성 코드의 약 40%에서 발견 (NYU 연구).</li>
+                    <li><strong>AI 성능의 한계:</strong> 복잡한 레거시 시스템, 비주류 언어에 취약.</li>
+                </ul>
+                <img src="https://placehold.co/800x350/1f2937/fca5a5?text=Code+Security+Risk" alt="코드 속의 버그를 찾는 돋보기" class="slide-image">
+            </div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide">
+             <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">개발자의 역할 변화</h2>
+                <p class="text-2xl text-center mb-6"><strong>'코더(Coder)'</strong>에서 <span class="text-blue-400">'AI 지휘자(AI Conductor)'</span>로</p>
+                <ul class="list-disc list-inside space-y-4 text-lg text-center mx-auto">
+                    <li>문제 해결사 (Problem Solver)</li>
+                    <li>설계자 및 품질 관리자 (Architect & Quality Manager)</li>
+                    <li>AI 협업 전문가 (AI Collaborator)</li>
+                </ul>
+                <img src="https://placehold.co/800x300/1f2937/93c5fd?text=AI+Conductor" alt="시스템을 총괄하는 전문가" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6">새로운 시대의 필수 역량</h2>
+                <ul class="list-disc list-inside space-y-4 text-lg">
+                    <li><strong>탄탄한 기본기:</strong> AI가 길을 잃었을 때 안내할 수 있는 힘.</li>
+                    <li><strong>명확한 커뮤니케이션:</strong> AI가 이해할 수 있는 정확한 요구사항 전달.</li>
+                    <li><strong>비판적 사고:</strong> AI의 결과물을 맹신하지 않고 검증하는 능력.</li>
+                    <li><strong>도메인 전문성:</strong> 비즈니스 가치를 이해하고 기술로 연결.</li>
+                </ul>
+                <img src="https://placehold.co/800x300/1f2937/93c5fd?text=Core+Competencies" alt="핵심 역량 인포그래픽" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide">
+             <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">성공적인 협업을 위한 원칙 1</h2>
+                 <div class="grid md:grid-cols-2 gap-6 text-lg">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-400 mb-2">1. 대중적인 기술 스택 선택</h3>
+                        <p>AI는 <strong>Next.js, Python</strong> 같이 학습 데이터가 풍부한 기술에 더 강합니다.</p>
+                    </div>
+                     <div class="bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-400 mb-2">2. 작업은 잘게 쪼개서 요청</h3>
+                        <p>'채팅 앱 만들어줘' (X) ➡ '로그인 버튼 UI 만들어줘' (O). 명확한 <strong>요구사항 문서(PRD)</strong>를 기반으로 소통하세요.</p>
+                    </div>
+                </div>
+                <img src="https://placehold.co/800x300/1f2937/93c5fd?text=Break+Down+Tasks" alt="프로젝트 조각 다이어그램" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">성공적인 협업을 위한 원칙 2</h2>
+                 <ul class="list-none space-y-4 text-lg">
+                    <li class="bg-gray-800 p-4 rounded-lg"><strong>3. 버전 관리(Git)는 필수:</strong> AI의 실수를 되돌릴 수 있는 가장 확실한 '안전벨트'입니다.</li>
+                    <li class="bg-gray-800 p-4 rounded-lg"><strong>4. 검증된 코드 샘플 제공:</strong> AI에게 모범 답안을 보여주고 따라 하게 만드세요.</li>
+                    <li class="bg-gray-800 p-4 rounded-lg"><strong>5. 막히면 새 대화로 다시 시작:</strong> 오염된 맥락에서 벗어나 새롭게 질문하는 것이 효과적입니다.</li>
+                </ul>
+                <img src="https://placehold.co/800x250/1f2937/93c5fd?text=Version+Control+%26+Restart" alt="Git 로고와 새로고침 아이콘" class="slide-image">
+            </div>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-4">바이브 코딩, 그 너머의 미래</h2>
+                <p class="text-xl mb-6 text-center text-blue-300">'AI 페어 프로그래머', '의도 기반 개발'</p>
+                <p class="mb-4">신뢰할 수 있는 AI 프로그래밍 엔진을 향한 노력은 계속됩니다.</p>
+                <ul class="list-disc list-inside space-y-3 text-lg">
+                   <li><strong>소프트웨어 면역 시스템:</strong> 알려진 오류 패턴을 AI가 생성 시 즉시 차단.</li>
+                   <li><strong>논리 기반 AI:</strong> 코드의 문법뿐만 아니라 논리적 구조까지 학습.</li>
+                </ul>
+                <img src="https://placehold.co/800x300/1f2937/93c5fd?text=The+Future+of+Coding" alt="AI 뉴런 네트워크와 인간" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="slide">
+            <div class="slide-content text-center">
+                <h2 class="text-3xl font-bold mb-4">결론: 대체가 아닌 '협업'의 시대</h2>
+                <p class="text-lg mb-6">바이브 코딩은 인간 개발자를 대체하는 기술이 아닙니다.<br>인간의 <strong>창의성</strong>과 AI의 <strong>생산성</strong>을 결합하는 강력한 도구입니다.</p>
+                <blockquote class="border-l-4 border-blue-400 pl-4 py-2 italic text-gray-400 text-left mb-6">
+                    "인간인 제가 기획하고, AI가 그린 합작품입니다."
+                </blockquote>
+                <img src="https://placehold.co/800x300/1f2937/93c5fd?text=Synergy" alt="인간과 로봇의 악수" class="slide-image">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 진행률 표시줄 -->
+    <div id="progress-bar-container" class="container-centered mt-4">
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+    </div>
+
+
+    <!-- 네비게이션 -->
+    <div class="flex items-center justify-between container-centered mt-8">
+        <button id="prevBtn" class="nav-button">이전</button>
+        <span id="slide-counter" class="text-gray-400 font-medium">1 / 10</span>
+        <button id="nextBtn" class="nav-button">다음</button>
+    </div>
+
+    <script>
+        // 슬라이드 기능 구현
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slide-counter');
+        const progressBar = document.getElementById('progress');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // 모든 슬라이드 숨기기
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // 현재 슬라이드만 보이기
+            slides[index].classList.add('active');
+            
+            // 버튼 활성/비활성 상태 업데이트
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalSlides - 1;
+
+            // 슬라이드 카운터 업데이트
+            slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+            
+            // 진행률 표시줄 업데이트
+            const progressPercentage = ((index + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        // 다음 버튼 클릭 이벤트
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        // 이전 버튼 클릭 이벤트
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+        
+        // 키보드 방향키로 슬라이드 넘기기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            }
+        });
+
+        // 슬라이드 인덱스 생성
+        function createSlideIndex() {
+            const slideNumbersContainer = document.getElementById('slide-numbers');
+            const slideTitles = [
+                '바이브 코딩: 개발의 새로운 미래',
+                '바이브 코딩이란?',
+                '무엇이 가능해지는가? (기회)',
+                '현실적인 과제는? (위험)',
+                '개발자의 역할 변화',
+                '새로운 시대의 필수 역량',
+                '성공적인 협업을 위한 원칙 1',
+                '성공적인 협업을 위한 원칙 2',
+                '바이브 코딩, 그 너머의 미래',
+                '결론: 대체가 아닌 협업의 시대'
+            ];
+            
+            for (let i = 1; i <= totalSlides; i++) {
+                const slideNumber = document.createElement('div');
+                slideNumber.className = 'slide-number';
+                
+                const numberSpan = document.createElement('span');
+                numberSpan.className = 'number';
+                numberSpan.textContent = i;
+                
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'title';
+                titleSpan.textContent = slideTitles[i - 1];
+                
+                slideNumber.appendChild(numberSpan);
+                slideNumber.appendChild(titleSpan);
+                
+                slideNumber.addEventListener('click', () => {
+                    currentSlide = i - 1;
+                    showSlide(currentSlide);
+                });
+                
+                slideNumbersContainer.appendChild(slideNumber);
+            }
+        }
+
+        // 슬라이드 인덱스 업데이트
+        function updateSlideIndex() {
+            const slideNumbers = document.querySelectorAll('.slide-number');
+            slideNumbers.forEach((number, index) => {
+                if (index === currentSlide) {
+                    number.classList.add('active');
+                } else {
+                    number.classList.remove('active');
+                }
+            });
+        }
+
+        // 초기 슬라이드 설정
+        createSlideIndex();
+        showSlide(currentSlide);
+
+        // Leonardo AI로 이미지 교체 (alt 텍스트 사용)
+        const processedMap = new WeakSet();
+
+        async function generateImageFromAlt(imgEl) {
+            if (!imgEl || processedMap.has(imgEl)) return;
+            const src = imgEl.getAttribute('src') || '';
+            const alt = (imgEl.getAttribute('alt') || '').trim();
+            if (!alt) return;
+            const isPlaceholder = /placehold\.co|placeholder\.svg/i.test(src);
+            if (!isPlaceholder) {
+                processedMap.add(imgEl);
+                return;
+            }
+
+            // 로딩 상태 적용
+            imgEl.style.filter = 'blur(6px)';
+            imgEl.style.opacity = '0.8';
+            imgEl.style.transition = 'filter .3s, opacity .3s';
+
+            try {
+                // 슬라이드 컨텍스트 수집
+                const slide = imgEl.closest('.slide');
+                let context = '';
+                if (slide) {
+                    const clone = slide.cloneNode(true);
+                    // 이미지와 버튼 텍스트, 카운터 등 제거
+                    clone.querySelectorAll('img, button, #slide-counter').forEach(el => el.remove());
+                    const text = clone.textContent.replace(/\s+/g, ' ').trim();
+                    // 단일 프롬프트로 구성: ALT + 핵심 텍스트
+                    const composed = `Image prompt: ${alt}. Slide details: ${text}`;
+                    context = composed.slice(0, 900);
+                }
+                const res = await fetch('/api/generate-from-alt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        prompt: alt,
+                        context: context || alt,
+                        width: 1216,
+                        height: 832
+                    })
+                });
+                if (!res.ok) throw new Error('failed');
+                const data = await res.json();
+                if (data && data.imageUrl) {
+                    const newImg = new Image();
+                    newImg.onload = () => {
+                        imgEl.src = data.imageUrl;
+                        imgEl.style.filter = 'none';
+                        imgEl.style.opacity = '1';
+                        processedMap.add(imgEl);
+                    };
+                    newImg.onerror = () => {
+                        processedMap.add(imgEl);
+                    };
+                    newImg.src = data.imageUrl;
+                }
+            } catch (_) {
+                // 실패 시 원본 유지
+            }
+        }
+
+        function generateForSlide(index) {
+            const slide = slides[index];
+            if (!slide) return;
+            const imgs = slide.querySelectorAll('img.slide-image');
+            imgs.forEach((img) => generateImageFromAlt(img));
+        }
+
+        // 슬라이드 전환 시 해당 슬라이드 이미지 생성 및 다음 슬라이드 프리페치
+        const _showSlide = showSlide;
+        showSlide = function(index) {
+            _showSlide(index);
+            updateSlideIndex(); // 슬라이드 인덱스 업데이트
+            generateForSlide(index);
+            if (index + 1 < totalSlides) {
+                generateForSlide(index + 1);
+            }
+        }
+
+        // 초기 슬라이드 및 프리페치
+        generateForSlide(currentSlide);
+        if (currentSlide + 1 < totalSlides) {
+            generateForSlide(currentSlide + 1);
+        }
+    </script>
+
+</body>
+</html>
