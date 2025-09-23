@@ -19,6 +19,7 @@ COPY *.tsx ./
 COPY robots.txt .
 COPY sitemap.xml .
 COPY metadata.json .
+COPY public/ ./public/
 
 # Copy all page subdirectories with their HTML files
 COPY founder/ ./founder/
@@ -46,6 +47,7 @@ COPY --from=builder /app/privacy-policy/ /usr/share/nginx/html/privacy-policy/
 COPY --from=builder /app/terms-of-service/ /usr/share/nginx/html/terms-of-service/
 COPY --from=builder /app/myjob_investment/ /usr/share/nginx/html/myjob_investment/
 COPY --from=builder /app/presentations/ /usr/share/nginx/html/presentations/
+COPY --from=builder /app/public/ /usr/share/nginx/html/
 
 # Copy SEO files to nginx html root
 COPY --from=builder /app/robots.txt /usr/share/nginx/html/
