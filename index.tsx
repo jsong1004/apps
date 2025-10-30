@@ -12,13 +12,61 @@ interface WebsiteData {
 
 const data: WebsiteData[] = [
     {
+        webSite: "myjob.ai-biz.app",
+        title: "MyJob: AI-Powered Job Search",
+        description: "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.",
+        category: "ai",
+        icon: "job-search",
+        badge: "live"
+    },
+    {
+        webSite: "www.ai-biz.app",
+        title: "Transform Your Business with AI Automation",
+        description: "Leverage AI to automate and enhance your business operations.",
+        category: "business",
+        icon: "workshop",
+        badge: "live"
+    },
+    {
+        webSite: "clearly.ai-biz.app/",
+        title: "Requirements Made Clear",
+        description: "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
+        category: "ai",
+        icon: "productivity",
+        badge: "live"
+    },
+    {
+        webSite: "storybook.ai-biz.app",
+        title: "AI로 만드는 맞춤형 그림책",
+        description: "누구나 쉽게 이야기를 만들어요. 연령과 흥미에 맞춘 그림책을 몇 분 안에 완성하세요. 텍스트부터 일러스트까지, AI가 함께합니다.",
+        category: "ai",
+        icon: "creativity", 
+        badge: "live"
+    },
+    {
         webSite: "contents.ai-biz.app",
         title: "AI Content Generation Hub",
         description: "Effortlessly convert your presentations, scripts, audio, and YouTube videos into engaging scripts, podcasts, blog posts, and accurate transcripts with the power of AI.",
         category: "ai",
-        icon: "ai-content",
+        icon: "creativity",
         badge: "live"
     },
+    {
+        webSite: "insights.ai-biz.app",
+        title: "AI-Powered Insights for Every Topic",
+        description: "Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.",
+        category: "ai",
+        icon: "insights",
+        badge: "live"
+    },
+    {
+        webSite: "workshop.ai-biz.app",
+        title: "AI Workshop Landing Page",
+        description: "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.",
+        category: "business",
+        icon: "workshop",
+        badge: "live"
+    },    
     {
         webSite: "investorhub-dash.ai-biz.app",
         title: "InvestorHub Dashboard",
@@ -44,37 +92,12 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
-        webSite: "video-synthesizer.ai-biz.app",
-        title: "Video Audio Synthesizer",
-        description: "Combine video and audio directly in your browser.",
-        category: "utility",
-        icon: "utilities",
+        webSite: "https://survey.ai-biz.app",
+        title: "AI Survey Generator - Professional Forms Made Easy",
+        description: "Offers an AI-powered tool for creating professional surveys and forms. Users can start with templates or custom prompts, where AI generates questions based on requirements, allowing for review, customization, and publishing with various sharing options. It also mentions alternatives like manual Google Forms creation due to API limitations.",
+        category: "utilities",
+        icon: "marketing",
         badge: "live"
-    },
-   
-    {
-        webSite: "insights.ai-biz.app",
-        title: "AI-Powered Insights for Every Topic",
-        description: "Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.",
-        category: "ai",
-        icon: "insights",
-        badge: "live"
-    },
-    {
-        webSite: "myjob.ai-biz.app",
-        title: "MyJob: AI-Powered Job Search",
-        description: "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.",
-        category: "ai",
-        icon: "job-search",
-        badge: "live"
-    },
-    {
-        webSite: "apps.ai-biz.app/myjob_investment/myjob-presentation.html",
-        title: "MyJob Investment Presentation",
-        description: "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
-        category: "presentation",
-        icon: "job-search",
-        badge: "demo"
     },
     {
         webSite: "screen-capture.ai-biz.app",
@@ -83,23 +106,25 @@ const data: WebsiteData[] = [
         category: "utility",
         icon: "utilities",
         badge: "live"
-    },
+    },              
     {
-        webSite: "workshop.ai-biz.app",
-        title: "AI Workshop Landing Page",
-        description: "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.",
-        category: "business",
-        icon: "workshop",
+        webSite: "video-synthesizer.ai-biz.app",
+        title: "Video Audio Synthesizer",
+        description: "Combine video and audio directly in your browser.",
+        category: "utility",
+        icon: "utilities",
         badge: "live"
     },
+ 
     {
-        webSite: "www.ai-biz.app",
-        title: "Transform Your Business with AI Automation",
-        description: "Leverage AI to automate and enhance your business operations.",
-        category: "ai",
-        icon: "workshop",
-        badge: "live"
+        webSite: "apps.ai-biz.app/myjob_investment/myjob-presentation.html",
+        title: "MyJob Investment Presentation",
+        description: "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
+        category: "presentation",
+        icon: "job-search",
+        badge: "demo"
     },
+
     {
         webSite: "apps.ai-biz.app/presentations/highschool-special-lecture.html",
         title: "AI와 함께 꿈을 찾는 법",
@@ -108,22 +133,7 @@ const data: WebsiteData[] = [
         icon: "presentation",
         badge: "live"
     },
-    {
-        webSite: "storybook.ai-biz.app",
-        title: "AI로 만드는 맞춤형 그림책",
-        description: "누구나 쉽게 이야기를 만들어요. 연령과 흥미에 맞춘 그림책을 몇 분 안에 완성하세요. 텍스트부터 일러스트까지, AI가 함께합니다.",
-        category: "ai",
-        icon: "ai-content",
-        badge: "live"
-    },
-    {
-        webSite: "clearly.ai-biz.app/",
-        title: "Requirements Made Clear",
-        description: "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
-        category: "ai",
-        icon: "utilities",
-        badge: "live"
-    },
+
     {
         webSite: "https://www.ai-biz.app/2025/vibe-coding-presentation.html",
         title: "What is Vibe Coding?",
@@ -139,15 +149,7 @@ const data: WebsiteData[] = [
         category: "presentation",
         icon: "presentation",
         badge: "live"
-    },
-    {
-        webSite: "https://survey.ai-biz.app",
-        title: "AI Survey Generator - Professional Forms Made Easy",
-        description: "Offers an AI-powered tool for creating professional surveys and forms. Users can start with templates or custom prompts, where AI generates questions based on requirements, allowing for review, customization, and publishing with various sharing options. It also mentions alternatives like manual Google Forms creation due to API limitations.",
-        category: "utilities",
-        icon: "presentation",
-        badge: "live"
-    }              
+    }
 ];
 
 function populateCards() {
@@ -169,7 +171,35 @@ function populateCards() {
             'insights': '🔍',
             'job-search': '💼',
             'workshop': '🎓',
-            'presentation': '📝'
+            'presentation': '📽️',
+            // additional icons
+            'business': '🏢',
+            'finance': '💰',
+            'analytics': '📈',
+            'security': '🔒',
+            'devtools': '🛠️',
+            'database': '🗄️',
+            'education': '📚',
+            'health': '🏥',
+            'ecommerce': '🛒',
+            'marketing': '📣',
+            'social': '💬',
+            'legal': '⚖️',
+            'cloud': '☁️',
+            'automation': '🤖',
+            'api': '🔗',
+            'location': '📍',
+            'media': '🎥',
+            'design': '🎨',
+            'chatbot': '🤖💬',
+            'docs': '📄',
+            'support': '🧑‍💻',
+            'performance': '🚀',
+            'testing': '🧪',
+            'compliance': '📝',
+            'crypto': '🪙',
+            'productivity': '⏱️',
+            'creativity': '✨'
         };
 
         const categoryMap: { [key: string]: string } = {
