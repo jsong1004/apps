@@ -1,0 +1,404 @@
+{
+  "site": {
+    "name": "AI Business Tools Showcase",
+    "url": "https://www.ai-biz.app/",
+    "description": "Comprehensive collection of 15+ AI-powered business tools for automation, job search, content generation, insights, and productivity. Each tool is live and production-ready.",
+    "publisher": "Startup Consulting Inc.",
+    "lastUpdated": "2025-10-30",
+    "categories": ["AI", "Business Automation", "Productivity", "Content Generation", "Utilities"],
+    "languages": ["en", "ko"],
+    "contactEmail": "contact@ai-biz.app"
+  },
+  "tools": [
+    {
+      "id": "myjob",
+      "name": "MyJob: AI-Powered Job Search",
+      "url": "https://myjob.ai-biz.app",
+      "description": "AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.",
+      "longDescription": "MyJob uses advanced AI to match job seekers with opportunities by analyzing resume content and comparing it against job descriptions. Features include interactive resume tailoring, AI-powered suggestions, and multi-agent architecture for comprehensive job search assistance.",
+      "category": "AI",
+      "subcategories": ["Job Search", "Career Development", "Resume Analysis"],
+      "features": [
+        "AI resume analysis",
+        "Job description matching",
+        "Interactive resume tailoring",
+        "Multi-agent AI architecture",
+        "Real-time suggestions"
+      ],
+      "technologies": ["AI", "NLP", "Machine Learning"],
+      "status": "live",
+      "pricing": "free",
+      "targetAudience": ["job seekers", "career changers", "professionals"],
+      "useCases": [
+        "Finding matching job opportunities",
+        "Optimizing resumes for specific roles",
+        "Career transition assistance"
+      ]
+    },
+    {
+      "id": "clearly",
+      "name": "Requirements Made Clear - PRD Generator",
+      "url": "https://clearly.ai-biz.app/",
+      "description": "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
+      "longDescription": "AI-powered requirements documentation tool that uses conversational AI to guide users through creating comprehensive Business Requirements Documents (BRDs) and Product Requirements Documents (PRDs). Eliminates the need for templates and reduces ambiguity in requirements gathering.",
+      "category": "AI",
+      "subcategories": ["Product Management", "Documentation", "Requirements Engineering"],
+      "features": [
+        "AI-guided conversations",
+        "Automatic BRD generation",
+        "Automatic PRD generation",
+        "No template requirements",
+        "Interactive requirement refinement"
+      ],
+      "technologies": ["AI", "NLP", "Conversational AI"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["product managers", "business analysts", "entrepreneurs", "developers"],
+      "useCases": [
+        "Creating product specifications",
+        "Documenting business requirements",
+        "Clarifying project scope"
+      ]
+    },
+    {
+      "id": "storybook",
+      "name": "AI Storybook Creator",
+      "url": "https://storybook.ai-biz.app",
+      "description": "AI로 만드는 맞춤형 그림책 - Create personalized illustrated storybooks with AI from text to illustrations in minutes.",
+      "longDescription": "Korean-language AI tool that enables anyone to create customized illustrated storybooks. Users can create age-appropriate and interest-based picture books in minutes, with AI handling both text generation and illustration creation.",
+      "category": "AI",
+      "subcategories": ["Content Creation", "Education", "Entertainment"],
+      "features": [
+        "AI story generation",
+        "AI illustration creation",
+        "Age-appropriate content",
+        "Interest-based customization",
+        "Quick creation (minutes)"
+      ],
+      "technologies": ["AI", "Image Generation", "NLP"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["parents", "educators", "children", "content creators"],
+      "useCases": [
+        "Creating personalized children's books",
+        "Educational storytelling",
+        "Gift creation"
+      ],
+      "language": "ko"
+    },
+    {
+      "id": "contents",
+      "name": "AI Content Generation Hub",
+      "url": "https://contents.ai-biz.app",
+      "description": "Effortlessly convert presentations, scripts, audio, and YouTube videos into engaging scripts, podcasts, blog posts, and transcripts with AI.",
+      "longDescription": "Multi-format content conversion platform powered by AI. Transforms various input formats (presentations, scripts, audio, video) into multiple output formats (scripts, podcasts, blog posts, transcripts) with high accuracy and engagement optimization.",
+      "category": "AI",
+      "subcategories": ["Content Creation", "Transcription", "Content Marketing"],
+      "features": [
+        "Multi-format input support",
+        "Presentation to script conversion",
+        "Audio to text transcription",
+        "Video to blog post conversion",
+        "Podcast creation",
+        "YouTube video processing"
+      ],
+      "technologies": ["AI", "NLP", "Speech Recognition", "Content Analysis"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["content creators", "marketers", "podcasters", "bloggers", "educators"],
+      "useCases": [
+        "Repurposing content across formats",
+        "Creating transcripts from videos",
+        "Converting presentations to blog posts",
+        "Podcast content generation"
+      ]
+    },
+    {
+      "id": "insights",
+      "name": "AI-Powered Insights Platform",
+      "url": "https://insights.ai-biz.app",
+      "description": "Generate comprehensive, validated insights on any topic using advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.",
+      "longDescription": "Enterprise-grade AI research platform that generates comprehensive insights on any topic using multiple AI research agents. Provides validated information with confidence scores, structured analysis, and actionable recommendations.",
+      "category": "AI",
+      "subcategories": ["Research", "Analytics", "Business Intelligence"],
+      "features": [
+        "Multi-agent AI research",
+        "Comprehensive topic analysis",
+        "Confidence scoring",
+        "Structured insights",
+        "Actionable intelligence",
+        "Validation mechanism"
+      ],
+      "technologies": ["AI", "Multi-Agent Systems", "NLP", "Knowledge Graphs"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["researchers", "analysts", "consultants", "business leaders"],
+      "useCases": [
+        "Market research",
+        "Competitive analysis",
+        "Topic exploration",
+        "Decision support"
+      ]
+    },
+    {
+      "id": "workshop",
+      "name": "AI Workshop & Training",
+      "url": "https://workshop.ai-biz.app",
+      "description": "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with expert AI solutions.",
+      "longDescription": "Professional AI training and workshop platform that teaches businesses and individuals how to implement AI automation. Covers practical AI implementation, process optimization, and cost reduction strategies.",
+      "category": "Business",
+      "subcategories": ["Training", "Automation", "Consulting"],
+      "features": [
+        "AI automation training",
+        "Business process optimization",
+        "Cost reduction strategies",
+        "Hands-on workshops",
+        "Expert guidance"
+      ],
+      "technologies": ["AI", "Automation Tools", "Training Platform"],
+      "status": "live",
+      "pricing": "paid",
+      "targetAudience": ["businesses", "entrepreneurs", "managers", "developers"],
+      "useCases": [
+        "Learning AI automation",
+        "Implementing business automation",
+        "Optimizing workflows",
+        "Reducing operational costs"
+      ]
+    },
+    {
+      "id": "investorhub",
+      "name": "InvestorHub Platform",
+      "url": "https://investorhub.ai-biz.app",
+      "description": "Smart, transparent investment platform with AI-powered investment scoring and analysis.",
+      "longDescription": "AI-enhanced investment platform providing transparent investment opportunities with AI-powered scoring and analysis. Helps investors make informed decisions through comprehensive data analysis and risk assessment.",
+      "category": "Business",
+      "subcategories": ["Finance", "Investment", "Analytics"],
+      "features": [
+        "AI investment scoring",
+        "Transparent analysis",
+        "Risk assessment",
+        "Portfolio insights",
+        "Investment recommendations"
+      ],
+      "technologies": ["AI", "Financial Analytics", "Machine Learning"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["investors", "financial advisors", "entrepreneurs"],
+      "useCases": [
+        "Investment evaluation",
+        "Risk analysis",
+        "Portfolio optimization",
+        "Investment decision support"
+      ]
+    },
+    {
+      "id": "investorhub-dash",
+      "name": "InvestorHub Dashboard",
+      "url": "https://investorhub-dash.ai-biz.app",
+      "description": "Comprehensive dashboard for InvestorHub platform with real-time analytics and portfolio management.",
+      "longDescription": "Advanced dashboard interface for InvestorHub providing real-time analytics, portfolio tracking, and investment management capabilities.",
+      "category": "Business",
+      "subcategories": ["Finance", "Analytics", "Dashboard"],
+      "features": [
+        "Real-time analytics",
+        "Portfolio tracking",
+        "Investment management",
+        "Performance metrics",
+        "Custom reporting"
+      ],
+      "technologies": ["Dashboard", "Analytics", "Data Visualization"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["investors", "financial advisors"],
+      "useCases": [
+        "Portfolio monitoring",
+        "Investment tracking",
+        "Performance analysis"
+      ]
+    },
+    {
+      "id": "qrcode",
+      "name": "QR Code Generator",
+      "url": "https://qrcode.ai-biz.app",
+      "description": "Generate QR codes for any website instantly with customization options.",
+      "longDescription": "Simple, fast QR code generator for websites and URLs. Provides instant QR code generation with customization options for size, color, and format.",
+      "category": "Utility",
+      "subcategories": ["Tools", "Marketing", "Productivity"],
+      "features": [
+        "Instant QR generation",
+        "URL encoding",
+        "Customization options",
+        "High-resolution output",
+        "Multiple formats"
+      ],
+      "technologies": ["QR Code Generation", "Web Tools"],
+      "status": "live",
+      "pricing": "free",
+      "targetAudience": ["marketers", "business owners", "event organizers", "anyone"],
+      "useCases": [
+        "Creating website QR codes",
+        "Marketing materials",
+        "Event registration",
+        "Quick URL sharing"
+      ]
+    },
+    {
+      "id": "survey",
+      "name": "AI Survey Generator",
+      "url": "https://survey.ai-biz.app",
+      "description": "AI-powered tool for creating professional surveys and forms with intelligent question generation.",
+      "longDescription": "Intelligent survey creation platform using AI to generate contextually appropriate questions. Supports templates and custom prompts, with review, customization, and multiple sharing options. Alternative to manual form creation with enhanced AI capabilities.",
+      "category": "Utility",
+      "subcategories": ["Forms", "Surveys", "Data Collection"],
+      "features": [
+        "AI question generation",
+        "Template support",
+        "Custom prompts",
+        "Review and customization",
+        "Multiple sharing options",
+        "Professional form design"
+      ],
+      "technologies": ["AI", "Form Builder", "NLP"],
+      "status": "live",
+      "pricing": "freemium",
+      "targetAudience": ["researchers", "marketers", "HR professionals", "educators"],
+      "useCases": [
+        "Creating surveys",
+        "Collecting feedback",
+        "Market research",
+        "Customer satisfaction measurement"
+      ]
+    },
+    {
+      "id": "screen-capture",
+      "name": "Website Screenshot Capture",
+      "url": "https://screen-capture.ai-biz.app",
+      "description": "Capture full-page screenshots of any website instantly with high quality.",
+      "longDescription": "Professional website screenshot tool that captures full-page screenshots of any website. Provides high-quality images suitable for documentation, presentations, and archiving.",
+      "category": "Utility",
+      "subcategories": ["Tools", "Documentation", "Web Development"],
+      "features": [
+        "Full-page capture",
+        "Instant processing",
+        "High-quality output",
+        "Multiple format support",
+        "Responsive capture"
+      ],
+      "technologies": ["Screenshot API", "Web Automation"],
+      "status": "live",
+      "pricing": "free",
+      "targetAudience": ["developers", "designers", "marketers", "researchers"],
+      "useCases": [
+        "Website documentation",
+        "Portfolio creation",
+        "Competitive analysis",
+        "Bug reporting"
+      ]
+    },
+    {
+      "id": "video-synthesizer",
+      "name": "Video Audio Synthesizer",
+      "url": "https://video-synthesizer.ai-biz.app",
+      "description": "Combine video and audio tracks directly in your browser without uploads.",
+      "longDescription": "Browser-based video and audio combining tool that works entirely client-side. Merge video and audio tracks without uploading to servers, ensuring privacy and speed.",
+      "category": "Utility",
+      "subcategories": ["Video Editing", "Audio Processing", "Media Tools"],
+      "features": [
+        "Browser-based processing",
+        "No upload required",
+        "Privacy-focused",
+        "Fast processing",
+        "Multiple format support"
+      ],
+      "technologies": ["Web Audio API", "Video Processing", "Client-side Processing"],
+      "status": "live",
+      "pricing": "free",
+      "targetAudience": ["content creators", "video editors", "podcasters"],
+      "useCases": [
+        "Combining video with new audio",
+        "Replacing audio tracks",
+        "Creating video content",
+        "Quick video editing"
+      ]
+    }
+  ],
+  "presentations": [
+    {
+      "id": "myjob-presentation",
+      "name": "MyJob Investment Presentation",
+      "url": "https://apps.ai-biz.app/myjob_investment/myjob-presentation.html",
+      "description": "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
+      "type": "demo",
+      "topics": ["AI", "Job Search", "Investment", "Product Demo"]
+    },
+    {
+      "id": "highschool-lecture",
+      "name": "AI와 함께 꿈을 찾는 법",
+      "url": "https://apps.ai-biz.app/presentations/highschool-special-lecture.html",
+      "description": "인생 롤러코스터, 산 너머 산, 꿈의 연속, 다양한 목표 달성법으로 동기부여, 미래 사회가 원하는 인재의 역량, AI 시대를 주도할 핵심 역량.",
+      "type": "educational",
+      "language": "ko",
+      "topics": ["AI", "Career", "Education", "Motivation"]
+    },
+    {
+      "id": "vibe-coding",
+      "name": "What is Vibe Coding?",
+      "url": "https://www.ai-biz.app/2025/vibe-coding-presentation.html",
+      "description": "How AI can transform ideas into working code using natural language. Covers programming's role in bridging human intent and machine execution, debunks AI coding myths, and emphasizes expertise, iteration, and domain knowledge for effective AI-augmented development.",
+      "type": "technical",
+      "topics": ["AI", "Programming", "Development", "AI-Assisted Coding"]
+    },
+    {
+      "id": "beyond-vibe-coding",
+      "name": "Beyond Vibe Coding",
+      "url": "https://www.ai-biz.app/2025/beyond-vibe-coding.html",
+      "description": "Examining limitations of AI-assisted vibe coding and real-world challenges in security, scalability, performance, quality, deployment, legal compliance, and service choices. Highlights systematic engineering expertise needed for production-ready applications.",
+      "type": "technical",
+      "topics": ["AI", "Software Engineering", "Production", "Best Practices"]
+    }
+  ],
+  "seo": {
+    "keywords": [
+      "AI business tools",
+      "AI automation",
+      "job search AI",
+      "content generation",
+      "AI insights",
+      "business productivity",
+      "AI workshop",
+      "PRD generator",
+      "AI storybook",
+      "QR code generator",
+      "video synthesizer",
+      "screen capture",
+      "AI survey",
+      "investment platform",
+      "requirements documentation",
+      "AI content hub",
+      "business automation tools",
+      "productivity software",
+      "AI-powered solutions"
+    ],
+    "alternativeNames": [
+      "AI-Biz Tools",
+      "AI Business Solutions",
+      "AI Automation Platform",
+      "AI Tools Showcase"
+    ]
+  },
+  "aiAgentInstructions": {
+    "purpose": "This is a showcase of production-ready AI-powered business tools across multiple categories including job search, content generation, insights, productivity, and utilities.",
+    "howToUse": "Users can browse, search, and filter tools by category. Each tool has a live demo link and detailed description. Tools are actively maintained and production-ready.",
+    "dataFreshness": "Last updated 2025-10-30. All tools are live and operational.",
+    "targetUsers": "Business professionals, entrepreneurs, content creators, developers, job seekers, researchers, and anyone looking for AI-powered productivity solutions.",
+    "recommendations": {
+      "jobSearch": "Use MyJob for AI-powered job matching and resume optimization",
+      "contentCreation": "Use Contents Hub for converting presentations to multiple formats, or Storybook for illustrated stories",
+      "research": "Use Insights Platform for comprehensive topic analysis with confidence scoring",
+      "documentation": "Use Clearly for generating professional BRDs and PRDs",
+      "utilities": "Use QR Code Generator, Screen Capture, or Video Synthesizer for quick tasks"
+    }
+  }
+}
+

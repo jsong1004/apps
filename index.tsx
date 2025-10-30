@@ -265,9 +265,13 @@ function setupSearchAndFilter() {
         tab.addEventListener('click', () => {
             const category = tab.getAttribute('data-category');
             
-            // Update active tab
-            filterTabs.forEach(t => t.classList.remove('active'));
+            // Update active tab and aria-selected
+            filterTabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
 
             // Filter cards
             toolCards.forEach(card => {
