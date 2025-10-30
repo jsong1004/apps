@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond Vibe Coding - Combined</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; background: #0a0a0a; color: #e5e5e5; overflow: hidden; }
+    .slides-container { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
+    .slide { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; display: none; }
+    .slide.active { display: block; }
+    .controls { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; }
+    .nav { background: rgba(255,255,255,0.1); border: 0; color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; }
+    .counter { background: rgba(0,0,0,0.3); padding: 6px 12px; border-radius: 10px; font-size: 14px; }
+  </style>
+  <!-- NOTE: Each source page includes its own styles; we preserve inner markup as-is inside slides. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- You can add more shared libs here if needed -->
+  </head>
+<body>
+  <main id="slides" class="slides-container">
+    <section class="slide">
+<div class="slide bg-gray-100 flex flex-col items-center justify-center" style=" overflow: hidden;">
+<!-- Background Elements -->
+<div class="absolute inset-0 overflow-hidden">
+<!-- Magic code elements -->
+<div class="magic-code" style="top: 10%; left: 5%;">function vibeCode() { ... }</div>
+<div class="magic-code" style="top: 15%; left: 85%;">const magic = AI.create(app);</div>
+<div class="magic-code" style="top: 25%; left: 15%;">return app.build(idea);</div>
+<div class="magic-code" style="top: 30%; left: 75%;">async function deploy() { ... }</div>
+<div class="magic-code" style="top: 40%; left: 25%;">const result = await AI.help(quest);</div>
+<!-- Code blocks -->
+<div class="code-block bg-green-500" style="top: 12%; right: 15%;">if (error) { ... }</div>
+<div class="code-block bg-red-500" style="top: 35%; left: 10%;">throw new Error();</div>
+<div class="code-block bg-yellow-500" style="bottom: 20%; right: 20%;">function fix() { ... }</div>
+<!-- Circuit lines -->
+<div class="circuit-line" style="width: 150px; height: 2px; top: 25%; left: 0;"></div>
+<div class="circuit-line" style="width: 2px; height: 100px; top: 25%; left: 150px;"></div>
+<div class="circuit-line" style="width: 200px; height: 2px; bottom: 30%; right: 0;"></div>
+<div class="circuit-line" style="width: 2px; height: 150px; bottom: 30%; right: 200px;"></div>
+</div>
+<!-- Main Content -->
+<div class="z-10 text-center px-16">
+<h1 class="text-6xl font-bold text-gray-800 mb-4 title-shadow">Beyond Vibe Coding</h1>
+<div class="divider"></div>
+<h2 class="text-3xl text-gray-700 mb-6 title-shadow">When the Magic Fades and Reality Sets In</h2>
+<div class="mt-12 flex justify-center items-center">
+<div class="px-6 py-3 bg-teal-700 bg-opacity-90 rounded-lg shadow-lg transform -rotate-1">
+<p class="text-white text-xl font-medium">The Irresistible Promise of Instant Creation</p>
+</div>
+</div>
+</div>
+<!-- Bottom elements -->
+<div class="absolute bottom-10 flex justify-center w-full">
+<div class="flex items-center space-x-2 text-gray-600">
+<i class="fas fa-code text-teal-700"></i>
+<span class="text-sm font-medium">From AI-Assisted Development to Engineering Reality</span>
+</div>
+</div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">The Irresistible Promise of Instant Creation</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Top Description -->
+<div class="mb-8">
+<p class="text-xl text-gray-700 leading-relaxed">
+                    AI-assisted development has transformed how we build software, turning complex applications into projects that can be materialized within minutes through description and iteration.
+                </p>
+</div>
+<!-- Feature Cards -->
+<div class="grid grid-cols-3 gap-8 mb-8">
+<!-- Card 1 -->
+<div class="feature-card p-6">
+<div class="flex items-center mb-4">
+<div class="icon-circle bg-teal-700 mr-4">
+<i class="fas fa-magic text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">The &#34;Vibe Coding&#34; Experience</h3>
+</div>
+<p class="text-gray-600">
+                        Describe your vision and instantly receive a functional application with clean interfaces and smooth interactions.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="feature-card p-6">
+<div class="flex items-center mb-4">
+<div class="icon-circle bg-teal-700 mr-4">
+<i class="fas fa-user-graduate text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Democratized Development</h3>
+</div>
+<p class="text-gray-600">
+                        Anyone with a clear idea and decent prompting skills can create something tangible and professional.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="feature-card p-6">
+<div class="flex items-center mb-4">
+<div class="icon-circle bg-teal-700 mr-4">
+<i class="fas fa-rocket text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Intoxicating Achievement</h3>
+</div>
+<p class="text-gray-600">
+                        Feel like a technical wizard with real and immediate sense of accomplishment.
+                    </p>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg text-white flex items-center">
+<i class="fas fa-quote-left text-3xl text-teal-400 mr-4"></i>
+<p class="text-xl italic">
+                    &#34;It&#39;s intoxicating. You feel like a technical wizard, and the sense of achievement is real and immediate.&#34;
+                </p>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="magic-sparkle text-2xl" style="top: 15%; right: 10%;">
+<i class="fas fa-sparkles"></i>
+</div>
+<div class="magic-sparkle text-xl" style="bottom: 20%; left: 8%;">
+<i class="fas fa-code"></i>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            2/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">The Inevitable Reality Check</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex">
+<!-- Left Column - Description -->
+<div class="w-1/2 pr-8">
+<p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                    The trouble starts when you try to go deeper than basic functionality. What was once a straightforward build becomes a labyrinth of challenges.
+                </p>
+<div class="bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white mb-6">
+<i class="fas fa-quote-left text-2xl text-teal-400 mr-3"></i>
+<p class="text-lg italic">
+                        &#34;You&#39;re not just building anymore—you&#39;re debugging, architecting, and making decisions about things you barely understand.&#34;
+                    </p>
+</div>
+<p class="text-lg text-gray-700">
+                    The AI that seemed omniscient minutes ago now gives you solutions that work for one problem but break three others. You&#39;re stuck in a loop of fixing and breaking.
+                </p>
+</div>
+<!-- Right Column - Challenges -->
+<div class="w-1/2 pl-8">
+<div class="space-y-4">
+<!-- Challenge 1 -->
+<div class="challenge-item p-4 flex items-center">
+<div class="icon-circle bg-red-500 mr-4 flex-shrink-0">
+<i class="fas fa-user-lock text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-800">User Authentication</h3>
+<p class="text-gray-600">Implementing secure login systems is complex and error-prone</p>
+</div>
+</div>
+<!-- Challenge 2 -->
+<div class="challenge-item p-4 flex items-center">
+<div class="icon-circle bg-orange-500 mr-4 flex-shrink-0">
+<i class="fas fa-credit-card text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Payment Processing</h3>
+<p class="text-gray-600">Integrating secure payment systems with complex security requirements</p>
+</div>
+</div>
+<!-- Challenge 3 -->
+<div class="challenge-item p-4 flex items-center">
+<div class="icon-circle bg-teal-600 mr-4 flex-shrink-0">
+<i class="fas fa-users text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Scalability</h3>
+<p class="text-gray-600">Handling more than ten simultaneous users reveals architecture flaws</p>
+</div>
+</div>
+<!-- Challenge 4 -->
+<div class="challenge-item p-4 flex items-center">
+<div class="icon-circle bg-purple-500 mr-4 flex-shrink-0">
+<i class="fas fa-bug text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Dependency Conflicts</h3>
+<p class="text-gray-600">Managing complex package dependencies and API rate limits</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute" style="top: 30%; left: 15%; width: 2px; height: 100px; transform: rotate(30deg);">
+<div class="labyrinth-path"></div>
+</div>
+<div class="absolute" style="top: 40%; left: 25%; width: 2px; height: 80px; transform: rotate(-20deg);">
+<div class="labyrinth-path"></div>
+</div>
+<div class="absolute" style="top: 35%; left: 70%; width: 2px; height: 120px; transform: rotate(15deg);">
+<div class="labyrinth-path"></div>
+</div>
+<div class="error-icon text-xl" style="top: 25%; left: 30%;">
+<i class="fas fa-exclamation-triangle"></i>
+</div>
+<div class="error-icon text-xl" style="top: 50%; left: 60%;">
+<i class="fas fa-code-branch"></i>
+</div>
+<div class="error-icon text-xl" style="top: 40%; left: 45%;">
+<i class="fas fa-terminal"></i>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            3/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6 z-10">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">The Technical Labyrinth: Too Many Decisions</h1>
+<div class="divider"></div>
+</div>
+<!-- Introduction -->
+<div class="mb-6 z-10">
+<p class="text-xl text-gray-700">
+                Moving beyond vibe coding isn&#39;t just about technical complexity—it&#39;s about navigating an overwhelming volume of consequential decisions that developers must make to transform a functional prototype into a production-ready application.
+            </p>
+</div>
+<!-- Labyrinth Visual Representation -->
+<div class="relative flex-grow z-10 mb-6">
+<!-- Decision Cards Grid -->
+<div class="grid grid-cols-4 gap-5 h-full">
+<!-- Security Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-red-600 mr-3">
+<i class="fas fa-shield-alt text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Security</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Password hashing</li>
+<li class="mb-1">• OAuth vs JWT</li>
+<li class="mb-1">• Rate limiting</li>
+<li>• SQL injection prevention</li>
+</ul>
+</div>
+<!-- Scalability Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-blue-600 mr-3">
+<i class="fas fa-expand-arrows-alt text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Scalability</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Handling 10,000 users</li>
+<li class="mb-1">• CDN implementation</li>
+<li class="mb-1">• Caching strategies</li>
+<li>• Database indexing</li>
+</ul>
+</div>
+<!-- Performance Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-yellow-600 mr-3">
+<i class="fas fa-tachometer-alt text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Performance</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Page loading speed</li>
+<li class="mb-1">• Database queries</li>
+<li class="mb-1">• API calls optimization</li>
+<li>• Front-end rendering</li>
+</ul>
+</div>
+<!-- Quality Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-green-600 mr-3">
+<i class="fas fa-check-circle text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Quality</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Code structure</li>
+<li class="mb-1">• Test coverage</li>
+<li class="mb-1">• Documentation</li>
+<li>• Maintainability</li>
+</ul>
+</div>
+<!-- Deployment Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-purple-600 mr-3">
+<i class="fas fa-rocket text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Deployment</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Docker containers</li>
+<li class="mb-1">• Kubernetes</li>
+<li class="mb-1">• CI/CD pipelines</li>
+<li>• SSL certificates</li>
+</ul>
+</div>
+<!-- Legal Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-indigo-600 mr-3">
+<i class="fas fa-balance-scale text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Legal</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• GDPR compliance</li>
+<li class="mb-1">• Accessibility</li>
+<li class="mb-1">• Terms of service</li>
+<li>• Privacy policy</li>
+</ul>
+</div>
+<!-- Service Choices Card -->
+<div class="decision-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-teal-600 mr-3">
+<i class="fas fa-cloud text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Service Choices</h3>
+</div>
+<ul class="text-gray-600 text-sm pl-2">
+<li class="mb-1">• Database selection</li>
+<li class="mb-1">• Cloud provider</li>
+<li class="mb-1">• Auth services</li>
+<li>• Ecosystem lock-in</li>
+</ul>
+</div>
+<!-- Decision Impact Card -->
+<div class="decision-card p-5 bg-gray-800 text-white">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-orange-500 mr-3">
+<i class="fas fa-exclamation-triangle text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-white">Decision Impact</h3>
+</div>
+<p class="text-gray-300 text-sm">
+                        Each decision locks you into an ecosystem with its own learning curve, pricing model, and limitations. Choose wrong early, and you might need to rebuild later.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Decorative Labyrinth Paths -->
+<div class="labyrinth-path" style="width: 150px; height: 3px; top: 25%; left: 0;"></div>
+<div class="labyrinth-path" style="width: 3px; height: 100px; top: 25%; left: 150px;"></div>
+<div class="labyrinth-path" style="width: 200px; height: 3px; bottom: 30%; right: 0;"></div>
+<div class="labyrinth-path" style="width: 3px; height: 150px; bottom: 30%; right: 200px;"></div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500 z-10" style="visibility: hidden;">
+            4/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Security Challenges</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    The initial excitement of AI-assisted development gives way to complex security considerations that can open a rabbit hole of best practices and vulnerabilities.
+                </p>
+</div>
+<!-- Security Challenges Grid -->
+<div class="grid grid-cols-2 gap-6 mb-6">
+<!-- Password Hashing -->
+<div class="security-card p-5 flex items-start">
+<div class="icon-container bg-red-600 mr-4 flex-shrink-0">
+<i class="fas fa-key text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Password Hashing</h3>
+<p class="text-gray-600">
+                            How to properly hash passwords to protect user credentials from being compromised in case of a data breach.
+                        </p>
+</div>
+</div>
+<!-- Authentication Protocols -->
+<div class="security-card p-5 flex items-start">
+<div class="icon-container bg-blue-600 mr-4 flex-shrink-0">
+<i class="fas fa-shield-alt text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Authentication Protocols</h3>
+<p class="text-gray-600">
+                            What&#39;s the difference between OAuth and JWT? Choosing the right authentication method for your application&#39;s needs.
+                        </p>
+</div>
+</div>
+<!-- Rate Limiting -->
+<div class="security-card p-5 flex items-start">
+<div class="icon-container bg-green-600 mr-4 flex-shrink-0">
+<i class="fas fa-tachometer-alt text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Rate Limiting</h3>
+<p class="text-gray-600">
+                            Implementing rate limiting to prevent abuse, brute force attacks, and ensuring fair resource distribution.
+                        </p>
+</div>
+</div>
+<!-- SQL Injection Prevention -->
+<div class="security-card p-5 flex items-start">
+<div class="icon-container bg-yellow-600 mr-4 flex-shrink-0">
+<i class="fas fa-database text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">SQL Injection Prevention</h3>
+<p class="text-gray-600">
+                            How to protect against SQL injection attacks that can compromise your entire database.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white flex items-center">
+<i class="fas fa-exclamation-triangle text-3xl text-yellow-400 mr-4"></i>
+<p class="text-lg">
+                    Each security question opens a rabbit hole of best practices, vulnerabilities, and compliance requirements that vibe coding cannot adequately address.
+                </p>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="security-rabbit-hole"></div>
+<div class="security-rabbit-hole" style="width: 150px; height: 150px; top: 30px;"></div>
+<div class="security-thought" style="bottom: 40px; right: 40px;">
+<i class="fas fa-question-circle"></i> What about OWASP Top 10?
+            </div>
+<div class="security-thought" style="bottom: 80px; right: 80px;">
+<i class="fas fa-question-circle"></i> How do I secure APIs?
+            </div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            5/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Scalability Considerations</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    Moving from test data to thousands of users introduces critical infrastructure challenges. What works in development quickly becomes problematic at scale.
+                </p>
+</div>
+<!-- Scaling Journey Visualization -->
+<div class="relative mb-10">
+<div class="scaling-line w-full">
+<div class="scaling-point bg-teal-700" style="left: 0%;">
+<div class="cost-indicator">
+<i class="fas fa-coins text-yellow-500"></i> Development
+                    </div>
+</div>
+<div class="scaling-point bg-teal-500" style="left: 33%;">
+<div class="cost-indicator">
+<i class="fas fa-coins text-yellow-500"></i> Testing
+                    </div>
+</div>
+<div class="scaling-point bg-orange-500" style="left: 66%;">
+<div class="cost-indicator">
+<i class="fas fa-coins text-yellow-500"></i> Growth
+                    </div>
+</div>
+<div class="scaling-point bg-red-500" style="left: 100%;">
+<div class="cost-indicator">
+<i class="fas fa-coins text-yellow-500"></i> Scale
+                    </div>
+</div>
+</div>
+<div class="flex justify-between mt-6 text-sm text-gray-600">
+<div>Test Data</div>
+<div>1,000 Users</div>
+<div>10,000 Users</div>
+<div>Thousands of Users</div>
+</div>
+</div>
+<!-- Scaling Challenges Grid -->
+<div class="grid grid-cols-3 gap-6 mb-6">
+<!-- CDN Card -->
+<div class="scale-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-teal-700 mr-3">
+<i class="fas fa-globe text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">CDN Considerations</h3>
+</div>
+<p class="text-gray-600">
+                        Content Delivery Networks become essential for global reach and performance. Cache invalidation strategies are critical.
+                    </p>
+</div>
+<!-- Caching Card -->
+<div class="scale-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-teal-700 mr-3">
+<i class="fas fa-database text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Caching Strategies</h3>
+</div>
+<p class="text-gray-600">
+                        Implementing effective caching requires understanding your data lifecycle and consistency requirements.
+                    </p>
+</div>
+<!-- Database Card -->
+<div class="scale-card p-5">
+<div class="flex items-center mb-3">
+<div class="icon-circle bg-teal-700 mr-3">
+<i class="fas fa-table text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Database Indexing</h3>
+</div>
+<p class="text-gray-600">
+                        Proper indexing is crucial for query performance but impacts write operations and storage requirements.
+                    </p>
+</div>
+</div>
+<!-- Cost Implications -->
+<div class="bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white">
+<div class="flex items-center mb-2">
+<i class="fas fa-exclamation-triangle text-yellow-400 mr-3 text-xl"></i>
+<h3 class="text-xl font-semibold">Cost Implications</h3>
+</div>
+<p>
+                    Scalability challenges quickly spiral into significant cost implications. Cloud resources, CDN bandwidth, and database instances all scale pricing with usage.
+                </p>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            6/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Performance Optimization</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex">
+<!-- Left Column -->
+<div class="w-1/2 pr-6">
+<div class="performance-card p-6 mb-6">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-4">
+<i class="fas fa-tachometer-alt text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Common Performance Questions</h3>
+</div>
+<ul class="text-gray-600 space-y-3 pl-4">
+<li class="flex items-start">
+<i class="fas fa-question-circle text-teal-700 mt-1 mr-2"></i>
+<span>Why is the page loading slowly?</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-question-circle text-teal-700 mt-1 mr-2"></i>
+<span>Is it database queries, API calls, or front-end rendering?</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-question-circle text-teal-700 mt-1 mr-2"></i>
+<span>Should you optimize now or later?</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-question-circle text-teal-700 mt-1 mr-2"></i>
+<span>What metrics even matter?</span>
+</li>
+</ul>
+</div>
+<div class="performance-card p-6">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-orange-500 mr-4">
+<i class="fas fa-exclamation-triangle text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">AI Limitations</h3>
+</div>
+<p class="text-gray-600">
+                        AI-generated code often requires systems-level understanding that goes beyond basic functionality. The solutions suggested by AI may work for one problem but break others.
+                    </p>
+</div>
+</div>
+<!-- Right Column -->
+<div class="w-1/2 pl-6">
+<div class="performance-card p-6 mb-6">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-4">
+<i class="fas fa-search text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Diagnosis Challenges</h3>
+</div>
+<div class="mb-4">
+<div class="flex justify-between text-sm text-gray-500 mb-1">
+<span>Page Load Speed</span>
+<span>Slow</span>
+</div>
+<div class="bottleneck-line"></div>
+<div class="flex justify-between text-sm text-gray-500 mb-1">
+<span>Database Queries</span>
+<span>Medium</span>
+</div>
+<div class="bottleneck-line"></div>
+<div class="flex justify-between text-sm text-gray-500 mb-1">
+<span>Front-end Rendering</span>
+<span>Fast</span>
+</div>
+<div class="bottleneck-line"></div>
+</div>
+<p class="text-gray-600 text-sm italic">
+                        Identifying the true bottleneck requires detailed analysis beyond AI capabilities.
+                    </p>
+</div>
+<div class="performance-card p-6 pulse-animation">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-orange-500 mr-4">
+<i class="fas fa-cogs text-white text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Systems-Level Understanding</h3>
+</div>
+<p class="text-gray-600">
+                        Performance tuning requires understanding systems at a level that vibe coding can&#39;t provide. This includes knowledge of databases, network architecture, and front-end optimization.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="mt-6 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg text-white">
+<p class="text-lg italic">
+<i class="fas fa-quote-left text-teal-400 mr-2"></i>
+                &#34;Performance tuning requires understanding systems at a level that vibe coding can&#39;t provide.&#34;
+            </p>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            7/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Quality &amp; Maintainability Issues</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex">
+<!-- Left Column - Key Concerns -->
+<div class="w-1/2 pr-6">
+<div class="quote-box p-5 mb-6 text-white rounded-r-lg">
+<p class="text-lg italic">
+                        &#34;The code works, but is it good? Can someone else understand it? Will you understand it in six months?&#34;
+                    </p>
+</div>
+<div class="bg-white p-5 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-800 mb-4">Why Quality Matters</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-teal-700 mt-1 mr-3"></i>
+<span class="text-gray-700">Technical debt accumulates when quality is ignored</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-teal-700 mt-1 mr-3"></i>
+<span class="text-gray-700">Code is read far more than it&#39;s written</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-teal-700 mt-1 mr-3"></i>
+<span class="text-gray-700">Maintenance tasks often outlast initial development</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-teal-700 mt-1 mr-3"></i>
+<span class="text-gray-700">Quality impacts team productivity and morale</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column - Quality Aspects -->
+<div class="w-1/2 pl-6 grid grid-cols-2 gap-4">
+<!-- Card 1 - Readability -->
+<div class="quality-card p-4">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-3">
+<i class="fas fa-glasses text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Readability</h3>
+</div>
+<div class="space-y-2">
+<div class="code-line bad-code text-sm">
+                            function processUserData(a,b,c){...}
+                        </div>
+<div class="code-line good-code text-sm">
+                            function processUserData(users, settings, callback){...}
+                        </div>
+</div>
+<p class="mt-3 text-gray-600 text-sm">
+                        Clear variable names and structure make code understandable
+                    </p>
+</div>
+<!-- Card 2 - Documentation -->
+<div class="quality-card p-4">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-3">
+<i class="fas fa-book text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Documentation</h3>
+</div>
+<p class="text-gray-600 text-sm mb-2">
+                        Proper documentation includes:
+                    </p>
+<ul class="text-gray-600 text-sm space-y-1">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Code comments</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>API docs</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>README files</span>
+</li>
+</ul>
+</div>
+<!-- Card 3 - Testing -->
+<div class="quality-card p-4">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-3">
+<i class="fas fa-vial text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Testing</h3>
+</div>
+<p class="text-gray-600 text-sm mb-2">
+                        Effective testing requires:
+                    </p>
+<ul class="text-gray-600 text-sm space-y-1">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Unit tests</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Integration tests</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>End-to-end tests</span>
+</li>
+</ul>
+</div>
+<!-- Card 4 - Maintainability -->
+<div class="quality-card p-4">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-700 mr-3">
+<i class="fas fa-tools text-white text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Maintainability</h3>
+</div>
+<p class="text-gray-600 text-sm mb-2">
+                        Maintainable code is:
+                    </p>
+<ul class="text-gray-600 text-sm space-y-1">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Modular and focused</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Well-organized</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-teal-700 mt-1 mr-2"></i>
+<span>Easily extensible</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Bottom Note -->
+<div class="mt-6 bg-gray-800 bg-opacity-80 p-3 rounded-lg text-white text-center">
+<p class="text-sm">
+<i class="fas fa-lightbulb text-yellow-400 mr-2"></i>
+                These questions feel tedious when you&#39;re excited to build, but become critical when you&#39;re trying to maintain or extend your creation.
+            </p>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            8/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Deployment &amp; Operations Complexity</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    Getting your app running locally is one thing. Deploying it reliably is another universe entirely.
+                </p>
+</div>
+<!-- Deployment Components Grid -->
+<div class="grid grid-cols-3 gap-4 mb-6 relative">
+<!-- Connectors -->
+<div class="connector" style="width: 2px; height: 100px; top: 80px; left: 210px;"></div>
+<div class="connector" style="width: 2px; height: 100px; top: 80px; left: 640px;"></div>
+<div class="connector" style="width: 2px; height: 100px; top: 80px; left: 1070px;"></div>
+<div class="connector" style="width: 2px; height: 100px; top: 200px; left: 425px;"></div>
+<div class="connector" style="width: 2px; height: 100px; top: 200px; left: 855px;"></div>
+<!-- Card 1: Docker -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-blue-500 mr-3">
+<i class="fab fa-docker text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Containerization</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Docker containers package your app with all dependencies, ensuring consistency across environments.
+                    </p>
+</div>
+<!-- Card 2: Kubernetes -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-teal-600 mr-3">
+<i class="fas fa-dharmachakra text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Orchestration</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Kubernetes manages containerized applications at scale, handling scaling, load balancing, and service discovery.
+                    </p>
+</div>
+<!-- Card 3: CI/CD -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-indigo-600 mr-3">
+<i class="fas fa-sync-alt text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">CI/CD Pipelines</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Automated testing, building, and deployment processes that streamline the release cycle.
+                    </p>
+</div>
+<!-- Card 4: Environment Variables -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-purple-600 mr-3">
+<i class="fas fa-code-branch text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Environment Management</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Configuring environment-specific variables for development, staging, and production environments.
+                    </p>
+</div>
+<!-- Card 5: SSL Certificates -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-green-600 mr-3">
+<i class="fas fa-shield-alt text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">SSL Certificates</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Securing communications with HTTPS certificates and key management.
+                    </p>
+</div>
+<!-- Card 6: Monitoring -->
+<div class="deployment-card p-4 z-10">
+<div class="flex items-center mb-3">
+<div class="icon-container bg-red-500 mr-3">
+<i class="fas fa-chart-line text-white text-2xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">Monitoring &amp; Logging</h3>
+</div>
+<p class="text-gray-600 text-sm">
+                        Real-time application performance monitoring and centralized logging for troubleshooting.
+                    </p>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="quote-box p-5 text-white mt-auto">
+<div class="flex items-center">
+<i class="fas fa-exclamation-triangle text-2xl text-yellow-400 mr-4"></i>
+<p class="text-lg">
+                        &#34;The production checklist is endless and intimidating. Docker, Kubernetes, CI/CD pipelines, environment variables, SSL certificates, monitoring, logging—the production checklist is endless and intimidating.&#34;
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            9/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Legal &amp; Compliance Requirements</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    For anyone building something beyond a personal project, these legal considerations aren&#39;t optional—they&#39;re essential.
+                </p>
+</div>
+<!-- Legal Requirements Grid -->
+<div class="grid grid-cols-2 gap-6 mb-6">
+<!-- GDPR Compliance -->
+<div class="legal-card p-5 flex">
+<div class="mr-4">
+<div class="icon-circle bg-teal-700">
+<i class="fas fa-shield-alt text-white text-xl"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-2">
+<h3 class="text-xl font-semibold text-gray-800">GDPR Compliance</h3>
+<span class="warning-badge ml-2">Required</span>
+</div>
+<p class="text-gray-600">
+                            For applications handling EU user data, ensuring proper data protection and user consent.
+                        </p>
+</div>
+</div>
+<!-- Accessibility Requirements -->
+<div class="legal-card p-5 flex">
+<div class="mr-4">
+<div class="icon-circle bg-teal-700">
+<i class="fas fa-universal-access text-white text-xl"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-2">
+<h3 class="text-xl font-semibold text-gray-800">Accessibility</h3>
+<span class="warning-badge ml-2">Essential</span>
+</div>
+<p class="text-gray-600">
+                            Meeting standards like ADA compliance to ensure your application is usable by everyone.
+                        </p>
+</div>
+</div>
+<!-- Terms of Service -->
+<div class="legal-card p-5 flex">
+<div class="mr-4">
+<div class="icon-circle bg-teal-700">
+<i class="fas fa-file-contract text-white text-xl"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-2">
+<h3 class="text-xl font-semibold text-gray-800">Terms of Service</h3>
+<span class="warning-badge ml-2">Necessary</span>
+</div>
+<p class="text-gray-600">
+                            Legal agreements that define user responsibilities and protect your application from liability.
+                        </p>
+</div>
+</div>
+<!-- Privacy Policy -->
+<div class="legal-card p-5 flex">
+<div class="mr-4">
+<div class="icon-circle bg-teal-700">
+<i class="fas fa-user-secret text-white text-xl"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-2">
+<h3 class="text-xl font-semibold text-gray-800">Privacy Policy</h3>
+<span class="warning-badge ml-2">Required</span>
+</div>
+<p class="text-gray-600">
+                            Clearly communicating how user data is collected, used, and protected within your application.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom Note -->
+<div class="bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white">
+<div class="flex items-center">
+<i class="fas fa-exclamation-triangle text-2xl text-yellow-400 mr-4"></i>
+<p class="text-lg">
+                        These considerations become critical as your application moves from prototype to production, and from personal project to business asset.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            10/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Service Choice Consequences</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    Every service choice creates long-term implications that affect your application&#39;s evolution.
+                </p>
+</div>
+<!-- Service Choice Cards -->
+<div class="grid grid-cols-3 gap-6 mb-8">
+<!-- Database Choice -->
+<div class="service-card p-5">
+<div class="consequence-tag bg-red-500">High Lock-in</div>
+<div class="flex items-center mb-3">
+<div class="service-icon bg-blue-600 mr-3">
+<i class="fas fa-database text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Database Selection</h3>
+</div>
+<p class="text-gray-600 mb-3">
+                        Choose wrong, and you&#39;ll face migration challenges.
+                    </p>
+<div class="mt-2 flex items-center text-sm text-gray-500">
+<i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+<span>Consider scalability needs</span>
+</div>
+</div>
+<!-- Cloud Provider Choice -->
+<div class="service-card p-5">
+<div class="consequence-tag bg-red-500">High Lock-in</div>
+<div class="flex items-center mb-3">
+<div class="service-icon bg-teal-600 mr-3">
+<i class="fas fa-cloud text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Cloud Provider</h3>
+</div>
+<p class="text-gray-600 mb-3">
+                        Early cloud decisions impact architecture and costs.
+                    </p>
+<div class="mt-2 flex items-center text-sm text-gray-500">
+<i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+<span>Evaluate vendor lock-in</span>
+</div>
+</div>
+<!-- Auth Service Choice -->
+<div class="service-card p-5">
+<div class="consequence-tag bg-yellow-500">Medium Lock-in</div>
+<div class="flex items-center mb-3">
+<div class="service-icon bg-purple-600 mr-3">
+<i class="fas fa-shield-alt text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Auth Service</h3>
+</div>
+<p class="text-gray-600 mb-3">
+                        Authentication decisions impact user experience.
+                    </p>
+<div class="mt-2 flex items-center text-sm text-gray-500">
+<i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+<span>Consider user migration complexity</span>
+</div>
+</div>
+</div>
+<!-- Key Implications -->
+<div class="bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg text-white">
+<h3 class="text-xl font-bold mb-3">Long-Term Implications</h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="flex items-start">
+<i class="fas fa-link-slash text-red-400 mt-1 mr-3"></i>
+<p>Service choices create integration challenges</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-money-bill-wave text-green-400 mt-1 mr-3"></i>
+<p>Early decisions have hidden cost implications</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-code-branch text-blue-400 mt-1 mr-3"></i>
+<p>Architectural decisions affect future features</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            11/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">The Gap Between Building and Shipping</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Top Description -->
+<div class="mb-6">
+<p class="text-xl text-gray-700 leading-relaxed">
+                    Despite functional MVPs, many vibe coding projects fail to reach production, stuck between the initial excitement and the systematic engineering required for deployment.
+                </p>
+</div>
+<!-- Gap Visual -->
+<div class="gap-visual mb-6">
+<div class="platform building flex items-center justify-center">
+<i class="fas fa-code text-white text-2xl mr-3"></i>
+<span class="text-white font-bold">Building</span>
+</div>
+<div class="platform shipping flex items-center justify-center">
+<i class="fas fa-ship text-white text-2xl mr-3"></i>
+<span class="text-white font-bold">Shipping</span>
+</div>
+<div class="gap flex flex-col items-center justify-center">
+<i class="fas fa-ban text-red-500 text-3xl mb-2"></i>
+<span class="text-gray-700 font-bold">The Gap</span>
+</div>
+<div class="challenges">
+<div class="challenge-item p-3 flex items-center">
+<i class="fas fa-puzzle-piece text-teal-700 text-xl mr-3"></i>
+<span class="text-gray-700">Documented, solved issues</span>
+</div>
+<div class="challenge-item p-3 flex items-center">
+<i class="fas fa-brain text-teal-700 text-xl mr-3"></i>
+<span class="text-gray-700">Different skill set required</span>
+</div>
+<div class="challenge-item p-3 flex items-center">
+<i class="fas fa-project-diagram text-teal-700 text-xl mr-3"></i>
+<span class="text-gray-700">Systematic thinking needed</span>
+</div>
+</div>
+</div>
+<!-- Key Points -->
+<div class="grid grid-cols-2 gap-6 mb-6">
+<div class="bg-white p-5 rounded-lg shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 rounded-full bg-teal-700 flex items-center justify-center mr-3">
+<i class="fas fa-exclamation-triangle text-white"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">The Reality Check</h3>
+</div>
+<p class="text-gray-600">
+                        The problems aren&#39;t mysterious—they&#39;re documented issues that require a different approach than vibe coding.
+                    </p>
+</div>
+<div class="bg-white p-5 rounded-lg shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 rounded-full bg-teal-700 flex items-center justify-center mr-3">
+<i class="fas fa-cogs text-white"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800">Engineering Required</h3>
+</div>
+<p class="text-gray-600">
+                        Moving beyond vibe coding means embracing systematic thinking and architectural decisions.
+                    </p>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white">
+<div class="flex items-center">
+<i class="fas fa-quote-left text-2xl text-teal-400 mr-4"></i>
+<p class="text-lg italic">
+                        &#34;You&#39;re no longer vibing. You&#39;re engineering. And engineering requires systematic thinking, architectural decisions, and often, expertise you simply don&#39;t have yet.&#34;
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            12/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Common Frustration Points</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Introduction -->
+<div class="mb-6">
+<p class="text-xl text-gray-700">
+                    Despite the initial excitement, AI-assisted development presents several common challenges that trip up developers.
+                </p>
+</div>
+<!-- Frustration Points Grid -->
+<div class="grid grid-cols-2 gap-6">
+<!-- Point 1 -->
+<div class="frustration-card p-5 flex items-start">
+<div class="icon-container bg-red-100 mr-4 flex-shrink-0">
+<i class="fas fa-lock text-2xl error-icon"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Authentication nightmares</h3>
+<p class="text-gray-600">
+                            AI-suggested authentication systems often require significant customization to work reliably.
+                        </p>
+</div>
+</div>
+<!-- Point 2 -->
+<div class="frustration-card p-5 flex items-start">
+<div class="icon-container bg-red-100 mr-4 flex-shrink-0">
+<i class="fas fa-project-diagram text-2xl error-icon"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">State management complexity</h3>
+<p class="text-gray-600">
+                            Managing application state in complex systems creates challenges that aren&#39;t adequately addressed by AI.
+                        </p>
+</div>
+</div>
+<!-- Point 3 -->
+<div class="frustration-card p-5 flex items-start">
+<div class="icon-container bg-red-100 mr-4 flex-shrink-0">
+<i class="fas fa-database text-2xl error-icon"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Database design pitfalls</h3>
+<p class="text-gray-600">
+                            Database designs that work for simple cases become bottlenecks under real-world usage.
+                        </p>
+</div>
+</div>
+<!-- Point 4 -->
+<div class="frustration-card p-5 flex items-start">
+<div class="icon-container bg-red-100 mr-4 flex-shrink-0">
+<i class="fas fa-question-circle text-2xl error-icon"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Gap between AI suggestions and reality</h3>
+<p class="text-gray-600">
+                            AI solutions that work for one problem but break three others, creating a cycle of fixing and breaking.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="mt-6 bg-gray-800 bg-opacity-80 p-5 rounded-lg shadow-lg text-white">
+<div class="flex items-center">
+<i class="fas fa-quote-left text-2xl text-teal-400 mr-3"></i>
+<p class="text-lg italic">
+                        &#34;What frustrated you the most? Was it the technical complexity? The overwhelming number of decisions?&#34;
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            13/14
+        </div>
+</div>
+    </section>
+    <section class="slide">
+<div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
+<!-- Header -->
+<div class="mb-6">
+<h1 class="text-4xl font-bold text-gray-800 title-shadow">Moving Beyond the Vibe</h1>
+<div class="divider"></div>
+</div>
+<!-- Main Content -->
+<div class="flex-grow flex flex-col">
+<!-- Balance Visualization -->
+<div class="flex justify-center items-center mb-8">
+<div class="w-1/3 flex flex-col items-center">
+<div class="icon-circle bg-teal-700 mb-3">
+<i class="fas fa-robot text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 text-center">AI Assistance</h3>
+<p class="text-gray-600 text-center text-sm mt-1">Speed &amp; Convenience</p>
+</div>
+<div class="w-1/4 px-4">
+<div class="balance-beam">
+<div class="balance-point"></div>
+</div>
+<div class="text-center text-gray-600 mt-2">
+<i class="fas fa-exchange-alt mr-1"></i> Balance
+                    </div>
+</div>
+<div class="w-1/3 flex flex-col items-center">
+<div class="icon-circle bg-teal-700 mb-3">
+<i class="fas fa-cogs text-white text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 text-center">Engineering Knowledge</h3>
+<p class="text-gray-600 text-center text-sm mt-1">Depth &amp; Control</p>
+</div>
+</div>
+<!-- Key Points -->
+<div class="grid grid-cols-3 gap-6 mb-8">
+<!-- Point 1 -->
+<div class="key-point p-5">
+<div class="flex items-center mb-3">
+<i class="fas fa-compass text-teal-700 text-xl mr-3"></i>
+<h3 class="text-lg font-semibold text-gray-800">Recognize AI Limits</h3>
+</div>
+<p class="text-gray-600">
+                        Acknowledge where AI assistance becomes insufficient and engineering expertise is required.
+                    </p>
+</div>
+<!-- Point 2 -->
+<div class="key-point p-5">
+<div class="flex items-center mb-3">
+<i class="fas fa-puzzle-piece text-teal-700 text-xl mr-3"></i>
+<h3 class="text-lg font-semibold text-gray-800">Fill in the Gaps</h3>
+</div>
+<p class="text-gray-600">
+                        Use systematic approaches to address the limitations AI leaves uncovered.
+                    </p>
+</div>
+<!-- Point 3 -->
+<div class="key-point p-5">
+<div class="flex items-center mb-3">
+<i class="fas fa-graduation-cap text-teal-700 text-xl mr-3"></i>
+<h3 class="text-lg font-semibold text-gray-800">Develop Genuine Skill</h3>
+</div>
+<p class="text-gray-600">
+                        Build expertise to complement AI capabilities with deep technical understanding.
+                    </p>
+</div>
+</div>
+<!-- Conclusion Statement -->
+<div class="conclusion-box p-6 text-white text-center">
+<p class="text-xl">
+                    &#34;The magic is still there; it just needs to be tempered with skill.&#34;
+                </p>
+<div class="mt-3 flex justify-center items-center">
+<div class="h-1 w-20 bg-white opacity-50 rounded"></div>
+<p class="mx-4 text-lg font-light">Sustainable development through balanced approach</p>
+<div class="h-1 w-20 bg-white opacity-50 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Page Number -->
+<div class="absolute bottom-4 right-4 text-gray-500" style="visibility: hidden;">
+            14/14
+        </div>
+</div>
+    </section>
+  </main>
+  <div class="controls">
+    <button id="prev" class="nav" aria-label="Previous">&#9664;</button>
+    <span id="counter" class="counter"></span>
+    <button id="next" class="nav" aria-label="Next">&#9654;</button>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let i = 0;
+    function show(idx){
+      slides.forEach((s, j) => s.classList.toggle('active', j === idx));
+      document.getElementById('counter').textContent = (idx+1) + ' / ' + slides.length;
+      document.getElementById('prev').disabled = idx === 0;
+      document.getElementById('next').disabled = idx === slides.length - 1;
+    }
+    document.getElementById('prev').addEventListener('click', () => { if (i>0) { i--; show(i);} });
+    document.getElementById('next').addEventListener('click', () => { if (i<slides.length-1) { i++; show(i);} });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+      if (e.key === 'ArrowRight') document.getElementById('next').click();
+    });
+    show(i);
+  </script>
+</body>
+</html>
