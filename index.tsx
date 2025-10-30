@@ -103,19 +103,51 @@ const data: WebsiteData[] = [
     {
         webSite: "apps.ai-biz.app/presentations/highschool-special-lecture.html",
         title: "AI와 함께 꿈을 찾는 법",
-        description: "고등학생 특별 강의 슬라이드: 인생 롤러코스터, 산 너머 산, 꿈의 연속, 다양한 목표 달성법으로 동기부여, 미래 사회가 원하는 인재의 역량, AI 시대를 주도할 핵심 역량.",
+        description: "인생 롤러코스터, 산 너머 산, 꿈의 연속, 다양한 목표 달성법으로 동기부여, 미래 사회가 원하는 인재의 역량, AI 시대를 주도할 핵심 역량.",
         category: "presentation",
         icon: "presentation",
         badge: "live"
     },
     {
         webSite: "storybook.ai-biz.app",
-        title: "아이들을 위한 맞춤형 동화책",
-        description: "AI가 도와주는 쉽고 재미있는 동화책 제작 도구로, 아이들의 상상력을 아름다운 이야기와 그림으로 만들어보세요..",
+        title: "AI로 만드는 맞춤형 그림책",
+        description: "누구나 쉽게 이야기를 만들어요. 연령과 흥미에 맞춘 그림책을 몇 분 안에 완성하세요. 텍스트부터 일러스트까지, AI가 함께합니다.",
         category: "ai",
         icon: "ai-content",
         badge: "live"
-    }    
+    },
+    {
+        webSite: "clearly.ai-biz.app/",
+        title: "Requirements Made Clear",
+        description: "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
+        category: "ai",
+        icon: "utilities",
+        badge: "live"
+    },
+    {
+        webSite: "https://www.ai-biz.app/2025/vibe-coding-presentation.html",
+        title: "What is Vibe Coding?",
+        description: "How AI can transform ideas into working code using natural language. It covers the role of programming in bridging human intent and machine execution, debunks common myths about AI-generated code (like it being fully automatic or sloppy), and emphasizes the need for expertise, iteration, domain knowledge, and clear specifications to leverage AI effectively. The talk highlights AI as an augmenting tool for developers, not a replacement.",
+        category: "presentation",
+        icon: "presentation",
+        badge: "live"
+    } ,
+    {
+        webSite: "https://www.ai-biz.app/2025/beyond-vibe-coding.html",
+        title: "Beyond Vibe Coding",
+        description: "Examining the limitations of AI-assisted vibe coding where ideas quickly turn into prototypes but face real-world challenges in security, scalability, performance, quality, deployment, legal compliance, and service choices. It highlights the need for systematic engineering expertise to bridge the gap between building and shipping production-ready applications,",
+        category: "presentation",
+        icon: "presentation",
+        badge: "live"
+    },
+    {
+        webSite: "https://survey.ai-biz.app",
+        title: "AI Survey Generator - Professional Forms Made Easy",
+        description: "Offers an AI-powered tool for creating professional surveys and forms. Users can start with templates or custom prompts, where AI generates questions based on requirements, allowing for review, customization, and publishing with various sharing options. It also mentions alternatives like manual Google Forms creation due to API limitations.",
+        category: "utilities",
+        icon: "presentation",
+        badge: "live"
+    }              
 ];
 
 function populateCards() {

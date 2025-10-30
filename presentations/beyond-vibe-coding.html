@@ -1,27 +1,1116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beyond Vibe Coding - Combined</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { margin: 0; background: #0a0a0a; color: #e5e5e5; overflow: hidden; }
-    .slides-container { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
-    .slide { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; display: none; }
-    .slide.active { display: block; }
-    .controls { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; }
-    .nav { background: rgba(255,255,255,0.1); border: 0; color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; }
-    .counter { background: rgba(0,0,0,0.3); padding: 6px 12px; border-radius: 10px; font-size: 14px; }
-  </style>
-  <!-- NOTE: Each source page includes its own styles; we preserve inner markup as-is inside slides. -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- You can add more shared libs here if needed -->
-  </head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Beyond Vibe Coding — Combined Slides</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root {color-scheme: light;}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 0 16px;
+  scroll-behavior: smooth;
+}
+main {
+  width: min(1380px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  padding: 48px 8px 96px;
+}
+.hero-title {
+  color: #f1f5f9;
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+.hero-subtitle {
+  color: rgba(226, 232, 240, 0.8);
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.nav-btn {
+  appearance: none;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(30, 41, 59, 0.75);
+  color: rgba(226, 232, 240, 0.95);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.25);
+}
+.nav-btn:hover {
+  background: rgba(148, 163, 184, 0.35);
+  transform: translateY(-1px);
+}
+.nav-btn.primary {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: rgba(56, 189, 248, 0.65);
+}
+.nav-btn.primary:hover {
+  background: #0ea5e9;
+}
+.nav-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
+.nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.slide-counter {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.85);
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.25);
+}
+.slides-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 760px;
+}
+.slide-wrapper {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  transition: opacity 0.35s ease;
+}
+.slide-wrapper.active {
+  display: flex;
+  opacity: 1;
+}
+.slide-wrapper:not(.active) {
+  opacity: 0;
+}
+.slide-wrapper > .slide {
+  box-shadow: 0 32px 60px rgba(15, 23, 42, 0.35);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.profile-slide,
+.connect-slide {
+  border-radius: 28px;
+  box-shadow: 0 30px 65px rgba(79, 70, 229, 0.18);
+}
+.profile-slide {
+  background: linear-gradient(140deg, rgba(129, 140, 248, 0.12) 0%, #ffffff 70%);
+  color: #1f2937;
+}
+.profile-slide-content {
+  max-width: 880px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-emoji {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+.profile-name {
+  color: #4338ca;
+  letter-spacing: 0.01em;
+}
+.profile-roles {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 32px 0 40px;
+}
+.profile-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.profile-role-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 999px;
+  background: rgba(129, 140, 248, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #4338ca;
+}
+.profile-summary {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+.profile-summary span {
+  display: block;
+}
+.connect-slide {
+  background: linear-gradient(150deg, rgba(59, 130, 246, 0.18) 0%, #eef2ff 55%, #ffffff 100%);
+  color: #1f2937;
+}
+.connect-slide-content {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.connect-name {
+  color: #4338ca;
+}
+.connect-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+}
+.connect-detail {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.1rem;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  padding: 12px 22px;
+  text-decoration: none;
+  box-shadow: 0 12px 22px rgba(59, 130, 246, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.connect-detail i {
+  color: #4338ca;
+  font-size: 1.25rem;
+}
+.connect-detail:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(59, 130, 246, 0.22);
+}
+.connect-cta strong {
+  font-size: 1.4rem;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8px;
+}
+.connect-cta p {
+  margin: 0;
+  color: #475569;
+  font-size: 1.05rem;
+}
+.connect-highlight {
+  color: #4338ca;
+  font-weight: 600;
+}
+
+</style>
+<style>
+/* page_1.html */
+body {width: 1280px; height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .magic-code {
+            position: absolute;
+            font-family: monospace;
+            opacity: 0.15;
+            font-size: 14px;
+            color: #36454F;
+            animation: fadeOut 8s forwards;
+        }
+        .code-block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0.8;
+            transform: rotate(-10deg);
+        }
+        .circuit-line {
+            position: absolute;
+            background: #4F7CAC;
+            opacity: 0.2;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 0.15; transform: translateY(0); }
+            50% { opacity: 0.1; transform: translateY(20px); }
+            100% { opacity: 0; transform: translateY(40px); }
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 100px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_2.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .magic-sparkle {
+            position: absolute;
+            color: #FF8C42;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.7; transform: scale(1); }
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_3.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .challenge-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4F7CAC;
+        }
+        .challenge-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .labyrinth-path {
+            position: absolute;
+            width: 3px;
+            background: #36454F;
+            opacity: 0.3;
+            transform-origin: top;
+        }
+        .error-icon {
+            position: absolute;
+            color: #FF8C42;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_4.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .decision-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .decision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .labyrinth-path {
+            position: absolute;
+            background: #4F7CAC;
+            opacity: 0.15;
+            z-index: 0;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_5.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .security-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4F7CAC;
+        }
+        .security-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .security-rabbit-hole {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            opacity: 0.1;
+            border-radius: 50%;
+            border: 2px dashed #36454F;
+            transform: rotate(-10deg);
+        }
+        .security-thought {
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #36454F;
+            opacity: 0.7;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_6.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .scale-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .scale-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scaling-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4F7CAC, #FF8C42);
+            position: relative;
+        }
+        .scaling-point {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            top: -4px;
+            transform: translateX(-50%);
+        }
+        .cost-indicator {
+            position: absolute;
+            bottom: -30px;
+            transform: translateX(-50%);
+            color: #FF8C42;
+            font-weight: bold;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_7.html */
+body {width: 1280px; min-height: 748px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 748px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .performance-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .performance-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bottleneck-line {
+            height: 8px;
+            background: linear-gradient(90deg, #4F7CAC 0%, #FF8C42 100%);
+            border-radius: 4px;
+            margin: 8px 0;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.7; transform: scale(1); }
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_8.html */
+body {width: 1280px; min-height: 724px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 724px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .quality-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .quality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quote-box {
+            background: rgba(54, 69, 79, 0.8);
+            border-left: 4px solid #FF8C42;
+        }
+        .code-line {
+            font-family: monospace;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin: 2px 0;
+        }
+        .good-code {
+            background-color: rgba(79, 124, 172, 0.2);
+        }
+        .bad-code {
+            background-color: rgba(255, 140, 66, 0.2);
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_9.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .deployment-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4F7CAC;
+        }
+        .deployment-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .connector {
+            position: absolute;
+            background: #4F7CAC;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .quote-box {
+            background: rgba(54, 69, 79, 0.8);
+            border-radius: 8px;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_10.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .legal-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .legal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .warning-badge {
+            background: #FF8C42;
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_11.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lock-in {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: #FF8C42;
+        }
+        .consequence-tag {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_12.html */
+body {width: 1280px; min-height: 741px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 741px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .gap-visual {
+            height: 220px;
+            position: relative;
+        }
+        .platform {
+            height: 40px;
+            border-radius: 6px;
+            position: absolute;
+            bottom: 0;
+        }
+        .building {
+            background: #4F7CAC;
+            width: 200px;
+            left: 100px;
+        }
+        .shipping {
+            background: #FF8C42;
+            width: 200px;
+            right: 100px;
+        }
+        .gap {
+            height: 100px;
+            background: rgba(54, 69, 79, 0.1);
+            position: absolute;
+            bottom: 40px;
+            left: 350px;
+            right: 350px;
+            border-left: 2px dashed #36454F;
+            border-right: 2px dashed #36454F;
+        }
+        .challenges {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(520px, calc(100% - 160px));
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .challenge-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .challenge-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_13.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .frustration-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #FF8C42;
+        }
+        .frustration-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-icon {
+            color: #FF8C42;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    
+html {
+    overflow: hidden;
+}
+
+
+/* page_14.html */
+body {width: 1280px; min-height: 720px; overflow: hidden; margin: 0;
+            padding: 0;}
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #F4F4F4 0%, #E8E8E8 100%);
+            
+        }
+        .title-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: #FF8C42;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+        .balance-beam {
+            height: 8px;
+            background: #36454F;
+            border-radius: 4px;
+            position: relative;
+        }
+        .balance-point {
+            width: 20px;
+            height: 20px;
+            background: #FF8C42;
+            border-radius: 50%;
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .key-point {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .key-point:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .conclusion-box {
+            background: linear-gradient(135deg, #4F7CAC 0%, #36454F 100%);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+    
+html {
+    overflow: hidden;
+}
+
+</style>
+<style>
+body {
+  margin: 0 !important;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+  max-width: none !important;
+  scroll-behavior: smooth !important;
+}
+html {
+  overflow-y: auto !important;
+}
+</style>
+</head>
 <body>
-  <main id="slides" class="slides-container">
-    <section class="slide">
+<main>
+  <div>
+    <h1 class="hero-title">Beyond Vibe Coding</h1>
+    <p class="hero-subtitle">Combined slide deck: When the magic fades and reality sets in.</p>
+  </div>
+
+  <div class="slides-container">
+<section class="slide-wrapper active" id="page_1">
 <div class="slide bg-gray-100 flex flex-col items-center justify-center" style=" overflow: hidden;">
 <!-- Background Elements -->
 <div class="absolute inset-0 overflow-hidden">
@@ -56,12 +1145,39 @@
 <div class="absolute bottom-10 flex justify-center w-full">
 <div class="flex items-center space-x-2 text-gray-600">
 <i class="fas fa-code text-teal-700"></i>
-<span class="text-sm font-medium">From AI-Assisted Development to Engineering Reality</span>
+<span class="text-sm font-medium">Jaehee Song, Founder of Startup Consulting Inc.</span>
 </div>
 </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_2">
+      <div class="slide flex items-center justify-center px-16 py-20 profile-slide">
+        <div class="profile-slide-content">
+          <div class="profile-emoji" aria-hidden="true">👨‍💼</div>
+          <h2 class="text-5xl font-bold text-indigo-600 mb-2">Who am I?</h2>
+          <p class="profile-name text-2xl font-semibold mb-8">Jaehee Song</p>
+          <div class="profile-roles">
+            <div class="profile-role">
+              <div class="profile-role-icon">🧱</div>
+              <span class="text-gray-600 font-medium">Implementer</span>
+            </div>
+            <div class="profile-role">
+              <div class="profile-role-icon">🛠️</div>
+              <span class="text-gray-600 font-medium">Builder</span>
+            </div>
+            <div class="profile-role">
+              <div class="profile-role-icon">🧩</div>
+              <span class="text-gray-600 font-medium">Solver</span>
+            </div>
+          </div>
+          <div class="profile-summary">
+            <span>Staff Data Engineer at Visa | Executive Director at Seattle Partners LLC</span>
+            <span>20+ years architecting data platforms, machine learning systems, and AI solutions that unlock business impact.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="slide-wrapper" id="page_3">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -136,7 +1252,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_4">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -231,7 +1347,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_5">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6 z-10">
@@ -378,7 +1494,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_6">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -467,7 +1583,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_7">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -569,7 +1685,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_8">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -674,7 +1790,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_9">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -827,7 +1943,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_10">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -939,7 +2055,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_11">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -1041,7 +2157,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_12">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -1135,7 +2251,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_13">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -1220,7 +2336,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_14">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -1302,7 +2418,7 @@
         </div>
 </div>
     </section>
-    <section class="slide">
+<section class="slide-wrapper" id="page_15">
 <div class="slide bg-gray-100 p-12 flex flex-col" style=" overflow: hidden;">
 <!-- Header -->
 <div class="mb-6">
@@ -1387,28 +2503,130 @@
         </div>
 </div>
     </section>
-  </main>
-  <div class="controls">
-    <button id="prev" class="nav" aria-label="Previous">&#9664;</button>
-    <span id="counter" class="counter"></span>
-    <button id="next" class="nav" aria-label="Next">&#9654;</button>
+<section class="slide-wrapper" id="connect">
+<div class="slide flex items-center justify-center px-16 py-20 connect-slide">
+<div class="connect-slide-content">
+<h2 class="text-5xl font-bold text-indigo-600">Let&rsquo;s Connect</h2>
+<p class="connect-name text-2xl font-semibold">Jaehee Song</p>
+<div class="connect-details">
+<a class="connect-detail" href="mailto:jsong@koreatous.com">
+<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+<span>jsong@koreatous.com</span>
+</a>
+<a class="connect-detail" href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">
+<i class="fab fa-linkedin-in" aria-hidden="true"></i>
+<span>linkedin.com/in/jaehee-song-happy</span>
+</a>
+<a class="connect-detail" href="https://www.ai-biz.app" target="_blank" rel="noopener noreferrer">
+<i class="fas fa-globe" aria-hidden="true"></i>
+<span>www.ai-biz.app</span>
+</a>
+<a class="connect-detail" href="https://apps.ai-biz.app" target="_blank" rel="noopener noreferrer">
+<i class="fas fa-laptop-code" aria-hidden="true"></i>
+<span>apps.ai-biz.app</span>
+</a>
+</div>
+<div class="connect-cta">
+<strong>Ready to master Vibe Coding?</strong>
+<p>Join the Vibe Coding Boot Camp in Bellevue &amp; Seattle.</p>
+<p class="connect-highlight">Transform your ideas into reality with AI-powered development.</p>
+</div>
+</div>
+</div>
+    </section>
   </div>
-  <script>
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    let i = 0;
-    function show(idx){
-      slides.forEach((s, j) => s.classList.toggle('active', j === idx));
-      document.getElementById('counter').textContent = (idx+1) + ' / ' + slides.length;
-      document.getElementById('prev').disabled = idx === 0;
-      document.getElementById('next').disabled = idx === slides.length - 1;
+    <div class="controls" aria-label="Slide controls">
+      <button class="nav-btn" id="prevButton" type="button" aria-label="Previous slide" disabled>← Previous</button>
+      <div class="slide-counter" id="slideCounter" role="status" aria-live="polite">1 / 16</div>
+      <button class="nav-btn primary" id="nextButton" type="button" aria-label="Next slide">Next →</button>
+    </div>
+</main>
+<script>
+(() => {
+  const slides = Array.from(document.querySelectorAll('.slide-wrapper'));
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+  const counter = document.getElementById('slideCounter');
+  if (!slides.length || !prevButton || !nextButton || !counter) {
+    return;
+  }
+
+  let current = slides.findIndex(slide => slide.classList.contains('active'));
+  if (current < 0) {
+    current = 0;
+    slides[0].classList.add('active');
+  }
+
+  slides.forEach((slide, index) => {
+    slide.dataset.slideIndex = String(index + 1);
+    slide.setAttribute('aria-hidden', index === current ? 'false' : 'true');
+    slide.setAttribute('tabindex', '-1');
+  });
+
+  function updateUi() {
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    prevButton.disabled = current === 0;
+    nextButton.disabled = current === slides.length - 1;
+  }
+
+  function focusSlide() {
+    const slide = slides[current];
+    if (!slide) return;
+    slide.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function showSlide(target) {
+    if (target < 0 || target >= slides.length || target === current) {
+      return;
     }
-    document.getElementById('prev').addEventListener('click', () => { if (i>0) { i--; show(i);} });
-    document.getElementById('next').addEventListener('click', () => { if (i<slides.length-1) { i++; show(i);} });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') document.getElementById('prev').click();
-      if (e.key === 'ArrowRight') document.getElementById('next').click();
-    });
-    show(i);
-  </script>
+    slides[current].classList.remove('active');
+    slides[current].setAttribute('aria-hidden', 'true');
+    current = target;
+    slides[current].classList.add('active');
+    slides[current].setAttribute('aria-hidden', 'false');
+    updateUi();
+    focusSlide();
+  }
+
+  prevButton.addEventListener('click', () => showSlide(current - 1));
+  nextButton.addEventListener('click', () => showSlide(current + 1));
+
+  document.addEventListener('keydown', event => {
+    const interactiveElement = event.target instanceof HTMLInputElement ||
+      event.target instanceof HTMLTextAreaElement ||
+      event.target instanceof HTMLSelectElement ||
+      (event.target && event.target.isContentEditable);
+    if (interactiveElement) {
+      return;
+    }
+
+    if (event.key === 'Enter' && event.shiftKey) {
+      event.preventDefault();
+      if (!prevButton.disabled) {
+        showSlide(current - 1);
+      }
+      return;
+    }
+
+    if (event.key === 'Enter' || event.key === 'ArrowRight' || event.key === ' ') {
+      event.preventDefault();
+      if (!nextButton.disabled) {
+        showSlide(current + 1);
+      }
+      return;
+    }
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      if (!prevButton.disabled) {
+        showSlide(current - 1);
+      }
+    }
+  });
+
+  updateUi();
+  focusSlide();
+})();
+</script>
 </body>
 </html>

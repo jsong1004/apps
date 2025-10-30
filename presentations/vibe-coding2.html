@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the presentation */
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            overflow: hidden; /* Prevent body scrolling */
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, rgba(126, 87, 194, 0.2), transparent 50%),
+                        radial-gradient(circle at 80% 90%, rgba(66, 165, 245, 0.2), transparent 50%);
+        }
+
+        .slide h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #d1c4e9;
+        }
+        
+        .slide h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #9fa8da;
+            margin-bottom: 2rem;
+        }
+
+        .slide p, .slide li {
+            font-size: 1.25rem;
+            max-width: 800px;
+        }
+
+        .slide-content {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 2rem;
+             width: 100%;
+        }
+
+        .text-content {
+            flex-basis: 50%;
+            text-align: left;
+        }
+
+        .visual-content {
+            flex-basis: 50%;
+        }
+
+        .visual-content img {
+            max-width: 100%;
+            max-height: 50vh;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .slide-table {
+            border-collapse: collapse;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .slide-table th, .slide-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slide-table th {
+            color: #d1c4e9;
+        }
+
+        .nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        #prevBtn { left: 1rem; }
+        #nextBtn { right: 1rem; }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .process-step {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+        }
+        .process-arrow {
+            font-size: 2rem;
+            color: #9fa8da;
+        }
+    </style>
+</head>
+<body>
+    <main id="slides-container" class="slides-container flex">
+        
+        <!-- Slide 1: Title -->
+        <section class="slide">
+            <div class="visual-content mb-8">
+                <img src="https://placehold.co/150x150/0a0a0a/d1c4e9?text=ATHENA&font=raleway" alt="Athena Logo">
+            </div>
+            <h1>바이브 코딩 (Vibe Coding)</h1>
+            <h3>AI 협업을 통한 소프트웨어 개발의 미래</h3>
+            <p><strong>송재희</strong> | Startup Consulting 대표</p>
+            <p class="text-sm text-gray-400 mt-2">2025년 9월 20일</p>
+        </section>
+        
+        <!-- Slide 2: What is Vibe Coding? -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="text-content">
+                    <h2>Vibe Coding이란 무엇인가요?</h2>
+                    <p class="mb-4">단순히 코드를 작성하는 것이 아니라, **AI에게 명확한 '의도'를 전달**하여 결과물을 만드는 새로운 소프트웨어 개발 패러다임입니다.</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>명확한 의도:</strong> AI가 이해하도록 효과적으로 비전을 표현하는 것이 핵심입니다.</li>
+                        <li><strong>고품질 결과물:</strong> 프롬프트의 품질이 결과물의 품질을 직접적으로 결정합니다.</li>
+                    </ul>
+                </div>
+                <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Abstract+AI+Network" alt="Abstract representation of AI and code">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: The Spectrum of Complexity -->
+        <section class="slide">
+            <h2>복잡성의 스펙트럼</h2>
+            <p>바이브 코딩은 작업의 규모에 따라 다양하게 적용됩니다.</p>
+            <table class="slide-table">
+                <thead>
+                    <tr>
+                        <th>복잡성 수준</th>
+                        <th>설명</th>
+                        <th>예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>단순 작업</strong></td>
+                        <td>💡 독립형 자산, 단일 출력물</td>
+                        <td>웹사이트, 로고, 간단한 스크립트</td>
+                    </tr>
+                    <tr>
+                        <td><strong>대화형 프론트엔드</strong></td>
+                        <td>💻 동적 UI, 사용자 경험(UX)</td>
+                        <td>대시보드, 랜딩 페이지</td>
+                    </tr>
+                    <tr>
+                        <td><strong>완전한 서비스</strong></td>
+                        <td>🚀 Full-stack 애플리케이션</td>
+                        <td>전자상거래, SaaS 제품</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Slide 4: Level 1: Simple Tasks -->
+        <section class="slide">
+             <div class="slide-content">
+                <div class="text-content">
+                    <h2>레벨 1: 단순 작업</h2>
+                    <p class="mb-4">잘 정의된 단일 결과물을 생성하는 데 중점을 둡니다.</p>
+                    <p class="font-bold mb-2">주요 사용 사례:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>단순 정보 웹사이트</li>
+                        <li>이미지 또는 로고 생성</li>
+                        <li>데이터 변환 스크립트</li>
+                    </ul>
+                    <p class="font-bold mb-2">주요 도구:</p>
+                    <p>ChatGPT, Gemini, Claude</p>
+                </div>
+                <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Simple+Website+Wireframe" alt="Simple website wireframe">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Level 2: Interactive & Frontend -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="text-content">
+                    <h2>레벨 2: 인터랙티브 및 프론트엔드</h2>
+                    <p class="mb-4">전통적인 코딩 없이 동적인 UI와 매력적인 사용자 경험을 만듭니다.</p>
+                    <p class="font-bold mb-2">주요 사용 사례:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>사용자 대시보드</li>
+                        <li>양식이 있는 랜딩 페이지</li>
+                        <li>인터랙티브 데이터 시각화</li>
+                    </ul>
+                    <p class="font-bold mb-2">주요 도구:</p>
+                    <p>V0.dev, Loveable, No-Code AI Builders</p>
+                </div>
+                 <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Interactive+UI+Dashboard" alt="Interactive dashboard">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Level 3: Complete Services -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="text-content">
+                    <h2>레벨 3: 완벽한 서비스</h2>
+                    <p class="mb-4">UI, 백엔드 로직, 데이터베이스, 배포까지 포함하는 풀스택 애플리케이션을 제작합니다.</p>
+                     <p class="font-bold mb-2">주요 사용 사례:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>전자상거래 웹사이트</li>
+                        <li>SaaS 제품</li>
+                        <li>소셜 미디어 앱</li>
+                    </ul>
+                    <p class="font-bold mb-2">주요 도구:</p>
+                    <p>Replit, Cursor, GitHub Copilot</p>
+                </div>
+                 <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Code+on+Screen" alt="Code on a screen">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: The Development Process -->
+        <section class="slide">
+            <h2>개발 프로세스</h2>
+            <p>인간의 의도와 AI의 실행이 결합된 반복적인 순환 과정입니다.</p>
+            <div class="process-flow">
+                <div class="process-step">당신의 의도</div>
+                <div class="process-arrow">➡️</div>
+                <div class="process-step">프롬프트</div>
+                <div class="process-arrow">➡️</div>
+                <div class="process-step">계획</div>
+                <div class="process-arrow">➡️</div>
+                <div class="process-step">실행</div>
+                <div class="process-arrow">➡️</div>
+                <div class="process-step">인간 피드백</div>
+            </div>
+        </section>
+        
+        <!-- Slide 8: Expertise Matters -->
+        <section class="slide">
+             <div class="slide-content">
+                <div class="text-content">
+                    <h2>전문성이 그 어느 때보다 중요합니다</h2>
+                    <p class="mb-4">AI는 코드를 생성하지만, 위대한 소프트웨어의 미묘한 차이는 이해하지 못합니다. **인간은 단순한 참여자가 아닌, 설계자 역할을 합니다.**</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>시스템 디자인:</strong> 확장성과 유지보수성을 위한 아키텍처 비전 제공.</li>
+                        <li><strong>모범 사례:</strong> 효율적이고 가독성 높은 코드 보장.</li>
+                        <li><strong>보안:</strong> AI가 놓칠 수 있는 취약점으로부터 보호.</li>
+                    </ul>
+                </div>
+                 <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Digital+Architect+Overseeing+Data" alt="Digital architect">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Best Practices -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="text-content">
+                    <h2>바이브 코딩을 위한 모범 사례 및 전문가 팁</h2>
+                    <ul class="space-y-3">
+                        <li>✅ **명확한 결과로 시작하세요:** 해결책이 아닌 문제와 원하는 결과를 설명하세요.</li>
+                        <li>✅ **끊임없이 반복하세요:** 첫 번째 프롬프트는 완벽하지 않습니다. 결과를 기반으로 개선하세요.</li>
+                        <li>✅ **도구의 언어를 배우세요:** 각 AI는 고유한 강점을 가지고 있습니다.</li>
+                        <li>✅ **기본을 버리지 마세요:** 코딩 개념을 이해하면 문제 발견에 도움이 됩니다.</li>
+                        <li>✅ **프롬프트를 문서화하고 모든 것을 버전 관리하세요.**</li>
+                        <li>✅ **새로 시작하는 것을 두려워하지 마세요.**</li>
+                    </ul>
+                </div>
+                 <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Developer+Focused+on+Screen" alt="Developer focusing">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Comprehensive Service Example -->
+        <section class="slide">
+            <h2>종합 서비스 예시: 아이디어를 현실로</h2>
+            <div class="text-left max-w-2xl bg-white/5 p-8 rounded-lg">
+                <ol class="list-decimal list-inside space-y-4">
+                    <li><strong>UI 디자인 (V0):</strong> 초기 인터페이스 및 사용자 경험 생성</li>
+                    <li><strong>코드 다운로드:</strong> 생성된 프론트엔드 컴포넌트 내보내기</li>
+                    <li><strong>백엔드 개발 (Cursor):</strong> 서버 로직 작성 및 디버깅</li>
+                    <li><strong>실시간 배포:</strong> myjob.ai-biz.app</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Slide 11: The Future is Here -->
+        <section class="slide">
+            <div class="slide-content">
+                <div class="text-content">
+                    <h2>미래는 이미 여기에 있습니다</h2>
+                    <p class="mb-4">바이브 코딩은 전통적인 개발을 대체하는 것이 아니라, **보완하고 증강**하는 것입니다.</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>10x 생산성:</strong> 시니어 개발자의 생산성이 크게 향상됩니다.</li>
+                        <li><strong>100% 민주화:</strong> 비개발자도 아이디어를 실현할 수 있습니다.</li>
+                    </ul>
+                    <p class="mt-6 font-bold text-xl text-purple-300">문제는 배워야 하는지가 아니라, 얼마나 빨리 적응할 수 있는지입니다.</p>
+                </div>
+                <div class="visual-content">
+                    <img src="https://placehold.co/600x400/1a1a1a/e0e0e0?text=Futuristic+City+Skyline" alt="Futuristic city">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Thank You -->
+        <section class="slide">
+            <h2>Q&A</h2>
+            <h3 class="!mb-8">감사합니다</h3>
+            <p><strong>Startup Consulting Inc.</strong></p>
+            <p class="text-sm"><em>Transforming businesses through AI automation and education.</em></p>
+            <p class="text-sm mt-4">info@koreatous.com</p>
+        </section>
+
+    </main>
+
+    <button id="prevBtn" class="nav-button">&lt;</button>
+    <button id="nextBtn" class="nav-button">&gt;</button>
+    <div id="slide-counter" class="slide-counter"></div>
+
+    <script>
+        const container = document.getElementById('slides-container');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slide-counter');
+        const totalSlides = slides.length;
+
+        let currentSlide = 0;
+
+        function updateSlideCounter() {
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+        
+        function goToSlide(slideIndex) {
+            container.scrollLeft = slideIndex * window.innerWidth;
+            currentSlide = slideIndex;
+            updateSlideCounter();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            let targetSlide = currentSlide - 1;
+            if (targetSlide < 0) targetSlide = 0;
+            goToSlide(targetSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let targetSlide = currentSlide + 1;
+            if (targetSlide >= totalSlides) targetSlide = totalSlides - 1;
+            goToSlide(targetSlide);
+        });
+        
+        // Update slide number on scroll
+        container.addEventListener('scroll', () => {
+            const newSlideIndex = Math.round(container.scrollLeft / window.innerWidth);
+            if (newSlideIndex !== currentSlide) {
+                currentSlide = newSlideIndex;
+                updateSlideCounter();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            }
+        });
+        
+        // Initial setup
+        updateSlideCounter();
+
+    </script>
+</body>
+</html>
