@@ -28,9 +28,17 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
-        webSite: "clearly.ai-biz.app/",
+        webSite: "clearlyreqs.com/",
         title: "Requirements Made Clear",
         description: "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
+        category: "ai",
+        icon: "productivity",
+        badge: "live"
+    },
+    {
+        webSite: "newsletter.ai-biz.app/",
+        title: "Newsletter",
+        description: "A newsletter management system that helps teams create, manage, and track email campaigns. Users can draft rich-text emails, organize recipients into groups, and schedule delivery from a centralized platform. The system offers detailed analytics, including open rates, click tracking, and bounce reporting.",
         category: "ai",
         icon: "productivity",
         badge: "live"
@@ -107,15 +115,7 @@ const data: WebsiteData[] = [
         icon: "utilities",
         badge: "live"
     },              
-    {
-        webSite: "video-synthesizer.ai-biz.app",
-        title: "Video Audio Synthesizer",
-        description: "Combine video and audio directly in your browser.",
-        category: "utility",
-        icon: "utilities",
-        badge: "live"
-    },
- 
+
     {
         webSite: "apps.ai-biz.app/myjob_investment/myjob-presentation.html",
         title: "MyJob Investment Presentation",

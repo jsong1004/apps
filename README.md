@@ -1,119 +1,89 @@
-# AI Studio App
+# AI Business Tools Showcase
 
-This project showcases AI-powered business tools in a modern web app.
+A comprehensive showcase platform featuring 14+ production-ready AI-powered business tools. From elegant single-purpose utilities to full-scale business solutions with complex workflows and AI integration.
 
-## Live Demo
+**Live Site**: [https://apps.ai-biz.app/](https://apps.ai-biz.app/)
 
-- **Main App**: https://apps.ai-biz.app/
-- **High School Special Lecture**: https://apps.ai-biz.app/presentations/highschool-special-lecture.html
+## 🎯 Overview
 
-## Features
+This platform serves as a central hub for discovering and accessing AI-powered business tools across multiple categories. Each tool is live, production-ready, and designed to solve real-world business challenges.
 
-- **Interactive Presentations**: AI-powered educational content with modern slide-based interface
-- **Business Tools**: Various AI-integrated business applications
-- **Responsive Design**: Mobile-first design with dark theme support
-- **SEO Optimized**: Complete with sitemap, robots.txt, and metadata
+### Key Features
 
-## Run Locally
+- **14+ Live AI Tools**: Production-ready applications across AI, Business, Utilities, and Presentations
+- **Interactive Search & Filter**: Real-time search with category-based filtering
+- **Modern UI/UX**: Responsive design with gradient cards, smooth animations, and intuitive navigation
+- **SEO Optimized**: Complete with Schema.org structured data, sitemap, robots.txt, and AI agent metadata
+- **Accessibility**: WCAG 2.1 compliant with ARIA labels, skip links, and screen reader support
+- **Multi-language Support**: Tools available in English and Korean
 
-**Prerequisites:** Node.js (v18+ recommended)
+## 🛠️ Featured Tools
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Set the `GEMINI_API_KEY` in `.env.local` to your Gemini API key
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### AI & ML Tools
+- **MyJob**: AI-powered job search platform with resume analysis and matching
+- **Requirements Made Clear**: Transform ideas into professional BRDs and PRDs with AI-guided conversations
+- **AI Storybook Creator**: Create personalized illustrated storybooks (Korean language)
+- **AI Content Generation Hub**: Convert presentations, audio, and videos into scripts, podcasts, and blog posts
+- **AI-Powered Insights**: Generate comprehensive, validated insights on any topic using AI research agents
 
-## Build for Production
+### Business Tools
+- **AI Workshop**: Training platform for building business automation
+- **InvestorHub Platform**: Smart investment platform with AI-powered scoring
+- **InvestorHub Dashboard**: Real-time analytics and portfolio management
+- **Transform Your Business**: Main AI automation platform
 
-```bash
-npm run build
-```
+### Utility Tools
+- **QR Code Generator**: Instant QR code generation for any website
+- **AI Survey Generator**: Create professional surveys and forms with AI-powered question generation
+- **Website Screenshot Capture**: Full-page screenshot capture tool
 
-## Run with Docker
+### Presentations
+- **MyJob Investment Presentation**: Complete platform showcase with multi-agent architecture
+- **AI와 함께 꿈을 찾는 법**: High school special lecture on finding dreams with AI (Korean)
+- **What is Vibe Coding?**: Presentation on AI-assisted coding
+- **Beyond Vibe Coding**: Deep dive into production-ready AI development challenges
 
-1. Build the Docker image:
-   ```bash
-   docker build -t my-app .
-   ```
-2. Run the container:
-   ```bash
-   docker run -p 80:80 my-app
-   ```
+## 🎨 Technology Stack
 
-## Deploy to Google Cloud Run
+- **Build Tool**: Vite 6.2.0
+- **Language**: TypeScript 5.7.2
+- **Styling**: CSS3 with modern features (Grid, Flexbox, CSS Variables)
+- **Deployment**: Google Cloud Run
+- **Container**: Docker
 
-### Using Cloud Build (Recommended)
+## 📝 Key Features Implementation
 
-1. Authenticate and set your project:
-   ```bash
-   gcloud auth login
-   gcloud config set project myresume-457817
-   ```
-2. Submit the build and deploy using Cloud Build:
-   ```bash
-   gcloud builds submit --config cloudbuild.yaml .
-   ```
-   This will build, push, and deploy your app to Cloud Run as defined in `cloudbuild.yaml`.
+### Search & Filter
+- Real-time search across tool titles and descriptions
+- Category-based filtering (All, AI & ML, Business, Utilities, Presentation)
+- Accessible with proper ARIA labels and keyboard navigation
 
-### Manual Steps
+### Tool Cards
+- Dynamic card generation from TypeScript data
+- Category badges and status indicators (live, demo, beta)
+- Direct links to tools with copy URL functionality
+- Responsive grid layout (auto-fit, min 380px)
 
-1. Build the Docker image:
-   ```bash
-   docker build -t gcr.io/myresume-457817/app .
-   ```
-2. Push the image:
-   ```bash
-   gcloud auth configure-docker
-   docker push gcr.io/myresume-457817/app
-   ```
-3. Deploy to Cloud Run:
-   ```bash
-   gcloud run deploy app \
-     --image gcr.io/myresume-457817/app \
-     --region us-central1 \
-     --platform managed \
-     --allow-unauthenticated \
-     --service-account 711582759542-compute@developer.gserviceaccount.com \
-     --project myresume-457817 \
-     --memory 256Mi \
-     --cpu 1 \
-     --min-instances 0 \
-     --max-instances 10 \
-     --port 80
-   ```
+### Accessibility
+- WCAG 2.1 Level A/AA compliance
+- Screen reader support with ARIA labels
+- Skip links for keyboard navigation
+- Visually hidden labels for context
 
-After deployment, Cloud Run will provide a public URL for your app.
+## 🔗 Related Links
 
-## Project Structure
+- **Main Platform**: https://www.ai-biz.app/
+- **Company Info**: https://apps.ai-biz.app/company/
+- **Founder**: https://apps.ai-biz.app/founder/
+- **Case Studies**: https://apps.ai-biz.app/case-studies/
 
-```
-├── presentations/          # Educational presentations
-│   └── highschool-special-lecture.html
-├── founder/               # Founder page
-├── company/               # Company information
-├── case-studies/          # Business case studies
-├── myjob_investment/      # Investment presentations
-├── privacy-policy/        # Privacy policy
-├── terms-of-service/      # Terms of service
-├── dist/                  # Built assets
-├── Dockerfile            # Docker configuration
-├── cloudbuild.yaml       # Google Cloud Build configuration
-└── deploy.sh             # Deployment script
-```
+## 📄 License
 
-## Environment Variables
-- `GEMINI_API_KEY`: Required for Gemini API integration. Set this in `.env.local` for local development.
+Private project - All rights reserved.
 
-## Recent Updates
-- Added interactive presentation: "AI와 함께 꿈을 찾는 법" (Finding Dreams with AI)
-- Updated Dockerfile to include presentations directory
-- Enhanced deployment pipeline with proper static file handling
+## 🤝 Contributing
+
+This is a private showcase project. For inquiries or issues, please contact the maintainer.
 
 ---
 
-For any issues, please open an issue or contact the maintainer.
