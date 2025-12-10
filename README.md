@@ -70,6 +70,23 @@ This platform serves as a central hub for discovering and accessing AI-powered b
 - Skip links for keyboard navigation
 - Visually hidden labels for context
 
+## 🚀 Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+Visit [http://localhost:5173](http://localhost:5173) to view the site locally.
+
+## 📦 Build & Deploy
+
+```bash
+npm run build
+```
+
+For deployment to Google Cloud Run, use the provided `cloudbuild.yaml` or `deploy.sh` script.
+
 ## 🔗 Related Links
 
 - **Main Platform**: https://www.ai-biz.app/
@@ -86,4 +103,9 @@ Private project - All rights reserved.
 This is a private showcase project. For inquiries or issues, please contact the maintainer.
 
 ---
+
+**Last Updated**: October 2025  
+**Status**: ✅ Production Ready  
+**Live Tools**: 14+  
+**Categories**: 4 (AI & ML, Business, Utilities, Presentations)
 
