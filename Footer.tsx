@@ -42,9 +42,19 @@ export function createFooter(container: HTMLElement): void {
             tooltip: 'Generate comprehensive, validated insights on any topic using our advanced AI research agents. Get structured analysis with confidence scores and actionable intelligence.'
         },
         { 
+            name: 'Company Insights', 
+            url: 'https://company.ai-biz.app', 
+            tooltip: 'Transforming Company Intelligence with AI. Generate comprehensive, validated insights on a company using our advanced AI research agents.'
+        },
+        { 
             name: 'My Resume', 
             url: 'https://myjob.ai-biz.app', 
             tooltip: 'AI-driven job matching platform that analyzes resumes against job descriptions and provides interactive resume tailoring assistance.'
+        },
+        { 
+            name: 'Clearly Requirements for AI Coding', 
+            url: 'https://clearlyreqs.com', 
+            tooltip: 'Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.'
         }
     ];
     serviceItems.forEach(item => {

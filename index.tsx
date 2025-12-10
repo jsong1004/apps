@@ -28,7 +28,7 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
-        webSite: "clearlyreqs.com/",
+        webSite: "www.clearlyreqs.com/",
         title: "Requirements Made Clear",
         description: "Transform ideas into professional BRDs and PRDs in minutes with AI-guided conversations. No templates. No guesswork. Just clear requirements.",
         category: "ai",
@@ -68,6 +68,14 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
+        webSite: "company-insights-prod-ef210.web.app",
+        title: "Transforming Company Intelligence with AI",
+        description: "We're building the future of business research—where AI agents work together to deliver institutional-grade insights in minutes, not weeks.",
+        category: "ai",
+        icon: "insights",
+        badge: "live"
+    },
+    {
         webSite: "workshop.ai-biz.app",
         title: "AI Workshop Landing Page",
         description: "We train you to build your business automation. Streamline processes, reduce costs, and increase efficiency with our expert AI solutions.",
@@ -100,7 +108,7 @@ const data: WebsiteData[] = [
         badge: "live"
     },
     {
-        webSite: "https://survey.ai-biz.app",
+        webSite: "survey.ai-biz.app",
         title: "AI Survey Generator - Professional Forms Made Easy",
         description: "Offers an AI-powered tool for creating professional surveys and forms. Users can start with templates or custom prompts, where AI generates questions based on requirements, allowing for review, customization, and publishing with various sharing options. It also mentions alternatives like manual Google Forms creation due to API limitations.",
         category: "utilities",
@@ -135,7 +143,7 @@ const data: WebsiteData[] = [
     },
 
     {
-        webSite: "https://www.ai-biz.app/2025/vibe-coding-presentation.html",
+        webSite: "www.ai-biz.app/2025/vibe-coding-presentation.html",
         title: "What is Vibe Coding?",
         description: "How AI can transform ideas into working code using natural language. It covers the role of programming in bridging human intent and machine execution, debunks common myths about AI-generated code (like it being fully automatic or sloppy), and emphasizes the need for expertise, iteration, domain knowledge, and clear specifications to leverage AI effectively. The talk highlights AI as an augmenting tool for developers, not a replacement.",
         category: "presentation",
@@ -143,7 +151,7 @@ const data: WebsiteData[] = [
         badge: "live"
     } ,
     {
-        webSite: "https://www.ai-biz.app/2025/beyond-vibe-coding.html",
+        webSite: "www.ai-biz.app/2025/beyond-vibe-coding.html",
         title: "Beyond Vibe Coding",
         description: "Examining the limitations of AI-assisted vibe coding where ideas quickly turn into prototypes but face real-world challenges in security, scalability, performance, quality, deployment, legal compliance, and service choices. It highlights the need for systematic engineering expertise to bridge the gap between building and shipping production-ready applications,",
         category: "presentation",
