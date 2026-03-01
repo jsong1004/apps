@@ -79,13 +79,13 @@ export const portfolioData: PortfolioData = {
     summary: "Data Platform Architect and AI Solution Developer with 20+ years of experience designing large-scale data systems, multi-agent AI platforms, and cloud-native applications. Executive Director at Seattle Partners, leading US market entry accelerator programs for Korean startups while building production-grade AI services.",
     aboutText: [
         "With over 20 years of experience in data platform architecture and AI solution development, I bridge technology and business across international markets. As the Executive Director at Seattle Partners and CEO of Startup Consulting Inc., I help Korean startups successfully enter the US market while building production-grade AI services.",
-        "My technical expertise spans from real-time analytics platforms using Apache Druid at Visa to modern multi-agent AI systems using CrewAI, LangChain, and Google Gemini. I've built multiple commercially viable AI products including Clearly (BRD/PRD generator), MyJob (multi-agent job search platform), AI Insights Generator, and InNews (newsletter platform).",
-        "Beyond building technology, I'm passionate about developing next-generation talent through global internship programs, training 60+ students across Korea and the US. I'm also a published author sharing knowledge about career transitions and AI development."
+        "My technical expertise spans from real-time analytics platforms using Apache Druid and a database inventory platform to manage capacity, audit, and licensing of entire data systems at Visa, to modern multi-agent AI systems using CrewAI, LangChain, and Google Gemini. I've built multiple commercially viable AI products including Clearly (BRD/PRD generator), MyJob (multi-agent job search platform), AI Insights Generator, and InNews (newsletter platform).",
+        "Beyond building technology, I'm passionate about developing next-generation talent through global internship programs, training 500+ students across Korea and the US. I'm also a published author sharing knowledge about career transitions and AI development."
     ],
     stats: [
         { value: "20+", label: "Years Experience" },
-        { value: "50+", label: "Startups Supported" },
-        { value: "60+", label: "Students Trained" },
+        { value: "200+", label: "Startups Supported" },
+        { value: "500+", label: "Students Trained" },
         { value: "10+", label: "AI Services Built" }
     ],
     career: [
@@ -207,14 +207,6 @@ export const portfolioData: PortfolioData = {
             badge: "live"
         },
         {
-            webSite: "company-insights-prod-ef210.web.app",
-            title: "Company Insights",
-            description: "AI agents work together to deliver institutional-grade business intelligence and company research insights in minutes.",
-            category: "ai",
-            icon: "insights",
-            badge: "live"
-        },
-        {
             webSite: "contents.ai-biz.app",
             title: "AI Content Generation Hub",
             description: "Convert presentations, scripts, audio, and YouTube videos into engaging scripts, podcasts, blog posts, and transcripts.",
@@ -312,11 +304,11 @@ export const portfolioData: PortfolioData = {
         { venue: "Samsung Electronics Research Center", topic: "Data Collection, Analysis, and Visualization", year: "2018" },
         { venue: "Korea Artificial Intelligence Academy", topic: "US Chatbot Status and US Employment", year: "2019" },
         { venue: "Gyeongbuk Software High School", topic: "Introduction to Data Engineer Practical Work, Developer Competencies in the Generative AI Era", year: "2024" },
-        { venue: "Goorm", topic: "Vibe Coding - Innovation in Working Methods", year: "2025" },
-        { venue: "Goorm, Inha University", topic: "AI Trends and Developer Skills", year: "2024" },
-        { venue: "DGIST, Daegu Catholic University", topic: "Data Engineering", year: "2022" },
-        { venue: "Washington Education Institution", topic: "Workshops and Lectures for Experts and Students", year: "2023" },
-        { venue: "42 Gyeongsan", topic: "Developer Mentoring", year: "2024" }
+        { venue: "Goorm", topic: "Vibe Coding - Innovation in Working Methods", year: "2022 - 2025" },
+        { venue: "Goorm, Inha University", topic: "AI Trends and Developer Skills", year: "2022 - 2025" },
+        { venue: "DGIST, Daegu Catholic University", topic: "Data Engineering", year: "2022 - 2025" },
+        { venue: "Washington Education Institution", topic: "Workshops and Lectures for Experts and Students", year: "2025" },
+        { venue: "42 Gyeongsan", topic: "Developer Mentoring", year: "2025" }
     ],
     programs: [
         { name: "Smart Career Project", period: "May 2019 - Aug 2019", partner: "Backend Development (Python, Graph Database, Django)" },
@@ -361,13 +353,13 @@ const portfolioDataKo: PortfolioData = {
     summary: "20년 이상의 경험을 가진 데이터 플랫폼 아키텍트이자 AI 솔루션 개발자. 대규모 데이터 시스템, 멀티에이전트 AI 플랫폼, 클라우드 네이티브 애플리케이션을 설계합니다. Seattle Partners 상무이사로서 한국 스타트업의 미국 시장 진출 액셀러레이터 프로그램을 이끌며 프로덕션급 AI 서비스를 구축합니다.",
     aboutText: [
         "데이터 플랫폼 아키텍처와 AI 솔루션 개발 분야에서 20년 이상의 경험을 바탕으로, 국제 시장에서 기술과 비즈니스를 연결합니다. Seattle Partners 상무이사이자 Startup Consulting Inc. CEO로서, 한국 스타트업의 성공적인 미국 시장 진출을 지원하며 프로덕션급 AI 서비스를 구축하고 있습니다.",
-        "기술적 전문성은 Visa에서의 Apache Druid 실시간 분석 플랫폼부터 CrewAI, LangChain, Google Gemini를 활용한 최신 멀티에이전트 AI 시스템까지 폭넓게 아우릅니다. Clearly (BRD/PRD 생성기), MyJob (멀티에이전트 채용 플랫폼), AI Insights Generator, InNews (뉴스레터 플랫폼) 등 다수의 상용 AI 제품을 개발했습니다.",
-        "기술 구축을 넘어, 글로벌 인턴십 프로그램을 통해 차세대 인재 양성에 열정을 쏟고 있으며, 한국과 미국에서 60명 이상의 학생을 교육했습니다. 또한 커리어 전환과 AI 개발에 관한 지식을 공유하는 출판 저자이기도 합니다."
+        "기술적 전문성은 Visa에서의 Apache Druid 실시간 분석 플랫폼과 전사 데이터 시스템의 용량, 감사, 라이선스를 관리하는 데이터베이스 인벤토리 플랫폼 구축부터 CrewAI, LangChain, Google Gemini를 활용한 최신 멀티에이전트 AI 시스템까지 폭넓게 아우릅니다. Clearly (BRD/PRD 생성기), MyJob (멀티에이전트 채용 플랫폼), AI Insights Generator, InNews (뉴스레터 플랫폼) 등 다수의 상용 AI 제품을 개발했습니다.",
+        "기술 구축을 넘어, 글로벌 인턴십 프로그램을 통해 차세대 인재 양성에 열정을 쏟고 있으며, 한국과 미국에서 500명 이상의 학생을 교육했습니다. 또한 커리어 전환과 AI 개발에 관한 지식을 공유하는 출판 저자이기도 합니다."
     ],
     stats: [
         { value: "20+", label: "경력 (년)" },
-        { value: "50+", label: "지원 스타트업" },
-        { value: "60+", label: "교육 학생" },
+        { value: "200+", label: "지원 스타트업" },
+        { value: "500+", label: "교육 학생" },
         { value: "10+", label: "구축 AI 서비스" }
     ],
     career: [
@@ -489,14 +481,6 @@ const portfolioDataKo: PortfolioData = {
             badge: "live"
         },
         {
-            webSite: "company-insights-prod-ef210.web.app",
-            title: "기업 인사이트",
-            description: "AI 에이전트들이 협력하여 몇 분 만에 기관급 비즈니스 인텔리전스와 기업 리서치 인사이트를 제공합니다.",
-            category: "ai",
-            icon: "insights",
-            badge: "live"
-        },
-        {
             webSite: "contents.ai-biz.app",
             title: "AI 콘텐츠 생성 허브",
             description: "프레젠테이션, 스크립트, 오디오, YouTube 동영상을 매력적인 스크립트, 팟캐스트, 블로그 게시물, 트랜스크립트로 변환합니다.",
@@ -594,11 +578,11 @@ const portfolioDataKo: PortfolioData = {
         { venue: "삼성전자 연구소", topic: "데이터 수집, 분석 및 시각화", year: "2018" },
         { venue: "한국인공지능아카데미", topic: "미국 챗봇 현황과 미국 취업", year: "2019" },
         { venue: "경북소프트웨어고등학교", topic: "데이터 엔지니어 실무 입문, 생성형 AI 시대의 개발자 역량", year: "2024" },
-        { venue: "구름(Goorm)", topic: "바이브 코딩 - 일하는 방식의 혁신", year: "2025" },
-        { venue: "구름(Goorm), 인하대학교", topic: "AI 트렌드와 개발자 역량", year: "2024" },
-        { venue: "DGIST, 대구가톨릭대학교", topic: "데이터 엔지니어링", year: "2022" },
-        { venue: "워싱턴 교육기관", topic: "전문가 및 학생 대상 워크숍과 강연", year: "2023" },
-        { venue: "42 경산", topic: "개발자 멘토링", year: "2024" }
+        { venue: "구름(Goorm)", topic: "바이브 코딩 - 일하는 방식의 혁신", year: "2022 - 2025" },
+        { venue: "구름(Goorm), 인하대학교", topic: "AI 트렌드와 개발자 역량", year: "2022 - 2025" },
+        { venue: "DGIST, 대구가톨릭대학교", topic: "데이터 엔지니어링", year: "2022 - 2025" },
+        { venue: "워싱턴 교육기관", topic: "전문가 및 학생 대상 워크숍과 강연", year: "2025" },
+        { venue: "42 경산", topic: "개발자 멘토링", year: "2025" }
     ],
     programs: [
         { name: "Smart Career 프로젝트", period: "2019.05 - 2019.08", partner: "백엔드 개발 (Python, Graph Database, Django)" },

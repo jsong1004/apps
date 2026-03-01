@@ -5,6 +5,7 @@ import { t } from './i18n-data';
 const socialLinks = [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jaehee-song-happy/' },
     { label: 'Medium', url: 'https://medium.com/@jsong_49820' },
+    { label: 'Brunch', url: 'https://brunch.co.kr/@abrahamsong' },
 ];
 
 export function createHeader(container: HTMLElement): void {
@@ -14,8 +15,8 @@ export function createHeader(container: HTMLElement): void {
     const navLinks = [
         { label: ui.navAbout, href: '#about' },
         { label: ui.navCareer, href: '#career' },
-        { label: ui.navProjects, href: '#projects' },
-        { label: ui.navBooks, href: '#books' },
+        { label: ui.navProducts, href: '#projects' },
+        { label: ui.navPublications, href: '#books' },
         { label: ui.navLectures, href: '#lectures' },
         { label: ui.navSkills, href: '#skills' },
     ];

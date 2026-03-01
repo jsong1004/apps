@@ -1,74 +1,57 @@
-# AI Business Tools Showcase
+# Jaehee Song | Portfolio & Web Services
 
-A comprehensive showcase platform featuring 14+ production-ready AI-powered business tools. From elegant single-purpose utilities to full-scale business solutions with complex workflows and AI integration.
+Personal portfolio and AI tools showcase for Jaehee Song — Data Platform Architect & AI Solution Developer.
 
-**Live Site**: [https://apps.ai-biz.app/](https://apps.ai-biz.app/)
+**Live Site**: [https://jsong.ai-biz.app](https://jsong.ai-biz.app) | [https://apps.ai-biz.app](https://apps.ai-biz.app)
 
 ## 🎯 Overview
 
-This platform serves as a central hub for discovering and accessing AI-powered business tools across multiple categories. Each tool is live, production-ready, and designed to solve real-world business challenges.
+A responsive portfolio site featuring About, Career, Web Services (Products), Publications, Lectures, Global Programs, Skills, and Education. Includes 13+ production AI tools and supports English/Korean (i18n).
 
 ### Key Features
 
-- **14+ Live AI Tools**: Production-ready applications across AI, Business, Utilities, and Presentations
-- **Interactive Search & Filter**: Real-time search with category-based filtering
-- **Modern UI/UX**: Responsive design with gradient cards, smooth animations, and intuitive navigation
-- **SEO Optimized**: Complete with Schema.org structured data, sitemap, robots.txt, and AI agent metadata
-- **Accessibility**: WCAG 2.1 compliant with ARIA labels, skip links, and screen reader support
-- **Multi-language Support**: Tools available in English and Korean
+- **Portfolio sections**: About (with portrait), Career, Web Services, Publications, Lectures, Programs, Skills, Education
+- **13+ Web Services**: Clearly, MyJob, InNews, AI Insights, Content Hub, Storybook, InvestorHub, Workshop, QR Code, Survey, Screen Capture, and more
+- **i18n**: English and Korean
+- **SEO**: Schema.org structured data, sitemap, robots.txt, ai-metadata.json
+- **Accessibility**: ARIA labels, skip links, semantic HTML
+- **Deploy**: Google Cloud Run (ai-biz-6b7ec)
 
-## 🛠️ Featured Tools
+## 🛠️ Web Services (Products)
 
-### AI & ML Tools
-- **MyJob**: AI-powered job search platform with resume analysis and matching
-- **Requirements Made Clear**: Transform ideas into professional BRDs and PRDs with AI-guided conversations
-- **AI Storybook Creator**: Create personalized illustrated storybooks (Korean language)
-- **AI Content Generation Hub**: Convert presentations, audio, and videos into scripts, podcasts, and blog posts
-- **AI-Powered Insights**: Generate comprehensive, validated insights on any topic using AI research agents
+### AI & ML
+- **Clearly** – AI-powered BRD/PRD generator
+- **MyJob** – Multi-agent job search platform
+- **InNews** – Newsletter platform
+- **AI Insights Generator** – Multi-agent research
+- **AI Content Hub** – Convert presentations, audio, video to scripts/podcasts/blogs
+- **AI Storybook Creator** – Personalized illustrated storybooks
 
-### Business Tools
-- **AI Workshop**: Training platform for building business automation
-- **InvestorHub Platform**: Smart investment platform with AI-powered scoring
-- **InvestorHub Dashboard**: Real-time analytics and portfolio management
-- **Transform Your Business**: Main AI automation platform
+### Business
+- **InvestorHub** – Startup pitch scoring
+- **InvestorHub Dashboard** – Live analytics
+- **AI Business Automation** – Workshop & training
 
-### Utility Tools
-- **QR Code Generator**: Instant QR code generation for any website
-- **AI Survey Generator**: Create professional surveys and forms with AI-powered question generation
-- **Website Screenshot Capture**: Full-page screenshot capture tool
+### Utilities
+- **QR Code Generator**, **AI Survey Generator**, **Website Screenshot Capture**
 
-### Presentations
-- **MyJob Investment Presentation**: Complete platform showcase with multi-agent architecture
-- **AI와 함께 꿈을 찾는 법**: High school special lecture on finding dreams with AI (Korean)
-- **What is Vibe Coding?**: Presentation on AI-assisted coding
-- **Beyond Vibe Coding**: Deep dive into production-ready AI development challenges
+## 🎨 Tech Stack
 
-## 🎨 Technology Stack
+- **Vite** 6.2 · **TypeScript** 5.7 · **CSS3** (Grid, Flexbox)
+- **Deploy**: Google Cloud Run, Docker
 
-- **Build Tool**: Vite 6.2.0
-- **Language**: TypeScript 5.7.2
-- **Styling**: CSS3 with modern features (Grid, Flexbox, CSS Variables)
-- **Deployment**: Google Cloud Run
-- **Container**: Docker
+## 📁 Key Files
 
-## 📝 Key Features Implementation
-
-### Search & Filter
-- Real-time search across tool titles and descriptions
-- Category-based filtering (All, AI & ML, Business, Utilities, Presentation)
-- Accessible with proper ARIA labels and keyboard navigation
-
-### Tool Cards
-- Dynamic card generation from TypeScript data
-- Category badges and status indicators (live, demo, beta)
-- Direct links to tools with copy URL functionality
-- Responsive grid layout (auto-fit, min 380px)
-
-### Accessibility
-- WCAG 2.1 Level A/AA compliance
-- Screen reader support with ARIA labels
-- Skip links for keyboard navigation
-- Visually hidden labels for context
+| File | Purpose |
+|------|---------|
+| `index.tsx` | App entry, i18n, section rendering |
+| `index.html` | Layout, styles, SEO meta |
+| `data.ts` | Portfolio data (career, tools, books, lectures, etc.) |
+| `sections.ts` | Section renderers (About, Career, Projects, etc.) |
+| `Header.tsx` | Nav, social links (LinkedIn, Medium, Brunch) |
+| `Footer.tsx` | Footer layout |
+| `i18n-data.ts` | EN/KO strings |
+| `cloudbuild.yaml` | Cloud Run deploy config |
 
 ## 🚀 Quick Start
 
@@ -89,7 +72,7 @@ npm run build
 
 **Project**: `ai-biz-6b7ec`  
 **Region**: `us-central1`  
-** URLs**: [https://app-22835475779.us-central1.run.app/](https://app-22835475779.us-central1.run.app/) | [https://jsong.ai-biz.app](https://jsong.ai-biz.app)
+**URLs**: [https://app-22835475779.us-central1.run.app/](https://app-22835475779.us-central1.run.app/) | [https://jsong.ai-biz.app](https://jsong.ai-biz.app)
 
 1. One-time setup: grant deploy roles to the Cloud Build service account:
    ```bash
@@ -129,8 +112,8 @@ This is a private showcase project. For inquiries or issues, please contact the 
 
 ---
 
-**Last Updated**: October 2025  
+**Last Updated**: February 2025  
 **Status**: ✅ Production Ready  
-**Live Tools**: 14+  
-**Categories**: 4 (AI & ML, Business, Utilities, Presentations)
+**Web Services**: 13+  
+**Languages**: EN, KO
 

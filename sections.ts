@@ -59,6 +59,16 @@ export function renderAbout(container: HTMLElement): void {
     const layout = document.createElement('div');
     layout.className = 'about-layout';
 
+    const photoCol = document.createElement('div');
+    photoCol.className = 'about-photo';
+    const photo = document.createElement('img');
+    photo.src = '/images/professional-portrait-tech.png';
+    photo.alt = 'Jaehee Song – Data Platform Architect & AI Solution Developer';
+    photo.className = 'about-portrait';
+    photo.loading = 'lazy';
+    photoCol.appendChild(photo);
+    layout.appendChild(photoCol);
+
     const textCol = document.createElement('div');
     textCol.className = 'about-text';
     data.aboutText.forEach(text => {

@@ -36,20 +36,6 @@ steps:
       - '--port'
       - '80'
 
-  # Ensure public (unauthenticated) invoker access so https://app-22835475779.us-central1.run.app/ and custom domain work
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'run'
-      - 'services'
-      - 'add-iam-policy-binding'
-      - 'app'
-      - '--region=us-central1'
-      - '--project=ai-biz-6b7ec'
-      - '--member=allUsers'
-      - '--role=roles/run.invoker'
-      - '--quiet'
-
 images:
   - 'gcr.io/ai-biz-6b7ec/app'
 

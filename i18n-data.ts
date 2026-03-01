@@ -3,15 +3,15 @@ import type { Lang } from './i18n';
 interface UIStrings {
     navAbout: string;
     navCareer: string;
-    navProjects: string;
-    navBooks: string;
+    navProducts: string;
+    navPublications: string;
     navLectures: string;
     navSkills: string;
 
     headingAbout: string;
     headingCareer: string;
     headingProjects: string;
-    headingBooks: string;
+    headingPublications: string;
     headingLectures: string;
     headingPrograms: string;
     headingSkills: string;
@@ -44,22 +44,22 @@ const strings: Record<Lang, UIStrings> = {
     en: {
         navAbout: 'About',
         navCareer: 'Career',
-        navProjects: 'Projects',
-        navBooks: 'Books',
+        navProducts: 'Products',
+        navPublications: 'Publications',
         navLectures: 'Lectures',
         navSkills: 'Skills',
 
         headingAbout: 'About',
         headingCareer: 'Career',
         headingProjects: 'Web Services',
-        headingBooks: 'Publications',
+        headingPublications: 'Publications',
         headingLectures: 'Lectures & Speaking',
         headingPrograms: 'Global Internship Programs',
         headingSkills: 'Skills & Technologies',
         headingEducation: 'Education',
 
         projectsSubtitle: "Production AI services and tools I've designed and built.",
-        programsSubtitle: 'Trained 60+ students across Korea and the US through structured technical programs.',
+        programsSubtitle: 'Trained 500+ students across Korea and the US through structured technical programs.',
 
         btnLinkedIn: 'LinkedIn Profile',
         btnGetInTouch: 'Get in Touch',
@@ -83,22 +83,22 @@ const strings: Record<Lang, UIStrings> = {
     ko: {
         navAbout: '소개',
         navCareer: '경력',
-        navProjects: '프로젝트',
-        navBooks: '저서',
+        navProducts: '제품',
+        navPublications: '출판',
         navLectures: '강연',
         navSkills: '기술',
 
         headingAbout: '소개',
         headingCareer: '경력',
         headingProjects: '웹 서비스',
-        headingBooks: '저서 & 출판',
-        headingLectures: '강연 & 발표',
+        headingPublications: '출판',
+        headingLectures: '강연',
         headingPrograms: '글로벌 인턴십 프로그램',
         headingSkills: '기술 스택',
         headingEducation: '학력',
 
         projectsSubtitle: '직접 설계하고 구축한 프로덕션 AI 서비스 및 도구입니다.',
-        programsSubtitle: '한국과 미국에서 60명 이상의 학생들을 체계적인 기술 프로그램을 통해 교육했습니다.',
+        programsSubtitle: '한국과 미국에서 500명 이상의 학생들을 체계적인 기술 프로그램을 통해 교육했습니다.',
 
         btnLinkedIn: 'LinkedIn 프로필',
         btnGetInTouch: '연락하기',
