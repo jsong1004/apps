@@ -1,11 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/myresume-457817/app', '.']
+    args: ['build', '-t', 'gcr.io/ai-biz-6b7ec/app', '.']
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/myresume-457817/app']
+    args: ['push', 'gcr.io/ai-biz-6b7ec/app']
 
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,16 +15,16 @@ steps:
       - 'deploy'
       - 'app'
       - '--image'
-      - 'gcr.io/myresume-457817/app'
+      - 'gcr.io/ai-biz-6b7ec/app'
       - '--region'
       - 'us-central1'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
       - '--service-account'
-      - '711582759542-compute@developer.gserviceaccount.com'
+      - '22835475779-compute@developer.gserviceaccount.com'
       - '--project'
-      - 'myresume-457817'
+      - 'ai-biz-6b7ec'
       - '--memory'
       - '256Mi'
       - '--cpu'
@@ -36,8 +36,22 @@ steps:
       - '--port'
       - '80'
 
+  # Ensure public (unauthenticated) invoker access so https://app-22835475779.us-central1.run.app/ and custom domain work
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'services'
+      - 'add-iam-policy-binding'
+      - 'app'
+      - '--region=us-central1'
+      - '--project=ai-biz-6b7ec'
+      - '--member=allUsers'
+      - '--role=roles/run.invoker'
+      - '--quiet'
+
 images:
-  - 'gcr.io/myresume-457817/app'
+  - 'gcr.io/ai-biz-6b7ec/app'
 
 options:
-  logging: CLOUD_LOGGING_ONLY 
+  logging: CLOUD_LOGGING_ONLY

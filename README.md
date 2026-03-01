@@ -85,7 +85,32 @@ Visit [http://localhost:5173](http://localhost:5173) to view the site locally.
 npm run build
 ```
 
-For deployment to Google Cloud Run, use the provided `cloudbuild.yaml` or `deploy.sh` script.
+### Deploy to Google Cloud Run
+
+**Project**: `ai-biz-6b7ec`  
+**Region**: `us-central1`  
+** URLs**: [https://app-22835475779.us-central1.run.app/](https://app-22835475779.us-central1.run.app/) | [https://jsong.ai-biz.app](https://jsong.ai-biz.app)
+
+1. One-time setup: grant deploy roles to the Cloud Build service account:
+   ```bash
+   ./grant-deploy-roles.sh
+   ```
+
+2. Optional: fix ADC quota warning:
+   ```bash
+   gcloud auth application-default set-quota-project ai-biz-6b7ec
+   ```
+
+3. Deploy:
+   ```bash
+   ./deploy.sh
+   ```
+   Or manually: `gcloud builds submit --config cloudbuild.yaml .`
+
+4. If the site returns Forbidden, allow public invoker:
+   ```bash
+   ./allow-public-invoker.sh
+   ```
 
 ## 🔗 Related Links
 

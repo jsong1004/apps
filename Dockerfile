@@ -13,7 +13,7 @@ RUN npm ci
 COPY tsconfig.json .
 COPY vite.config.ts .
 COPY index.html .
-COPY *.tsx ./
+COPY *.tsx *.ts ./
 
 # Copy SEO and metadata files
 COPY robots.txt .
