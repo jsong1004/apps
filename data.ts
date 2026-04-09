@@ -183,6 +183,14 @@ export const portfolioData: PortfolioData = {
             badge: "live"
         },
         {
+            webSite: "buildwithai.clearlyreqs.com",
+            title: "Build with AI - Practical Guide for Non-Developers",
+            description: "A 12-post series teaching non-developers how to build real things with AI — from understanding AI fundamentals to deploying production-ready solutions.",
+            category: "ai",
+            icon: "workshop",
+            badge: "live"
+        },
+        {
             webSite: "myjob.ai-biz.app",
             title: "MyJob - Multi-Agent Job Search Platform",
             description: "AI-driven job matching with multi-agent scoring engine, 5-second resume tailoring, cover letter generation, and interview preparation.",
@@ -277,6 +285,22 @@ export const portfolioData: PortfolioData = {
             category: "utility",
             icon: "utilities",
             badge: "live"
+        },
+        {
+            webSite: "autism.ai-biz.app",
+            title: "Autism AI",
+            description: "AI-powered platform supporting autism awareness, education, and resources.",
+            category: "ai",
+            icon: "creativity",
+            badge: "live"
+        },
+        {
+            webSite: "portrait.ai-biz.app",
+            title: "Portrait AI",
+            description: "AI-powered portrait generation and photo enhancement.",
+            category: "ai",
+            icon: "creativity",
+            badge: "live"
         }
     ],
     books: [
@@ -290,8 +314,9 @@ export const portfolioData: PortfolioData = {
         },
         {
             title: "AI Development Guide",
-            description: "A comprehensive guide to AI development covering practical approaches, tools, and strategies for building AI-powered applications and services.",
+            description: "For everyone who wants to build AI solutions without coding. Covers vibe coding, prompt engineering, AI agents, and production deployment. Mental models before tools, practical intuition over theory.",
             links: [
+                { label: "Official Site", url: "https://ai-dev.clearlyreqs.com/" },
                 { label: "Amazon", url: "https://www.amazon.com/dp/B0GNLS52YY" },
                 { label: "Google Play", url: "https://play.google.com/store/books/details?id=R6vCEQAAQBAJ" },
                 { label: "Apple Books", url: "https://books.apple.com/us/book/ai-development-guide/id6759671436" },
@@ -457,6 +482,14 @@ const portfolioDataKo: PortfolioData = {
             badge: "live"
         },
         {
+            webSite: "buildwithai.clearlyreqs.com",
+            title: "Build with AI - 비개발자를 위한 실전 가이드",
+            description: "비개발자가 AI로 실제 서비스를 만드는 12편 시리즈 — AI 기초 이해부터 프로덕션 수준의 솔루션 배포까지.",
+            category: "ai",
+            icon: "workshop",
+            badge: "live"
+        },
+        {
             webSite: "myjob.ai-biz.app",
             title: "MyJob - 멀티에이전트 채용 플랫폼",
             description: "멀티에이전트 채점 엔진을 활용한 AI 기반 채용 매칭, 5초 이력서 맞춤화, 자기소개서 생성, 면접 준비 기능.",
@@ -551,6 +584,22 @@ const portfolioDataKo: PortfolioData = {
             category: "utility",
             icon: "utilities",
             badge: "live"
+        },
+        {
+            webSite: "autism.ai-biz.app",
+            title: "Autism AI",
+            description: "자폐증 인식, 교육 및 리소스를 지원하는 AI 기반 플랫폼.",
+            category: "ai",
+            icon: "creativity",
+            badge: "live"
+        },
+        {
+            webSite: "portrait.ai-biz.app",
+            title: "Portrait AI",
+            description: "AI 기반 초상화 생성 및 사진 보강.",
+            category: "ai",
+            icon: "creativity",
+            badge: "live"
         }
     ],
     books: [
@@ -564,12 +613,12 @@ const portfolioDataKo: PortfolioData = {
         },
         {
             title: "AI 개발 가이드",
-            description: "AI 개발에 대한 종합 가이드. AI 기반 애플리케이션과 서비스를 구축하기 위한 실용적인 접근법, 도구, 전략을 다룹니다.",
+            description: "코딩 없이 AI 솔루션을 구축하고 싶은 모든 이를 위한 가이드. 바이브 코딩, 프롬프트 엔지니어링, AI 에이전트, 프로덕션 배포를 다룹니다. 도구보다 먼저 멘탈 모델, 이론보다 실용적 직관.",
             links: [
-                { label: "Amazon", url: "https://www.amazon.com/dp/B0GNLS52YY" },
-                { label: "Google Play", url: "https://play.google.com/store/books/details?id=R6vCEQAAQBAJ" },
-                { label: "Apple Books", url: "https://books.apple.com/us/book/ai-development-guide/id6759671436" },
-                { label: "Books2Read", url: "https://books2read.com/u/bwPwP0" }
+                { label: "공식 사이트", url: "https://ai-dev-ko.clearlyreqs.com/" },
+                { label: "Google Play", url: "https://play.google.com/books/reader?id=rknFEQAAQBAJ&pg=GBS.PT1" },
+                { label: "Apple Books", url: "https://books.apple.com/us/book/ai-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%BD%94%EB%94%A9-%EC%97%86%EC%9D%B4-ai-%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%AA%A8%EB%93%A0-%EC%82%AC%EB%9E%8C%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8B%A4%EC%9A%A9%EC%84%9C/id6759921105" },
+                { label: "Books2Read", url: "https://books2read.com/u/m2wDRG" }
             ]
         }
     ],
