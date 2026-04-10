@@ -1,4 +1,4 @@
-# robots.txt for www.ai-biz.app
+# robots.txt for jsong.ai-biz.app
 # Allow all search engines and AI agents to crawl
 
 User-agent: *
@@ -40,7 +40,7 @@ Allow: /
 # Disallow: /private/
 
 # Sitemap location
-Sitemap: https://www.ai-biz.app/sitemap.xml
+Sitemap: https://jsong.ai-biz.app/sitemap.xml
 
 # Crawl-delay (optional, in seconds)
 # Crawl-delay: 1
