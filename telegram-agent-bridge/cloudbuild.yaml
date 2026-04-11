@@ -1,0 +1,42 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/ai-biz-6b7ec/telegram-bot', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/ai-biz-6b7ec/telegram-bot']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'telegram-bot'
+      - '--image'
+      - 'gcr.io/ai-biz-6b7ec/telegram-bot'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--service-account'
+      - '22835475779-compute@developer.gserviceaccount.com'
+      - '--project'
+      - 'ai-biz-6b7ec'
+      - '--memory'
+      - '256Mi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
+      - '--port'
+      - '8080'
+      - '--set-env-vars'
+      - 'TELEGRAM_BOT_TOKEN=8650462065:AAHn3BUxT-mLLVm7GUVtL8Iw1uXCGbDmjwo'
+      - '--set-env-vars'
+      - 'WEBHOOK_URL=https://telegram-bot-6b7ec-22835475779.us-central1.run.app/webhook'
+
+images:
+  - 'gcr.io/ai-biz-6b7ec/telegram-bot'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
