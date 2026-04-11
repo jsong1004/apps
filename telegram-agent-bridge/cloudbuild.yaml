@@ -32,8 +32,6 @@ steps:
       - '8080'
       - '--set-env-vars'
       - 'TELEGRAM_BOT_TOKEN=8650462065:AAHn3BUxT-mLLVm7GUVtL8Iw1uXCGbDmjwo'
-      - '--set-env-vars'
-      - 'WEBHOOK_URL=https://telegram-bot-6b7ec-22835475779.us-central1.run.app/webhook'
 
 images:
   - 'gcr.io/ai-biz-6b7ec/telegram-bot'
