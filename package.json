@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "node scripts/prerender.cjs",
+    "build:full": "vite build && vite preview --port 4173 & sleep 3 && node scripts/prerender.cjs; kill %1"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",

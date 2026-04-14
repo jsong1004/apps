@@ -3,6 +3,19 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# Install Chromium and its dependencies for Puppeteer prerendering
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
+
+# Tell Puppeteer to use the system Chromium instead of downloading its own
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 # Copy package files
 COPY package*.json ./
 
@@ -29,9 +42,17 @@ COPY privacy-policy/ ./privacy-policy/
 COPY terms-of-service/ ./terms-of-service/
 COPY myjob_investment/ ./myjob_investment/
 COPY presentations/ ./presentations/
+COPY tools/ ./tools/
+COPY blog/ ./blog/
 
-# Build the application
+# Build the SPA
 RUN npm run build
+
+# Prerender: start vite preview in background, snapshot with Puppeteer, stop preview
+RUN npx vite preview --port 4173 & \
+    sleep 4 && \
+    node scripts/prerender.cjs && \
+    kill %1 || true
 
 # Production stage
 FROM nginx:alpine
@@ -47,6 +68,8 @@ COPY --from=builder /app/privacy-policy/ /usr/share/nginx/html/privacy-policy/
 COPY --from=builder /app/terms-of-service/ /usr/share/nginx/html/terms-of-service/
 COPY --from=builder /app/myjob_investment/ /usr/share/nginx/html/myjob_investment/
 COPY --from=builder /app/presentations/ /usr/share/nginx/html/presentations/
+COPY --from=builder /app/tools/ /usr/share/nginx/html/tools/
+COPY --from=builder /app/blog/ /usr/share/nginx/html/blog/
 COPY --from=builder /app/public/ /usr/share/nginx/html/
 
 # Copy SEO files to nginx html root

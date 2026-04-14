@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — AI Development, Vibe Coding &amp; Korean Startup Insights | Jaehee Song</title>
+  <meta name="description" content="Practical articles on AI development, vibe coding, multi-agent systems, and Korean startup US market entry by Jaehee Song — Data Platform Architect and AI educator." />
+  <link rel="canonical" href="https://jsong.ai-biz.app/blog/" />
+  <meta property="og:title" content="Blog — AI Development, Vibe Coding &amp; Korean Startup Insights | Jaehee Song" />
+  <meta property="og:description" content="Practical articles on AI development, vibe coding, multi-agent systems, and Korean startup US market entry by Jaehee Song — Data Platform Architect and AI educator." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/blog/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Jaehee Song Blog",
+    "description": "Practical writing on AI development, vibe coding, multi-agent AI systems, and Korean startup US market entry.",
+    "url": "https://jsong.ai-biz.app/blog/",
+    "author": {
+      "@type": "Person",
+      "name": "Jaehee Song",
+      "email": "info@koreatous.com",
+      "jobTitle": "Data Platform Architect & AI Solution Developer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Seattle", "addressRegion": "WA" }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "What Is Vibe Coding? A Production Developer's Perspective",
+        "url": "https://jsong.ai-biz.app/blog/what-is-vibe-coding/",
+        "datePublished": "2026-04-12",
+        "author": { "@type": "Person", "name": "Jaehee Song" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "How We Built a Multi-Agent Job Search Platform with CrewAI",
+        "url": "https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/",
+        "datePublished": "2026-04-12",
+        "author": { "@type": "Person", "name": "Jaehee Song" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "From Seoul to Seattle: A Checklist for Korean Startup US Market Entry",
+        "url": "https://jsong.ai-biz.app/blog/korean-startup-us-market-entry/",
+        "datePublished": "2026-04-12",
+        "author": { "@type": "Person", "name": "Jaehee Song" }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsong.ai-biz.app/blog/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 1200px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .tool-hero { background: #fff; border-radius: 12px; padding: 48px 32px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .tool-hero h1 { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; }
+    .tool-hero p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .section-card h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; text-align: center; }
+    .divider { height: 4px; width: 64px; background-color: #3498db; border-radius: 2px; margin: 0 auto 28px; }
+    .blog-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+    @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+    .blog-card { background: #f8f9fa; border-radius: 12px; padding: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s; text-decoration: none; color: inherit; display: block; }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card .blog-tag { display: inline-block; background-color: #dbeafe; color: #1d4ed8; padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; margin-bottom: 12px; }
+    .blog-card h3 { font-size: 1.15rem; font-weight: 700; color: #2c3e50; margin: 0 0 10px; }
+    .blog-card p { color: #555; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+    .blog-meta { font-size: 0.85rem; color: #999; margin-top: 12px; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      Blog
+    </nav>
+
+    <div class="tool-hero">
+      <h1>Blog</h1>
+      <p>Practical writing on AI development, vibe coding, multi-agent AI systems, and Korean startup US market entry — by Jaehee Song, Data Platform Architect and AI educator with 20+ years of industry experience.</p>
+    </div>
+
+    <div class="section-card">
+      <h2>Latest Posts</h2>
+      <div class="divider"></div>
+      <div class="blog-grid">
+
+        <a href="/blog/what-is-vibe-coding/" class="blog-card">
+          <span class="blog-tag">Vibe Coding</span>
+          <h3>What Is Vibe Coding? A Production Developer's Perspective</h3>
+          <p>Vibe coding is more than a trend — it's a shift in how software gets built. Here's what it means in practice from someone who's shipped 16 AI products using the approach.</p>
+          <div class="blog-meta">April 12, 2026 · Jaehee Song</div>
+        </a>
+
+        <a href="/blog/multi-agent-ai-job-search-crewai/" class="blog-card">
+          <span class="blog-tag">Multi-Agent AI</span>
+          <h3>How We Built a Multi-Agent Job Search Platform with CrewAI</h3>
+          <p>A technical walkthrough of MyJob's architecture: how we coordinate multiple specialized AI agents to analyze resumes and job descriptions simultaneously.</p>
+          <div class="blog-meta">April 12, 2026 · Jaehee Song</div>
+        </a>
+
+        <a href="/blog/korean-startup-us-market-entry/" class="blog-card">
+          <span class="blog-tag">Startup</span>
+          <h3>From Seoul to Seattle: A Checklist for Korean Startup US Market Entry</h3>
+          <p>After guiding 200+ Korean startups through US market entry, here are the steps most teams get wrong — and what to do instead.</p>
+          <div class="blog-meta">April 12, 2026 · Jaehee Song</div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>

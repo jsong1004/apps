@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portrait AI — AI-Powered Portrait Generation &amp; Photo Enhancement</title>
+  <meta name="description" content="Portrait AI generates professional-quality AI portraits and enhances photos using advanced image AI. Create headshots, artistic portraits, and enhanced profile photos instantly." />
+  <meta name="keywords" content="AI portrait generator, AI photo enhancement, AI headshot generator, portrait AI, AI profile photo generator" />
+  <link rel="canonical" href="https://jsong.ai-biz.app/tools/portrait-ai/" />
+  <meta property="og:title" content="Portrait AI — AI-Powered Portrait Generation &amp; Photo Enhancement" />
+  <meta property="og:description" content="Portrait AI generates professional-quality AI portraits and enhances photos using advanced image AI. Create headshots, artistic portraits, and enhanced profile photos instantly." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/tools/portrait-ai/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Portrait AI",
+    "description": "AI portrait generation and professional photo enhancement. Create headshots, artistic portraits, and enhanced profile photos instantly.",
+    "url": "https://portrait.ai-biz.app",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "author": { "@type": "Person", "name": "Jaehee Song", "email": "info@koreatous.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://jsong.ai-biz.app/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Portrait AI", "item": "https://jsong.ai-biz.app/tools/portrait-ai/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 1200px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .tool-hero { background: #fff; border-radius: 12px; padding: 48px 32px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .tool-hero h1 { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; }
+    .tool-tagline { font-size: 1.2rem; color: #3498db; font-weight: 500; margin-bottom: 20px; }
+    .tool-hero p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto 32px; }
+    .cta-btn { display: inline-block; background-color: #3498db; color: white; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: background-color 0.2s; margin: 0 8px 8px; }
+    .cta-btn:hover { background-color: #2980b9; }
+    .cta-btn.secondary { background-color: #fff; color: #3498db; border: 2px solid #3498db; }
+    .cta-btn.secondary:hover { background-color: #e8f4fc; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .section-card h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; text-align: center; }
+    .divider { height: 4px; width: 64px; background-color: #3498db; border-radius: 2px; margin: 0 auto 28px; }
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+    .feature-card { background-color: #f8f9fa; border-radius: 10px; padding: 22px; border-left: 4px solid #3498db; transition: transform 0.2s; }
+    .feature-card:hover { transform: translateY(-3px); }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 600; color: #2c3e50; margin: 0 0 8px; }
+    .feature-card p { color: #666; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+    .stats-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 48px 32px; margin-bottom: 24px; text-align: center; color: white; }
+    .stats-section h2 { font-size: 1.8rem; font-weight: 700; margin: 0 0 32px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 600px; margin: 0 auto; }
+    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); max-width: 100%; } }
+    .stat-number { font-size: 2.2rem; font-weight: 700; margin-bottom: 6px; }
+    .stat-label { font-size: 0.9rem; opacity: 0.9; }
+    .description-section { color: #555; font-size: 1.05rem; line-height: 1.8; }
+    .description-section h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 16px; }
+    .description-section p { margin-bottom: 16px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .tech-tag { background-color: #e8f4fc; color: #2980b9; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      <a href="/tools/">Tools</a><span>/</span>
+      Portrait AI
+    </nav>
+
+    <div class="tool-hero">
+      <h1>Portrait AI</h1>
+      <div class="tool-tagline">Professional AI Portrait Generation and Photo Enhancement</div>
+      <p>Portrait AI uses advanced image generation and enhancement models to create professional-quality portraits and headshots. Whether you need a polished LinkedIn profile photo, an artistic portrait, or an enhanced version of an existing photo, Portrait AI delivers high-quality results instantly.</p>
+      <a href="https://portrait.ai-biz.app" target="_blank" rel="noopener noreferrer" class="cta-btn">Create a Portrait</a>
+      <a href="/tools/" class="cta-btn secondary">All Tools</a>
+    </div>
+
+    <div class="section-card">
+      <h2>Features</h2>
+      <div class="divider"></div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>AI Portrait Generation</h3>
+          <p>Generate realistic, high-quality portraits from text descriptions — specify style, background, lighting, and mood. The AI creates a complete, original portrait from your description in seconds.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Photo Enhancement</h3>
+          <p>Upload an existing photo and let AI enhance lighting, sharpness, background, and facial details to professional-photo quality. Transform a phone selfie into a LinkedIn-ready headshot.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Multiple Styles</h3>
+          <p>Choose from professional headshot, artistic portrait, painterly style, sketch, or photorealistic rendering. Each style is tuned for different use cases from LinkedIn to creative projects.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Instant Download</h3>
+          <p>Generated and enhanced portraits are available for download immediately in high resolution — ready for LinkedIn, resumes, and profiles. No waiting, no processing queue.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <h2>Portrait Capabilities</h2>
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">AI</div>
+          <div class="stat-label">Generated portraits</div>
+        </div>
+        <div>
+          <div class="stat-number">Photo</div>
+          <div class="stat-label">Enhancement</div>
+        </div>
+        <div>
+          <div class="stat-number">Multiple</div>
+          <div class="stat-label">Art styles</div>
+        </div>
+        <div>
+          <div class="stat-number">Instant</div>
+          <div class="stat-label">High-res download</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card description-section">
+      <h2>Professional Images Without a Photography Session</h2>
+      <div class="divider"></div>
+      <p>Professional headshots matter. Studies consistently show that LinkedIn profiles with professional headshots receive dramatically more connection requests and messages than those with casual photos or no photo at all. Profile photos affect how candidates are perceived before a resume is read. They influence whether a consulting proposal is taken seriously. They shape first impressions in ways that persist throughout professional relationships.</p>
+
+      <p>The problem is that professional photography is expensive, time-consuming, and geographically constrained. A good professional headshot session costs $200-500 in most markets. It requires scheduling in advance, traveling to a studio or finding a photographer who does location shoots, and waiting days for edited images. For someone who has just updated their resume and is actively job searching, this friction is a significant barrier.</p>
+
+      <p>Portrait AI eliminates this barrier entirely. Upload a recent photo — even a phone selfie taken in good lighting — and the AI enhancement engine corrects the lighting, sharpens the focus, optimizes the background, and renders a professional-quality result suitable for LinkedIn, a company website bio, a conference speaker profile, or a consulting firm's team page. The result is ready to download in under a minute, with no scheduling, no travel, and a fraction of the cost.</p>
+
+      <p>The portrait generation capability — creating a portrait from a text description — serves a different set of use cases. Writers and game designers need character portraits. Entrepreneurs building presentation decks need consistent, professional imagery. Creative projects that require original portraits of fictional characters or historical personas are well served by generation from description. The AI handles the artistic execution based on detailed specifications for style, lighting, age, background, and mood.</p>
+
+      <p>Multiple style options allow Portrait AI to serve both professional and creative needs. The professional headshot style produces clean, corporate-appropriate images suitable for any business context. Artistic styles — painterly, sketch, photorealistic — open Portrait AI to creative applications: custom artwork, personalized gifts, book cover art, and more. Korean-American professionals who want portraits that reflect their cultural identity can specify cultural visual elements in their portrait descriptions.</p>
+
+      <p>The tool is part of Startup Consulting Inc.'s commitment to building a comprehensive suite of AI tools that address real, practical needs across a wide range of personal and professional contexts — not just business automation, but the full range of tasks where AI can save time, reduce cost, and improve quality. Portrait AI embodies this philosophy: a genuinely useful tool that delivers professional-grade results accessible to anyone.</p>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Google Imagen</span>
+        <span class="tech-tag">Stable Diffusion</span>
+        <span class="tech-tag">Gemini Vision</span>
+        <span class="tech-tag">Cloud Run</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>

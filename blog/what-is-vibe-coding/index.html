@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is Vibe Coding? A Production Developer's Perspective</title>
+  <meta name="description" content="Vibe coding explained by someone who uses it in production. Learn what vibe coding really means, how it differs from no-code, and why it's changing software development." />
+  <meta name="keywords" content="vibe coding, what is vibe coding, vibe coding definition, vibe coding for developers, AI-assisted coding" />
+  <link rel="canonical" href="https://jsong.ai-biz.app/blog/what-is-vibe-coding/" />
+  <meta property="og:title" content="What Is Vibe Coding? A Production Developer's Perspective" />
+  <meta property="og:description" content="Vibe coding explained by someone who uses it in production. Learn what vibe coding really means, how it differs from no-code, and why it's changing software development." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/blog/what-is-vibe-coding/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What Is Vibe Coding? A Production Developer's Perspective",
+    "description": "Vibe coding explained by someone who uses it in production. What it really means, how it differs from no-code, and why it's changing software development.",
+    "url": "https://jsong.ai-biz.app/blog/what-is-vibe-coding/",
+    "datePublished": "2026-04-12",
+    "dateModified": "2026-04-12",
+    "keywords": "vibe coding, what is vibe coding, vibe coding definition, AI-assisted coding",
+    "author": {
+      "@type": "Person",
+      "name": "Jaehee Song",
+      "email": "info@koreatous.com",
+      "jobTitle": "Data Platform Architect & AI Solution Developer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Seattle", "addressRegion": "WA" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Startup Consulting Inc."
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsong.ai-biz.app/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "What Is Vibe Coding?", "item": "https://jsong.ai-biz.app/blog/what-is-vibe-coding/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 900px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .post-header { background: #fff; border-radius: 12px; padding: 48px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .post-header h1 { font-size: 2.2rem; font-weight: 700; color: #2c3e50; margin: 0 0 16px; }
+    .post-header .post-meta { color: #666; font-size: 0.95rem; }
+    .post-header .post-tag { display: inline-block; background-color: #dbeafe; color: #1d4ed8; padding: 3px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .post-content { color: #444; font-size: 1.05rem; line-height: 1.9; }
+    .post-content h2 { font-size: 1.7rem; font-weight: 700; color: #2c3e50; margin: 40px 0 16px; }
+    .post-content h3 { font-size: 1.3rem; font-weight: 600; color: #2c3e50; margin: 28px 0 12px; }
+    .post-content p { margin-bottom: 18px; }
+    .post-content ul, .post-content ol { margin-bottom: 18px; padding-left: 28px; }
+    .post-content li { margin-bottom: 8px; }
+    .post-content blockquote { border-left: 4px solid #3498db; margin: 24px 0; padding: 12px 24px; background: #f0f7fd; color: #444; font-style: italic; border-radius: 0 8px 8px 0; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      <a href="/blog/">Blog</a><span>/</span>
+      What Is Vibe Coding?
+    </nav>
+
+    <div class="post-header">
+      <span class="post-tag">Vibe Coding</span>
+      <h1>What Is Vibe Coding? A Production Developer's Perspective</h1>
+      <div class="post-meta">April 12, 2026 · By Jaehee Song, Data Platform Architect &amp; AI Solution Developer, Seattle, WA</div>
+    </div>
+
+    <div class="section-card">
+      <article class="post-content">
+
+        <p>The term "vibe coding" appeared in a tweet from Andrej Karpathy in early 2025 and has since become one of the most searched phrases in software development, with growth exceeding 600% year-over-year. But if you read most of the coverage, you'll find two camps: cheerleaders who say vibe coding will replace developers, and skeptics who dismiss it as a gimmick for people who don't want to learn to code properly. Both camps are wrong, and neither is particularly useful if you actually want to understand what's happening.</p>
+
+        <p>I've shipped 16 AI products in production using vibe coding techniques. Here's what it actually means and why it matters.</p>
+
+        <h2>What Vibe Coding Actually Is</h2>
+
+        <p>Karpathy's original framing was simple: you steer the AI with natural language, accept its code suggestions without fully reading every line, and trust the system to produce something that works. You're operating on instinct and intent rather than syntax and implementation detail. The "vibe" is the intuition that something is right, even if you haven't verified every character.</p>
+
+        <p>In practice, vibe coding has evolved to mean something slightly broader: using AI as the primary executor of code, with the human acting as the architect, specifier, and quality gate. You describe what you want. The AI writes the code. You test it, describe what's wrong, and the AI fixes it. The loop runs quickly — often faster than a senior developer could write the same code manually, and certainly faster than a junior developer could write it without making mistakes that require debugging.</p>
+
+        <p>What distinguishes good vibe coding from bad vibe coding is what I call trust calibration. Knowing when to trust the AI's output and proceed, and knowing when to slow down, read carefully, and verify — this is the core skill. The AI is very good at writing idiomatic code for well-understood patterns. It is less reliable when implementing novel logic, handling security-sensitive operations, or making architectural decisions that have long-term implications. The vibe coder who doesn't understand this distinction will ship bugs they don't understand. The vibe coder who does understand it moves remarkably fast while maintaining quality.</p>
+
+        <h2>What Vibe Coding Is Not</h2>
+
+        <p>Vibe coding is not no-code. No-code tools replace the code entirely with visual interfaces and pre-built blocks. Vibe coding produces real code — code that runs on servers, that can be debugged, that can be extended, that lives in a git repository and can be reviewed by other developers. The difference matters enormously for production software, where the ability to inspect, debug, and modify the underlying implementation is essential.</p>
+
+        <p>Vibe coding is also not a replacement for understanding software architecture. If you don't understand what an API is, what a database schema means, or how authentication works, the AI will write code you can't evaluate. You'll accept broken implementations because you don't know what correct ones look like. The developers who succeed with vibe coding aren't people who skip learning fundamentals — they're people who have the architectural understanding to direct the AI intelligently and recognize when its output is wrong.</p>
+
+        <p>The correct mental model is: you are the architect, the AI is the contractor. You specify what to build — the requirements, the constraints, the architecture, the expected behavior. The AI figures out how to build it — the specific syntax, the library calls, the implementation details. This division of labor works because AI is very good at the how and humans are (still) better at the what and why.</p>
+
+        <h2>What a Vibe Coding Session Actually Looks Like</h2>
+
+        <p>Here's a concrete example from building <a href="/tools/myjob/" style="color:#3498db;">MyJob</a>, the multi-agent job search platform. I needed to build an agent that could extract job requirements from a job description posting — identifying required skills, preferred skills, years of experience, cultural signals, and salary information when available.</p>
+
+        <p>In a traditional development approach, I might spend 30-60 minutes writing a prompt template, testing edge cases, handling the parsing of the AI's output, and building the error handling around cases where the job description is in a format the parser doesn't expect. In a vibe coding session with Cursor, I described the behavior in plain language — "given a job description text, extract structured data including required skills, preferred skills, experience requirements, cultural signals, and any compensation information" — and the AI generated a working implementation in under two minutes. I tested it against three real job descriptions, found one edge case where the salary extraction was wrong, described the failure in plain language, and the AI fixed it.</p>
+
+        <p>Total time: about eight minutes. A good developer could have done this in 25-30 minutes. A junior developer might have taken two hours. The quality of the output was equivalent to what a senior developer would produce, because I was doing the architectural thinking and quality review while the AI was doing the syntactic execution.</p>
+
+        <h2>When Vibe Coding Works Well vs. When It Breaks</h2>
+
+        <p>Vibe coding works best for: implementing well-understood patterns (CRUD operations, API integrations, UI components), writing boilerplate code that follows established conventions, converting requirements into working first drafts, and iterating quickly on something that's mostly right but needs adjustment.</p>
+
+        <p>Vibe coding works less well for: implementing deeply custom algorithms where correctness requires careful mathematical reasoning, security-critical code where a single subtle error can create a vulnerability, and architectural decisions where the right choice depends on context the AI doesn't have. In these cases, the appropriate response isn't to abandon vibe coding — it's to slow down and verify more carefully. The AI's output is still a useful starting point; it just requires more careful review before you trust it.</p>
+
+        <h2>The Vibe Coding Curriculum</h2>
+
+        <p>My <a href="/tools/build-with-ai/" style="color:#3498db;">Build with AI</a> series is a 12-post curriculum specifically designed to teach vibe coding to non-developers — people who have ideas and the architectural thinking to direct an AI effectively, but who haven't spent years memorizing syntax. The series is also the practical companion to my AI Development Guide book, which provides the theoretical foundation for understanding what AI can and can't do as a coding partner.</p>
+
+        <p>I teach vibe coding at DGIST (Korea's premier science and technology university), Inha University, and Goorm because the universities recognize that the next generation of product builders needs to understand how to work with AI as a development partner, not just how to prompt it for trivial tasks. The students who master this skill will ship 10x faster than those who don't — not because they're cheating, but because they've learned to use the most powerful development tool that has ever existed.</p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Vibe coding is a real skill, not a shortcut. It's the skill of working with AI as a capable partner — directing it with precision, evaluating its output with judgment, and knowing when to trust and when to verify. The developers who master it will build more, ship faster, and produce higher-quality software than those who either dismiss it as a gimmick or embrace it uncritically without developing the judgment to use it well.</p>
+
+        <p>The +600% search growth isn't hype. Something real is changing in how software gets built. The question isn't whether to engage with it — the question is how to engage with it well.</p>
+
+      </article>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>

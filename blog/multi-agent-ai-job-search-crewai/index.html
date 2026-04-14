@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Built a Multi-Agent Job Search Platform with CrewAI</title>
+  <meta name="description" content="A technical walkthrough of MyJob's multi-agent architecture using CrewAI. Learn how specialized AI agents coordinate to analyze job descriptions and tailor resumes simultaneously." />
+  <meta name="keywords" content="CrewAI tutorial, multi-agent AI job search, CrewAI example, multi-agent platform, build with CrewAI, LangGraph job search" />
+  <link rel="canonical" href="https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/" />
+  <meta property="og:title" content="How We Built a Multi-Agent Job Search Platform with CrewAI" />
+  <meta property="og:description" content="A technical walkthrough of MyJob's multi-agent architecture using CrewAI. Learn how specialized AI agents coordinate to analyze job descriptions and tailor resumes simultaneously." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How We Built a Multi-Agent Job Search Platform with CrewAI",
+    "description": "A technical walkthrough of MyJob's multi-agent architecture using CrewAI. How specialized AI agents coordinate to analyze job descriptions and tailor resumes simultaneously.",
+    "url": "https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/",
+    "datePublished": "2026-04-12",
+    "dateModified": "2026-04-12",
+    "keywords": "CrewAI tutorial, multi-agent AI job search, CrewAI example, multi-agent platform, build with CrewAI",
+    "author": {
+      "@type": "Person",
+      "name": "Jaehee Song",
+      "email": "info@koreatous.com",
+      "jobTitle": "Data Platform Architect & AI Solution Developer"
+    },
+    "publisher": { "@type": "Organization", "name": "Startup Consulting Inc." }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsong.ai-biz.app/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How We Built a Multi-Agent Job Search Platform", "item": "https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 900px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .post-header { background: #fff; border-radius: 12px; padding: 48px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .post-header h1 { font-size: 2.2rem; font-weight: 700; color: #2c3e50; margin: 0 0 16px; }
+    .post-header .post-meta { color: #666; font-size: 0.95rem; }
+    .post-header .post-tag { display: inline-block; background-color: #dbeafe; color: #1d4ed8; padding: 3px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .post-content { color: #444; font-size: 1.05rem; line-height: 1.9; }
+    .post-content h2 { font-size: 1.7rem; font-weight: 700; color: #2c3e50; margin: 40px 0 16px; }
+    .post-content h3 { font-size: 1.3rem; font-weight: 600; color: #2c3e50; margin: 28px 0 12px; }
+    .post-content p { margin-bottom: 18px; }
+    .post-content ul, .post-content ol { margin-bottom: 18px; padding-left: 28px; }
+    .post-content li { margin-bottom: 8px; }
+    .post-content blockquote { border-left: 4px solid #3498db; margin: 24px 0; padding: 12px 24px; background: #f0f7fd; color: #444; font-style: italic; border-radius: 0 8px 8px 0; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      <a href="/blog/">Blog</a><span>/</span>
+      How We Built a Multi-Agent Job Search Platform
+    </nav>
+
+    <div class="post-header">
+      <span class="post-tag">Multi-Agent AI</span>
+      <h1>How We Built a Multi-Agent Job Search Platform with CrewAI</h1>
+      <div class="post-meta">April 12, 2026 · By Jaehee Song, Data Platform Architect &amp; AI Solution Developer, Seattle, WA</div>
+    </div>
+
+    <div class="section-card">
+      <article class="post-content">
+
+        <p>The job search tools that exist today have a fundamental architectural problem. They use a single AI model that tries to be a resume expert, an ATS (applicant tracking system) specialist, a job market analyst, and a cover letter writer simultaneously. The result is output that's mediocre at all of these things — a resume rewrite that uses the right keywords but sounds robotic, a cover letter that's generic despite being "personalized," and job match scores that don't reflect how a real human recruiter would assess the fit.</p>
+
+        <p>Multi-agent architecture solves this by assigning each of these responsibilities to a specialized agent with its own prompt, memory, and tool access. The agents share context and collaborate, but each is optimized for its specific task. The result is noticeably better than what a single model produces. This post walks through the architecture we built for <a href="/tools/myjob/" style="color:#3498db;">MyJob</a> and the technical decisions that shaped it.</p>
+
+        <h2>What Multi-Agent Means in Practice</h2>
+
+        <p>In a multi-agent system, an "agent" is an AI model with a specific role, a set of tools it can use, a defined output format, and optionally a memory system that persists relevant information across the conversation. Agents can pass information to each other — the output of one agent becomes the input of another — and an orchestrator (in our case, a CrewAI Crew object) manages the flow of information between agents.</p>
+
+        <p>This is different from chaining prompts, which is what most single-model job tools actually do. Prompt chaining is sequential: call the model with prompt A, get output, use that output in prompt B, get output, and so on. Multi-agent architecture allows for more sophisticated coordination patterns — parallel execution, conditional routing, memory sharing across agents, and agent-to-agent communication without going through a central orchestrator for every interaction.</p>
+
+        <h2>MyJob's Agent Architecture</h2>
+
+        <p>MyJob uses four specialized agents orchestrated by CrewAI:</p>
+
+        <h3>1. JobAnalyzer</h3>
+        <p>The JobAnalyzer reads the raw job description and produces a structured analysis. Its output is a JSON object containing: required skills (explicitly stated as required), preferred skills (stated as nice-to-have), years of experience requirements, seniority indicators, cultural signals extracted from the language and tone of the posting, compensation information if available, and ATS-relevant keywords that the recruiter's system is likely scanning for. The JobAnalyzer is specifically trained not to infer or assume — if something isn't clearly stated in the job description, it marks the field as null rather than guessing. This prevents downstream agents from optimizing for requirements that may not actually exist.</p>
+
+        <h3>2. ResumeAuditor</h3>
+        <p>The ResumeAuditor receives the applicant's resume and the JobAnalyzer's output simultaneously. It produces a gap analysis: which required skills are clearly evidenced in the resume, which are absent, which are partially evidenced (the applicant has related but not identical experience), and how the resume's seniority signals compare to what the job description implies. The ResumeAuditor also scores ATS compatibility — estimating whether the resume's language and formatting are likely to pass through an ATS before reaching a human reviewer. This audit is the foundation that the optimization agent uses.</p>
+
+        <h3>3. ResumeOptimizer</h3>
+        <p>The ResumeOptimizer receives the original resume and the ResumeAuditor's gap analysis. Its task is to rewrite specific sections of the resume to better target the identified gaps, integrate the relevant keywords naturally (not as a keyword dump), and strengthen the evidence for skills that are present but undersold. Crucially, the ResumeOptimizer has a hard constraint: it cannot fabricate experience. If a required skill is genuinely absent from the applicant's background, it must mark that gap as unaddressable rather than inventing something. This constraint is implemented both in the prompt and as a validation step in the crew workflow.</p>
+
+        <h3>4. CoverLetterWriter</h3>
+        <p>The CoverLetterWriter has access to all three previous agents' outputs — the job analysis, the gap audit, and the optimized resume — plus the applicant's preferences for tone (formal vs. conversational) and any specific points they want to emphasize. This information density is what produces a genuinely personalized cover letter. The agent knows exactly what the job requires, exactly how the applicant's background matches and doesn't match, and exactly how the resume has been tailored. The resulting letter references specific overlaps between the applicant's experience and the role's requirements, acknowledges any significant gaps honestly, and makes a case for why the applicant is worth interviewing despite incomplete matches.</p>
+
+        <h2>CrewAI vs. LangGraph: When to Use Each</h2>
+
+        <p>We evaluated both frameworks seriously before choosing CrewAI for MyJob. The key differentiator is the mental model each framework imposes on your system design.</p>
+
+        <p>CrewAI is optimized for role-based agent teams. You define agents as roles — "you are a resume auditing specialist with 10 years of experience in ATS systems" — and the framework handles the orchestration of how these roles interact. The API is high-level and readable. The trade-off is that CrewAI is less flexible for complex conditional workflows — if you need agents to make decisions about which other agents to call, CrewAI becomes awkward.</p>
+
+        <p>LangGraph is optimized for stateful workflows with complex branching. You define your agent system as a graph where nodes are functions (or agents) and edges represent transitions between states. It gives you precise control over what information flows where and when, and it handles conditional routing naturally. The trade-off is that LangGraph is more verbose and requires more upfront design work. For MyJob's sequential-with-handoff pattern, CrewAI was the right choice. For our <a href="/tools/ai-insights-generator/" style="color:#3498db;">AI Insights Generator</a>, which requires more dynamic routing based on the type of research request, we used LangGraph.</p>
+
+        <h2>Technical Decisions</h2>
+
+        <p>We chose Google Gemini over GPT-4 for three reasons: cost (Gemini is significantly cheaper at scale), speed (critical for the 5-second resume tailoring target), and Vertex AI integration (which simplifies deployment on Google Cloud Run). The agents are all running on the same model — agent specialization comes from the prompts and constraints, not from using different model architectures.</p>
+
+        <p>Agent memory in MyJob is session-scoped. The agents share context within a single job application session, but we don't persist memory across sessions for privacy reasons. This means each job application starts fresh — the agents don't remember previous resumes or applications. For a future version, an opt-in memory system that retains the applicant's verified skills and experience could significantly improve performance, but we chose not to build it in v1 due to the privacy implications.</p>
+
+        <h2>Production Challenges</h2>
+
+        <p>Rate limiting was the most significant operational challenge. When multiple users run the full four-agent workflow simultaneously, the Gemini API calls can stack up quickly. We implemented a token bucket rate limiter with queue management so that requests back up gracefully rather than failing noisily when the rate limit is hit. This added about two weeks to the development cycle and is the kind of production concern that's easy to ignore during prototyping but critical at any non-trivial scale.</p>
+
+        <p>Agent disagreement is a subtler problem. Occasionally the ResumeAuditor would identify a gap that the ResumeOptimizer couldn't address (because the experience genuinely doesn't exist), but the CoverLetterWriter would still write confidently about that skill because the original resume mentioned something adjacent to it. We solved this by having the CoverLetterWriter explicitly receive the "unaddressable gaps" list from the optimization step and include a constraint that it cannot make claims about those skills. Proper information passing between agents — not just output, but structured metadata about the output — is underappreciated in most multi-agent tutorials.</p>
+
+        <h2>Lessons Learned</h2>
+
+        <p>The most important lesson: agent specialization consistently produces better output than one super-agent, but it adds orchestration complexity that you have to be prepared to manage. Start with two agents and add more only when you've clearly hit a limitation that a third agent would solve. We added the ResumeAuditor as a distinct step after noticing that the ResumeOptimizer was making poor decisions when it had to simultaneously analyze and rewrite — separating the audit from the optimization improved output quality measurably.</p>
+
+        <p>The second lesson: information schema design between agents matters as much as the agents themselves. The quality of the ResumeOptimizer's output is entirely dependent on the quality of the ResumeAuditor's gap analysis. Define these schemas explicitly, validate them, and iterate on them before you iterate on the agent prompts.</p>
+
+        <p>MyJob is live at <a href="/tools/myjob/" style="color:#3498db;">jsong.ai-biz.app/tools/myjob/</a>. The AI Insights Generator at <a href="/tools/ai-insights-generator/" style="color:#3498db;">jsong.ai-biz.app/tools/ai-insights-generator/</a> is another production CrewAI implementation worth examining for a different pattern — research-oriented multi-agent systems with confidence scoring.</p>
+
+      </article>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>

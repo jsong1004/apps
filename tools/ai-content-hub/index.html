@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Content Generation Hub — Convert Videos &amp; Presentations into Blog Posts</title>
+  <meta name="description" content="AI Content Generation Hub converts YouTube videos, presentations, scripts, and audio into blog posts, podcasts, and transcripts automatically. Built by Jaehee Song." />
+  <meta name="keywords" content="AI content generation, convert video to blog post AI, presentation to blog post, AI content repurposing, audio to transcript AI" />
+  <link rel="canonical" href="https://jsong.ai-biz.app/tools/ai-content-hub/" />
+  <meta property="og:title" content="AI Content Generation Hub — Convert Videos &amp; Presentations into Blog Posts" />
+  <meta property="og:description" content="AI Content Generation Hub converts YouTube videos, presentations, scripts, and audio into blog posts, podcasts, and transcripts automatically. Built by Jaehee Song." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/tools/ai-content-hub/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Content Generation Hub",
+    "description": "Converts YouTube videos, presentations, scripts, and audio into blog posts, podcasts, and transcripts automatically.",
+    "url": "https://contents.ai-biz.app",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "author": {
+      "@type": "Person",
+      "name": "Jaehee Song",
+      "email": "info@koreatous.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://jsong.ai-biz.app/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "AI Content Generation Hub", "item": "https://jsong.ai-biz.app/tools/ai-content-hub/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 1200px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .tool-hero { background: #fff; border-radius: 12px; padding: 48px 32px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .tool-hero h1 { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; }
+    .tool-tagline { font-size: 1.2rem; color: #3498db; font-weight: 500; margin-bottom: 20px; }
+    .tool-hero p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto 32px; }
+    .cta-btn { display: inline-block; background-color: #3498db; color: white; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: background-color 0.2s; margin: 0 8px 8px; }
+    .cta-btn:hover { background-color: #2980b9; }
+    .cta-btn.secondary { background-color: #fff; color: #3498db; border: 2px solid #3498db; }
+    .cta-btn.secondary:hover { background-color: #e8f4fc; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .section-card h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; text-align: center; }
+    .divider { height: 4px; width: 64px; background-color: #3498db; border-radius: 2px; margin: 0 auto 28px; }
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+    .feature-card { background-color: #f8f9fa; border-radius: 10px; padding: 22px; border-left: 4px solid #3498db; transition: transform 0.2s; }
+    .feature-card:hover { transform: translateY(-3px); }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 600; color: #2c3e50; margin: 0 0 8px; }
+    .feature-card p { color: #666; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+    .stats-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 48px 32px; margin-bottom: 24px; text-align: center; color: white; }
+    .stats-section h2 { font-size: 1.8rem; font-weight: 700; margin: 0 0 32px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 600px; margin: 0 auto; }
+    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); max-width: 100%; } }
+    .stat-number { font-size: 2.2rem; font-weight: 700; margin-bottom: 6px; }
+    .stat-label { font-size: 0.9rem; opacity: 0.9; }
+    .description-section { color: #555; font-size: 1.05rem; line-height: 1.8; }
+    .description-section h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 16px; }
+    .description-section p { margin-bottom: 16px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .tech-tag { background-color: #e8f4fc; color: #2980b9; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      <a href="/tools/">Tools</a><span>/</span>
+      AI Content Generation Hub
+    </nav>
+
+    <div class="tool-hero">
+      <h1>AI Content Generation Hub</h1>
+      <div class="tool-tagline">Convert Any Media into Polished Written Content</div>
+      <p>Turn your YouTube videos, presentations, scripts, and audio recordings into engaging blog posts, podcast scripts, and clean transcripts — automatically. The AI Content Generation Hub handles the transformation so you can focus on creating new content instead of repurposing old content manually.</p>
+      <a href="https://contents.ai-biz.app" target="_blank" rel="noopener noreferrer" class="cta-btn">Launch Content Hub</a>
+      <a href="/tools/" class="cta-btn secondary">All Tools</a>
+    </div>
+
+    <div class="section-card">
+      <h2>Features</h2>
+      <div class="divider"></div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Video to Blog Post</h3>
+          <p>Paste a YouTube URL and receive a well-structured blog post with intro, headings, key takeaways, and conclusion — ready to publish. The AI extracts the key ideas and presents them in readable prose.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Presentation to Article</h3>
+          <p>Upload PowerPoint or PDF slides and get a narrative blog post that explains the concepts in readable prose. Bullet points become paragraphs. Diagrams become descriptions.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Audio Transcription</h3>
+          <p>Accurate transcription of podcasts, voice memos, and meeting recordings with speaker detection. Clean transcripts that can be published directly or used as source material for further writing.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Script Generation</h3>
+          <p>Generate podcast scripts from written content or transform long articles into conversational audio scripts. Make your written content listenable without rewriting it yourself.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Multi-Format Output</h3>
+          <p>Each input can produce multiple output types simultaneously — blog post, social snippets, email newsletter, and transcript in one pass. One source, many formats.</p>
+        </div>
+        <div class="feature-card">
+          <h3>SEO-Optimized Content</h3>
+          <p>Output includes suggested title tags, meta descriptions, and keyword integration based on the source content's topic. Every piece is ready for search from the moment it's generated.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <h2>Platform Capabilities</h2>
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">Input types</div>
+        </div>
+        <div>
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Output formats</div>
+        </div>
+        <div>
+          <div class="stat-number">Auto</div>
+          <div class="stat-label">SEO optimization</div>
+        </div>
+        <div>
+          <div class="stat-number">YouTube + PDF + Audio</div>
+          <div class="stat-label">Supported sources</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card description-section">
+      <h2>The Content Repurposing Problem</h2>
+      <div class="divider"></div>
+      <p>Content creators, educators, and business professionals spend enormous amounts of time producing original content — recording podcasts, building slide decks, filming YouTube videos. Then they spend an equal amount of time manually repurposing that content into other formats: writing blog posts from podcast transcripts, turning slide decks into articles, creating social posts from videos. This manual repurposing cycle is slow, repetitive, and takes time away from creating new content.</p>
+
+      <p>The creator economy has made this problem especially acute. A growing YouTube channel with 50 videos is sitting on 50 potential blog posts that could drive organic search traffic, 200 potential social posts, and dozens of email newsletter segments. But manually converting each video into a publishable article takes hours per video. Most creators never get around to it.</p>
+
+      <p>The AI Content Generation Hub eliminates the manual repurposing cycle. Feed it a YouTube URL and it analyzes the video, extracts the core ideas, and generates a structured blog post that captures the value of the original content in a format that search engines can index and readers can skim. Upload a slide deck from a conference presentation and it produces an article that makes the ideas accessible to people who weren't in the room.</p>
+
+      <p>The multi-format output capability is particularly valuable for content teams managing multiple channels simultaneously. A 30-minute webinar recording can produce a long-form blog post, three social media posts, an email newsletter section, and a clean transcript in a single generation pass. Content that would have required four hours of manual work across three team members is done in minutes.</p>
+
+      <p>SEO optimization is built into every output. The AI Content Generation Hub analyzes the topic of the source material and generates output with appropriate keyword integration, structured headings, and meta description suggestions. This means repurposed content doesn't just exist — it actively contributes to organic search visibility from the moment it's published.</p>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Google Gemini</span>
+        <span class="tech-tag">Vertex AI</span>
+        <span class="tech-tag">Cloud Run</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">YouTube Data API</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>

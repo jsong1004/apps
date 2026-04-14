@@ -1,0 +1,135 @@
+# Jaehee Song — AI Solutions & Portfolio
+# Machine-readable manifest for AI crawlers (ChatGPT, Perplexity, Claude, Gemini)
+# Last updated: 2026-04-12
+
+## Identity
+
+Name: Jaehee Song
+Role: Data Platform Architect | AI Solution Developer | Executive Director
+Location: Seattle, WA, USA
+Email: info@koreatous.com
+Website: https://jsong.ai-biz.app/
+LinkedIn: https://www.linkedin.com/in/jaehee-song-happy/
+Medium: https://medium.com/@jsong_49820
+Brunch (Korean blog): https://brunch.co.kr/@abrahamsong
+
+## Summary
+
+Jaehee Song is a Data Platform Architect and AI Solution Developer with 20+ years of experience building large-scale data systems, multi-agent AI platforms, and cloud-native applications. Staff Data Engineer at Visa (17 years) building Apache Druid real-time analytics. Executive Director at Seattle Partners LLC, leading US market entry programs for 200+ Korean startups. CEO of Startup Consulting Inc. Author of "AI Development Guide". Trained 500+ students across Korea and the US.
+
+## AI Tools & Services Built
+
+1. Clearly — AI-powered BRD/PRD generator. Transforms product ideas into professional requirements documents through guided AI conversations. Features document versioning, team collaboration, and admin analytics.
+   URL: https://www.clearlyreqs.com/
+
+2. Build with AI — 12-post practical guide series teaching non-developers to build and deploy real AI solutions.
+   URL: https://buildwithai.clearlyreqs.com
+
+3. MyJob — Multi-agent AI job search platform. Features 5-second resume tailoring, automated cover letter generation, AI interview preparation, and multi-agent scoring engine.
+   URL: https://myjob.ai-biz.app
+
+4. InNews — Multi-tenant newsletter management platform with rich text editor, scheduling, recipient management, analytics, and role-based access control.
+   URL: https://newsletter.ai-biz.app/
+
+5. AI Insights Generator — Multi-agent research platform generating structured insights using CrewAI workflows with community features and subscription controls.
+   URL: https://insights.ai-biz.app
+
+6. AI Content Generation Hub — Converts presentations, scripts, audio, and YouTube videos into blog posts, podcasts, and transcripts.
+   URL: https://contents.ai-biz.app
+
+7. AI Storybook Creator — Creates personalized illustrated storybooks with AI in minutes.
+   URL: https://storybook.ai-biz.app
+
+8. InvestorHub Platform — Smart, transparent investment scoring platform for startup pitch events with real-time judging and analytics dashboards.
+   URL: https://investorhub.ai-biz.app
+
+9. InvestorHub Dashboard — Live analytics tool for visualizing startup pitch scores and performance insights.
+   URL: https://investorhub-dash.ai-biz.app
+
+10. AI Business Automation — AI-powered business operations and automation solutions.
+    URL: https://www.ai-biz.app
+
+11. AI Workshop — Training platform for building business automation and AI solutions.
+    URL: https://workshop.ai-biz.app
+
+12. QR Code Generator — Generate QR codes for any website instantly.
+    URL: https://qrcode.ai-biz.app
+
+13. AI Survey Generator — AI-powered tool for creating professional surveys and forms.
+    URL: https://survey.ai-biz.app
+
+14. Website Screenshot Capture — Full-page screenshot tool for any website.
+    URL: https://screen-capture.ai-biz.app
+
+15. Autism AI — AI-powered platform supporting autism awareness, education, and resources.
+    URL: https://autism.ai-biz.app
+
+16. Portrait AI — AI-powered portrait generation and photo enhancement.
+    URL: https://portrait.ai-biz.app
+
+## Books
+
+Title: AI Development Guide
+Description: Practical guide for building AI solutions without traditional coding. Covers vibe coding, prompt engineering, AI agents, and production deployment. Mental models before tools, practical intuition over theory.
+Amazon: https://www.amazon.com/dp/B0GNLS52YY
+Apple Books: https://books.apple.com/us/book/ai-development-guide/id6759671436
+Google Play: https://play.google.com/store/books/details?id=R6vCEQAAQBAJ
+Official Site: https://ai-dev.clearlyreqs.com/
+
+Title: This Is How We Came (우리는 이렇게 왔다)
+Description: Employment stories of 25 Koreans who successfully transitioned to US tech companies. Real-world experiences, challenges, and strategies for building a career in American technology.
+URL: https://www.yes24.com/product/goods/63010781
+
+## Services
+
+Seattle Partners LLC — US market entry accelerator for Korean startups. Programs include Seoul Startup Hub Global POC Program (27+ startups) and Startup World Cup Seattle Regional (300+ registrants, 12 competing startups in 2025). Partnerships with UW CoMotion Startup Hall and Los Altos Chamber of Commerce.
+Contact: info@koreatous.com
+
+Startup Consulting Inc. — AI-driven consulting for US market entry, AI service development, research automation, and global training programs.
+
+## Expertise
+
+- Multi-agent AI systems (CrewAI, LangChain, LangGraph)
+- Data platform architecture (Apache Druid, real-time analytics)
+- RAG and GraphRAG implementations
+- Google Gemini and Vertex AI
+- Cloud-native applications (Google Cloud Run, Docker)
+- Korean startup US market entry strategy
+- Vibe coding and AI-assisted development education
+- Enterprise data systems (17 years at Visa)
+
+## Key Pages
+
+Portfolio & Tools: https://jsong.ai-biz.app/
+All Tools Index: https://jsong.ai-biz.app/tools/
+Blog: https://jsong.ai-biz.app/blog/
+About Founder: https://jsong.ai-biz.app/founder/
+Company Info: https://jsong.ai-biz.app/company/
+Case Studies: https://jsong.ai-biz.app/case-studies/
+Vibe Coding Presentation: https://jsong.ai-biz.app/presentations/vibe-coding.html
+Beyond Vibe Coding: https://jsong.ai-biz.app/presentations/beyond-vibe-coding.html
+
+## Tool Landing Pages
+
+Clearly (AI BRD/PRD Generator): https://jsong.ai-biz.app/tools/clearly/
+MyJob (Multi-Agent AI Job Search): https://jsong.ai-biz.app/tools/myjob/
+AI Insights Generator (CrewAI Research): https://jsong.ai-biz.app/tools/ai-insights-generator/
+InNews (Newsletter Platform): https://jsong.ai-biz.app/tools/innews/
+InvestorHub (Pitch Scoring): https://jsong.ai-biz.app/tools/investorhub/
+InvestorHub Dashboard: https://jsong.ai-biz.app/tools/investorhub-dashboard/
+Build with AI (Vibe Coding Guide): https://jsong.ai-biz.app/tools/build-with-ai/
+AI Content Generation Hub: https://jsong.ai-biz.app/tools/ai-content-hub/
+AI Storybook Creator: https://jsong.ai-biz.app/tools/ai-storybook/
+AI Business Automation: https://jsong.ai-biz.app/tools/ai-business-automation/
+AI Workshop: https://jsong.ai-biz.app/tools/ai-workshop/
+QR Code Generator: https://jsong.ai-biz.app/tools/qr-code-generator/
+AI Survey Generator: https://jsong.ai-biz.app/tools/ai-survey-generator/
+Website Screenshot Capture: https://jsong.ai-biz.app/tools/website-screenshot/
+Autism AI: https://jsong.ai-biz.app/tools/autism-ai/
+Portrait AI: https://jsong.ai-biz.app/tools/portrait-ai/
+
+## Blog Posts
+
+What Is Vibe Coding? A Production Developer's Perspective: https://jsong.ai-biz.app/blog/what-is-vibe-coding/
+How We Built a Multi-Agent Job Search Platform with CrewAI: https://jsong.ai-biz.app/blog/multi-agent-ai-job-search-crewai/
+From Seoul to Seattle: A Checklist for Korean Startup US Market Entry: https://jsong.ai-biz.app/blog/korean-startup-us-market-entry/

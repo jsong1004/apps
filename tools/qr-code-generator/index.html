@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator — Free Instant QR Code Maker for Any URL</title>
+  <meta name="description" content="Generate QR codes for any website, URL, or text instantly and for free. No account required. Download as PNG or SVG. Built by Startup Consulting Inc." />
+  <meta name="keywords" content="QR code generator, free QR code maker, QR code for website, instant QR code, generate QR code online" />
+  <link rel="canonical" href="https://jsong.ai-biz.app/tools/qr-code-generator/" />
+  <meta property="og:title" content="QR Code Generator — Free Instant QR Code Maker for Any URL" />
+  <meta property="og:description" content="Generate QR codes for any website, URL, or text instantly and for free. No account required. Download as PNG or SVG. Built by Startup Consulting Inc." />
+  <meta property="og:url" content="https://jsong.ai-biz.app/tools/qr-code-generator/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QR Code Generator",
+    "description": "Generate QR codes for any website, URL, or text instantly and for free. No account required.",
+    "url": "https://qrcode.ai-biz.app",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Organization", "name": "Startup Consulting Inc." }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsong.ai-biz.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://jsong.ai-biz.app/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "QR Code Generator", "item": "https://jsong.ai-biz.app/tools/qr-code-generator/" }
+    ]
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    #app-header-placeholder { position: sticky; top: 0; z-index: 1000; background-color: #2c3e50; color: white; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    #app-header-placeholder .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    #app-header-placeholder .header-title { font-size: 1.5em; font-weight: 700; }
+    #app-header-placeholder .header-title a { color: white; text-decoration: none; }
+    #app-header-placeholder .header-social-links a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.9em; }
+    #app-header-placeholder .header-social-links a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { #app-header-placeholder .header-content { flex-direction: column; align-items: flex-start; } #app-header-placeholder .header-title { margin-bottom: 10px; } #app-header-placeholder .header-social-links a { margin-left: 0; margin-right: 15px; } }
+    .page-wrap { flex-grow: 1; max-width: 1200px; margin: 20px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .breadcrumb { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .breadcrumb a { color: #3498db; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+    .tool-hero { background: #fff; border-radius: 12px; padding: 48px 32px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .tool-hero h1 { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; }
+    .tool-tagline { font-size: 1.2rem; color: #3498db; font-weight: 500; margin-bottom: 20px; }
+    .tool-hero p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto 32px; }
+    .cta-btn { display: inline-block; background-color: #3498db; color: white; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: background-color 0.2s; margin: 0 8px 8px; }
+    .cta-btn:hover { background-color: #2980b9; }
+    .cta-btn.secondary { background-color: #fff; color: #3498db; border: 2px solid #3498db; }
+    .cta-btn.secondary:hover { background-color: #e8f4fc; }
+    .section-card { background: #fff; border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    .section-card h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 12px; text-align: center; }
+    .divider { height: 4px; width: 64px; background-color: #3498db; border-radius: 2px; margin: 0 auto 28px; }
+    .features-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+    .feature-card { background-color: #f8f9fa; border-radius: 10px; padding: 22px; border-left: 4px solid #3498db; transition: transform 0.2s; }
+    .feature-card:hover { transform: translateY(-3px); }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 600; color: #2c3e50; margin: 0 0 8px; }
+    .feature-card p { color: #666; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+    .stats-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 48px 32px; margin-bottom: 24px; text-align: center; color: white; }
+    .stats-section h2 { font-size: 1.8rem; font-weight: 700; margin: 0 0 32px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 600px; margin: 0 auto; }
+    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); max-width: 100%; } }
+    .stat-number { font-size: 2.2rem; font-weight: 700; margin-bottom: 6px; }
+    .stat-label { font-size: 0.9rem; opacity: 0.9; }
+    .description-section { color: #555; font-size: 1.05rem; line-height: 1.8; }
+    .description-section h2 { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin: 0 0 16px; }
+    .description-section p { margin-bottom: 16px; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .tech-tag { background-color: #e8f4fc; color: #2980b9; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+    #app-footer-placeholder { background-color: #111827; color: #d1d5db; padding: 48px 0; margin-top: auto; }
+    #app-footer-placeholder .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    #app-footer-placeholder .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 32px; }
+    @media (min-width: 768px) { #app-footer-placeholder .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+    #app-footer-placeholder .footer-section h3 { font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section.company-info h3 { font-size: 1.25rem; font-weight: 700; }
+    #app-footer-placeholder .footer-section p { margin-bottom: 16px; }
+    #app-footer-placeholder .footer-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    #app-footer-placeholder .footer-section ul li a, #app-footer-placeholder .footer-contact-item a { color: #d1d5db; text-decoration: none; }
+    #app-footer-placeholder .footer-section ul li a:hover, #app-footer-placeholder .footer-contact-item a:hover { color: white; }
+    #app-footer-placeholder .footer-contact-item { display: flex; align-items: center; gap: 8px; }
+    #app-footer-placeholder .footer-bottom { border-top: 1px solid #374151; margin-top: 48px; padding-top: 32px; font-size: 0.875rem; text-align: center; }
+    #app-footer-placeholder .footer-bottom p { margin: 0 0 8px 0; }
+    #app-footer-placeholder .footer-bottom-links a { color: #d1d5db; text-decoration: none; margin: 0 8px; }
+    #app-footer-placeholder .footer-bottom-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+  <div id="app-header-placeholder"></div>
+
+  <div class="page-wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span>/</span>
+      <a href="/tools/">Tools</a><span>/</span>
+      QR Code Generator
+    </nav>
+
+    <div class="tool-hero">
+      <h1>QR Code Generator</h1>
+      <div class="tool-tagline">Generate QR Codes for Any URL — Instantly, Free</div>
+      <p>Create a QR code for any website, URL, or text in one click. No account, no watermarks, no limits. Download your QR code as a high-resolution PNG or SVG file ready for print and digital use.</p>
+      <a href="https://qrcode.ai-biz.app" target="_blank" rel="noopener noreferrer" class="cta-btn">Generate a QR Code</a>
+      <a href="/tools/" class="cta-btn secondary">All Tools</a>
+    </div>
+
+    <div class="section-card">
+      <h2>Features</h2>
+      <div class="divider"></div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Instant Generation</h3>
+          <p>Enter your URL or text and your QR code is generated in real time — no waiting, no sign-up. The QR code appears as you type, so you can preview it before downloading.</p>
+        </div>
+        <div class="feature-card">
+          <h3>High-Resolution Download</h3>
+          <p>Download as PNG (up to 1000x1000px) or vector SVG — suitable for business cards, print materials, and large-format displays. Vector SVG scales infinitely without quality loss.</p>
+        </div>
+        <div class="feature-card">
+          <h3>No Limits</h3>
+          <p>Generate as many QR codes as you need with no daily limits, no account required, and no watermarks on output. Every download is clean and ready to use immediately.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Custom Sizes</h3>
+          <p>Set the exact pixel dimensions you need for your use case — small for digital display, large for print. Size presets for common use cases like business cards and event posters.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <h2>Why Use This Tool</h2>
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">Instant</div>
+          <div class="stat-label">Generation</div>
+        </div>
+        <div>
+          <div class="stat-number">PNG + SVG</div>
+          <div class="stat-label">Download formats</div>
+        </div>
+        <div>
+          <div class="stat-number">No account</div>
+          <div class="stat-label">Required</div>
+        </div>
+        <div>
+          <div class="stat-number">Unlimited</div>
+          <div class="stat-label">Free use</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card description-section">
+      <h2>QR Codes That Work Everywhere</h2>
+      <div class="divider"></div>
+      <p>QR codes have become a standard communication medium across industries — from restaurant menus and retail product packaging to event registration and business card contact details. The technology works because every smartphone now includes a native QR code scanner in the camera app, eliminating the need for a dedicated scanning application. When a customer, attendee, or prospect sees a QR code and wants to scan it, the friction is near zero.</p>
+
+      <p>Despite this ubiquity, most QR code generators available online are cluttered with ads, impose daily limits, force account creation, or embed watermarks on free-tier downloads. These restrictions exist because QR code generation is used as a lead generation funnel — your need for a QR code is their opportunity to capture your email address. The result is that generating a simple QR code becomes a 10-minute process of navigating sign-up flows and upsell prompts.</p>
+
+      <p>The QR Code Generator built by Startup Consulting Inc. takes the opposite philosophy: a tool should do its job without friction. Enter a URL, get a QR code, download it. That's it. No account creation, no email verification, no watermarks, no daily limits. The tool is built as a public utility for the broader business community — a way to demonstrate that useful tools don't have to be predatory.</p>
+
+      <p>Common use cases for the QR Code Generator include restaurant menu links (generate a QR code that points to your online menu, print it on table tents), business cards (add a QR code linking to your LinkedIn profile or contact card), event registration (display a QR code at conferences and meetups that links to the registration form), product packaging (link to product pages, instruction manuals, or video tutorials), and marketing campaigns (create trackable short links with QR codes for print advertising).</p>
+
+      <p>The SVG output format is particularly important for print applications. Unlike PNG, which is a raster format that loses quality when scaled beyond its native resolution, SVG is a vector format that scales to any size without any loss of sharpness. For large-format applications like event banners, trade show displays, or poster printing, SVG is the correct format — and the QR Code Generator provides it with every download.</p>
+
+      <p>QR codes are also increasingly important in the Korean-American business community that Startup Consulting Inc. serves. Korean business culture has embraced QR codes extensively — from KakaoTalk ID sharing to restaurant menu displays to business networking events. Having a reliable, frictionless QR code generator available as part of the AI tools suite makes it easy for clients and community members to generate professional-quality codes on demand without switching to another tool.</p>
+
+      <div class="tech-tags">
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">QR Library</span>
+        <span class="tech-tag">Google Cloud Run</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer-placeholder"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerContainer = document.getElementById('app-header-placeholder');
+        const footerContainer = document.getElementById('app-footer-placeholder');
+        if (headerContainer) {
+            headerContainer.innerHTML = `<div class="header-content"><div class="header-title"><a href="/">AI Business Tools Showcase</a></div><div class="header-social-links"><a href="https://www.linkedin.com/in/jaehee-song-happy/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://medium.com/@jsong_49820" target="_blank" rel="noopener noreferrer">Medium</a></div></div>`;
+        }
+        if (footerContainer) {
+            footerContainer.innerHTML = `<div class="footer-container"><div class="footer-grid"><div class="footer-section company-info"><h3>Jaehee Song</h3><p>Data Platform Architect &amp; AI Solution Developer. Building production-grade AI tools from Seattle, WA.</p></div><div class="footer-section"><h3>AI Tools</h3><ul><li><a href="/tools/clearly/">Clearly — BRD/PRD Generator</a></li><li><a href="/tools/myjob/">MyJob — AI Job Search</a></li><li><a href="/tools/ai-insights-generator/">AI Insights Generator</a></li><li><a href="/tools/">All Tools →</a></li></ul></div><div class="footer-section"><h3>Pages</h3><ul><li><a href="/">Portfolio</a></li><li><a href="/founder/">About Founder</a></li><li><a href="/company/">Company</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/blog/">Blog</a></li></ul></div><div class="footer-section"><h3>Contact</h3><ul><li class="footer-contact-item"><span>📧</span><a href="mailto:info@koreatous.com">info@koreatous.com</a></li></ul></div></div><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Startup Consulting Inc. All rights reserved.</p><div class="footer-bottom-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-of-service/">Terms of Service</a></div></div></div>`;
+        }
+    });
+  </script>
+</body>
+</html>
