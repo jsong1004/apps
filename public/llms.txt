@@ -80,6 +80,10 @@ Title: This Is How We Came (우리는 이렇게 왔다)
 Description: Employment stories of 25 Koreans who successfully transitioned to US tech companies. Real-world experiences, challenges, and strategies for building a career in American technology.
 URL: https://www.yes24.com/product/goods/63010781
 
+Title: The Mouth Opens, The Mouth Closes
+Description: A literary nonfiction series on care, consciousness, aging, disability, AI, and the human search for meaning amidst identity breakdown.
+URL: https://life.ai-biz.app/
+
 ## Services
 
 Seattle Partners LLC — US market entry accelerator for Korean startups. Programs include Seoul Startup Hub Global POC Program (27+ startups) and Startup World Cup Seattle Regional (300+ registrants, 12 competing startups in 2025). Partnerships with UW CoMotion Startup Hall and Los Altos Chamber of Commerce.

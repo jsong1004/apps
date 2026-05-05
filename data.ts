@@ -322,6 +322,13 @@ export const portfolioData: PortfolioData = {
                 { label: "Apple Books", url: "https://books.apple.com/us/book/ai-development-guide/id6759671436" },
                 { label: "Books2Read", url: "https://books2read.com/u/bwPwP0" }
             ]
+        },
+        {
+            title: "The Mouth Opens, The Mouth Closes",
+            description: "A literary nonfiction series on care, consciousness, aging, disability, AI, and the human search for meaning amidst identity breakdown.",
+            links: [
+                { label: "Official Site", url: "https://life.ai-biz.app/" }
+            ]
         }
     ],
     lectures: [
@@ -619,6 +626,13 @@ const portfolioDataKo: PortfolioData = {
                 { label: "Google Play", url: "https://play.google.com/books/reader?id=rknFEQAAQBAJ&pg=GBS.PT1" },
                 { label: "Apple Books", url: "https://books.apple.com/us/book/ai-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%BD%94%EB%94%A9-%EC%97%86%EC%9D%B4-ai-%EC%86%94%EB%A3%A8%EC%85%98%EC%9D%84-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%AA%A8%EB%93%A0-%EC%82%AC%EB%9E%8C%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8B%A4%EC%9A%A9%EC%84%9C/id6759921105" },
                 { label: "Books2Read", url: "https://books2read.com/u/m2wDRG" }
+            ]
+        },
+        {
+            title: "The Mouth Opens, The Mouth Closes",
+            description: "돌봄, 의식, 노화, 장애, AI, 그리고 정체성 붕괴 속에서 의미를 찾는 인간의 탐구에 관한 문학적 논픽션 시리즈입니다.",
+            links: [
+                { label: "공식 사이트", url: "https://life.ai-biz.app/" }
             ]
         }
     ],
