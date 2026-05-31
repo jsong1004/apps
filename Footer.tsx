@@ -33,6 +33,8 @@ export function createFooter(container: HTMLElement): void {
         { name: 'MyJob - Job Search Platform', url: 'https://myjob.ai-biz.app' },
         { name: 'AI Insights Generator', url: 'https://insights.ai-biz.app' },
         { name: 'InNews - Newsletter Platform', url: 'https://newsletter.ai-biz.app' },
+        { name: 'Vitamin Help', url: 'https://vitamin.ai-biz.app/' },
+        { name: 'Nutrition Help', url: 'https://nutrition.ai-biz.app/' },
     ];
     serviceItems.forEach(item => {
         const li = document.createElement('li');

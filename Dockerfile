@@ -40,7 +40,6 @@ COPY company/ ./company/
 COPY case-studies/ ./case-studies/
 COPY privacy-policy/ ./privacy-policy/
 COPY terms-of-service/ ./terms-of-service/
-COPY myjob_investment/ ./myjob_investment/
 COPY presentations/ ./presentations/
 COPY tools/ ./tools/
 COPY blog/ ./blog/
@@ -66,7 +65,6 @@ COPY --from=builder /app/company/ /usr/share/nginx/html/company/
 COPY --from=builder /app/case-studies/ /usr/share/nginx/html/case-studies/
 COPY --from=builder /app/privacy-policy/ /usr/share/nginx/html/privacy-policy/
 COPY --from=builder /app/terms-of-service/ /usr/share/nginx/html/terms-of-service/
-COPY --from=builder /app/myjob_investment/ /usr/share/nginx/html/myjob_investment/
 COPY --from=builder /app/presentations/ /usr/share/nginx/html/presentations/
 COPY --from=builder /app/tools/ /usr/share/nginx/html/tools/
 COPY --from=builder /app/blog/ /usr/share/nginx/html/blog/

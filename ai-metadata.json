@@ -325,14 +325,6 @@
   ],
   "presentations": [
     {
-      "id": "myjob-presentation",
-      "name": "MyJob Investment Presentation",
-      "url": "https://apps.ai-biz.app/myjob_investment/myjob-presentation.html",
-      "description": "Complete presentation showcasing MyJob's AI-powered job search platform, featuring multi-agent architecture, comprehensive features, and future enhancement roadmap.",
-      "type": "demo",
-      "topics": ["AI", "Job Search", "Investment", "Product Demo"]
-    },
-    {
       "id": "highschool-lecture",
       "name": "AI와 함께 꿈을 찾는 법",
       "url": "https://apps.ai-biz.app/presentations/highschool-special-lecture.html",
