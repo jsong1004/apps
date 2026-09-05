@@ -12,6 +12,7 @@ build
 .env
 .env.local
 .env.*.local
+gha-creds-*.json
 
 # Version control
 .git
@@ -25,4 +26,4 @@ build
 
 # OS files
 .DS_Store
-Thumbs.db 
+Thumbs.db

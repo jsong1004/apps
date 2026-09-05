@@ -95,6 +95,24 @@ npm run build
    ./allow-public-invoker.sh
    ```
 
+### Automatic deploys from GitHub
+
+The `Deploy to Cloud Run` GitHub Actions workflow submits `cloudbuild.yaml`
+whenever code is pushed to `main`. It can also be run manually from the Actions
+tab.
+
+Configure these GitHub repository secrets before running the workflow:
+
+- `GCP_WORKLOAD_IDENTITY_PROVIDER`: full Workload Identity Provider resource
+  name, such as
+  `projects/22835475779/locations/global/workloadIdentityPools/POOL/providers/PROVIDER`
+- `GCP_SERVICE_ACCOUNT`: dedicated deployment service account email
+
+The deployment service account needs `roles/cloudbuild.builds.editor` and
+`roles/serviceusage.serviceUsageConsumer` on project `ai-biz-6b7ec`. Allow the
+GitHub repository's Workload Identity principal to impersonate it with
+`roles/iam.workloadIdentityUser`.
+
 ## 🔗 Related Links
 
 - **Main Platform**: https://www.ai-biz.app/
@@ -116,4 +134,3 @@ This is a private showcase project. For inquiries or issues, please contact the 
 **Status**: ✅ Production Ready  
 **Web Services**: 13+  
 **Languages**: EN, KO
-
