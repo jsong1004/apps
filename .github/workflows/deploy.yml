@@ -42,6 +42,7 @@ jobs:
         run: >-
           gcloud builds submit
           --config=cloudbuild.yaml
+          --git-source-revision="${GITHUB_SHA}"
           --project="${GCP_PROJECT_ID}"
           --quiet
-          .
+          "https://github.com/${GITHUB_REPOSITORY}.git"
