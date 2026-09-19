@@ -183,7 +183,7 @@ export const portfolioData: PortfolioData = {
             badge: "live"
         },
         {
-            webSite: "buildwithai.clearlyreqs.com",
+            webSite: "buildwithai.clearlyreqs.com/en/",
             title: "Build with AI - Practical Guide for Non-Developers",
             description: "A 12-post series teaching non-developers how to build real things with AI — from understanding AI fundamentals to deploying production-ready solutions.",
             category: "ai",
@@ -301,6 +301,22 @@ export const portfolioData: PortfolioData = {
             category: "ai",
             icon: "creativity",
             badge: "live"
+        },
+        {
+            webSite: "vitamin.ai-biz.app/",
+            title: "Vitamin Help",
+            description: "AI-powered vitamin guidance service for learning about supplements and personalized wellness support.",
+            category: "ai",
+            icon: "utilities",
+            badge: "live"
+        },
+        {
+            webSite: "nutrition.ai-biz.app/",
+            title: "Nutrition Help",
+            description: "AI-powered nutrition guidance service for meal planning, food insights, and healthier everyday choices.",
+            category: "ai",
+            icon: "utilities",
+            badge: "live"
         }
     ],
     books: [
@@ -327,7 +343,7 @@ export const portfolioData: PortfolioData = {
             title: "The Mouth Opens, The Mouth Closes",
             description: "A literary nonfiction series on care, consciousness, aging, disability, AI, and the human search for meaning amidst identity breakdown.",
             links: [
-                { label: "Official Site", url: "https://life.ai-biz.app/" }
+                { label: "Official Site", url: "https://life.ai-biz.app/#home" }
             ]
         }
     ],
@@ -337,10 +353,12 @@ export const portfolioData: PortfolioData = {
         { venue: "Korea Artificial Intelligence Academy", topic: "US Chatbot Status and US Employment", year: "2019" },
         { venue: "Gyeongbuk Software High School", topic: "Introduction to Data Engineer Practical Work, Developer Competencies in the Generative AI Era", year: "2024" },
         { venue: "Goorm", topic: "Vibe Coding - Innovation in Working Methods", year: "2022 - 2025" },
+        { venue: "Goorm", topic: "Vibe coding Project Mentoring", year: "2025 - 2026" },
         { venue: "Goorm, Inha University", topic: "AI Trends and Developer Skills", year: "2022 - 2025" },
         { venue: "DGIST, Daegu Catholic University", topic: "Data Engineering", year: "2022 - 2025" },
         { venue: "Washington Education Institution", topic: "Workshops and Lectures for Experts and Students", year: "2025" },
-        { venue: "42 Gyeongsan", topic: "Developer Mentoring", year: "2025" }
+        { venue: "42 Gyeongsan", topic: "Developer Mentoring", year: "2025" },
+        { venue: "Goorm", topic: "Tech Trends from Seattle, Emotion Diary Mobile App Development Workshop", year: "2026" }
     ],
     programs: [
         { name: "Smart Career Project", period: "May 2019 - Aug 2019", partner: "Backend Development (Python, Graph Database, Django)" },
@@ -489,7 +507,7 @@ const portfolioDataKo: PortfolioData = {
             badge: "live"
         },
         {
-            webSite: "buildwithai.clearlyreqs.com",
+            webSite: "buildwithai.clearlyreqs.com/ko/",
             title: "Build with AI - 비개발자를 위한 실전 가이드",
             description: "비개발자가 AI로 실제 서비스를 만드는 12편 시리즈 — AI 기초 이해부터 프로덕션 수준의 솔루션 배포까지.",
             category: "ai",
@@ -607,6 +625,22 @@ const portfolioDataKo: PortfolioData = {
             category: "ai",
             icon: "creativity",
             badge: "live"
+        },
+        {
+            webSite: "vitamin.ai-biz.app/",
+            title: "Vitamin Help",
+            description: "영양제 정보와 개인 맞춤 웰니스 지원을 제공하는 AI 기반 비타민 가이드 서비스입니다.",
+            category: "ai",
+            icon: "utilities",
+            badge: "live"
+        },
+        {
+            webSite: "nutrition.ai-biz.app/",
+            title: "Nutrition Help",
+            description: "식단 계획, 음식 인사이트, 건강한 일상 선택을 돕는 AI 기반 영양 가이드 서비스입니다.",
+            category: "ai",
+            icon: "utilities",
+            badge: "live"
         }
     ],
     books: [
@@ -632,7 +666,7 @@ const portfolioDataKo: PortfolioData = {
             title: "The Mouth Opens, The Mouth Closes",
             description: "돌봄, 의식, 노화, 장애, AI, 그리고 정체성 붕괴 속에서 의미를 찾는 인간의 탐구에 관한 문학적 논픽션 시리즈입니다.",
             links: [
-                { label: "공식 사이트", url: "https://life.ai-biz.app/" }
+                { label: "공식 사이트", url: "https://life.ai-biz.app/#home" }
             ]
         }
     ],
@@ -641,11 +675,13 @@ const portfolioDataKo: PortfolioData = {
         { venue: "삼성전자 연구소", topic: "데이터 수집, 분석 및 시각화", year: "2018" },
         { venue: "한국인공지능아카데미", topic: "미국 챗봇 현황과 미국 취업", year: "2019" },
         { venue: "경북소프트웨어고등학교", topic: "데이터 엔지니어 실무 입문, 생성형 AI 시대의 개발자 역량", year: "2024" },
-        { venue: "구름(Goorm)", topic: "바이브 코딩 - 일하는 방식의 혁신", year: "2022 - 2025" },
+        { venue: "구름(Goorm)", topic: "바이브 코딩 - 일하는 방식의 혁신", year: "2022 - 2026" },
+        { venue: "구름(Goorm)", topic: "Vibe coding Project Mentoring", year: "2025 - 2026" },
         { venue: "구름(Goorm), 인하대학교", topic: "AI 트렌드와 개발자 역량", year: "2022 - 2025" },
         { venue: "DGIST, 대구가톨릭대학교", topic: "데이터 엔지니어링", year: "2022 - 2025" },
         { venue: "워싱턴 교육기관", topic: "전문가 및 학생 대상 워크숍과 강연", year: "2025" },
-        { venue: "42 경산", topic: "개발자 멘토링", year: "2025" }
+        { venue: "42 경산", topic: "개발자 멘토링", year: "2025" },
+        { venue: "구름(Goorm)", topic: "시애틀에서 바라본 기술 동향, 감정 일기 모바일 앱 개발 워크샵", year: "2026" }
     ],
     programs: [
         { name: "Smart Career 프로젝트", period: "2019.05 - 2019.08", partner: "백엔드 개발 (Python, Graph Database, Django)" },
@@ -676,6 +712,6 @@ const portfolioDataKo: PortfolioData = {
         { name: "Brunch", url: "https://brunch.co.kr/@abrahamsong" }
     ],
     contact: {
-        email: "info@koreatous.com"
+        email: "jsong@koreatous.com"
     }
 };

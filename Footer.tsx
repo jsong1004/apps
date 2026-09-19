@@ -2,7 +2,9 @@ import { getLang } from './i18n';
 import { t } from './i18n-data';
 
 export function createFooter(container: HTMLElement): void {
-    const ui = t(getLang());
+    const lang = getLang();
+    const ui = t(lang);
+    const isKo = lang === 'ko';
     container.innerHTML = '';
 
     const footerContainer = document.createElement('div');
@@ -15,7 +17,7 @@ export function createFooter(container: HTMLElement): void {
     const infoSection = document.createElement('div');
     infoSection.className = 'footer-section company-info';
     const infoHeader = document.createElement('h3');
-    infoHeader.textContent = getLang() === 'ko' ? '송재희' : 'Jaehee Song';
+    infoHeader.textContent = isKo ? '송재희' : 'Jaehee Song';
     const infoParagraph = document.createElement('p');
     infoParagraph.textContent = ui.footerDescription;
     infoSection.appendChild(infoHeader);
@@ -30,6 +32,7 @@ export function createFooter(container: HTMLElement): void {
     const servicesList = document.createElement('ul');
     const serviceItems = [
         { name: 'Clearly - BRD/PRD Generator', url: 'https://www.clearlyreqs.com' },
+        { name: 'Build with AI', url: isKo ? 'https://buildwithai.clearlyreqs.com/ko/' : 'https://buildwithai.clearlyreqs.com/en/' },
         { name: 'MyJob - Job Search Platform', url: 'https://myjob.ai-biz.app' },
         { name: 'AI Insights Generator', url: 'https://insights.ai-biz.app' },
         { name: 'InNews - Newsletter Platform', url: 'https://newsletter.ai-biz.app' },
@@ -58,7 +61,7 @@ export function createFooter(container: HTMLElement): void {
     const affiliationsList = document.createElement('ul');
     const affiliationItems = [
         { name: 'Seattle Partners LLC', url: 'https://www.seattlepartners.us' },
-        { name: 'Startup Consulting Inc.', url: '/company/' },
+        { name: 'Startup Consulting Inc.', url: 'https://www.koreatous.com' },
         { name: ui.footerAboutFounder, url: '/founder/' },
     ];
     affiliationItems.forEach(item => {

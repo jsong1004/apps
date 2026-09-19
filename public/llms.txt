@@ -82,7 +82,7 @@ URL: https://www.yes24.com/product/goods/63010781
 
 Title: The Mouth Opens, The Mouth Closes
 Description: A literary nonfiction series on care, consciousness, aging, disability, AI, and the human search for meaning amidst identity breakdown.
-URL: https://life.ai-biz.app/
+URL: https://life.ai-biz.app/#home
 
 ## Services
 
