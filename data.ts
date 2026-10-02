@@ -20,6 +20,7 @@ export interface BookEntry {
     title: string;
     titleKo?: string;
     description: string;
+    status?: string;
     links: { label: string; url: string }[];
 }
 
@@ -345,6 +346,13 @@ export const portfolioData: PortfolioData = {
             links: [
                 { label: "Official Site", url: "https://life.ai-biz.app/#home" }
             ]
+        },
+        {
+            title: "Living with AI",
+            titleKo: "AI와 함께 살아간다는 것",
+            description: "How to accept AI's help without handing yourself over. Following the everyday lives of six characters, this AI ethics book explains how chatbots work and explores hallucination, designed friendliness and emotional dependence, data bias, honesty, and privacy, then helps readers set their own principles for using AI.",
+            status: "Coming mid-October 2026",
+            links: []
         }
     ],
     lectures: [
@@ -668,6 +676,13 @@ const portfolioDataKo: PortfolioData = {
             links: [
                 { label: "공식 사이트", url: "https://life.ai-biz.app/#home" }
             ]
+        },
+        {
+            title: "AI와 함께 살아간다는 것",
+            titleKo: "AI의 도움을 받되 나를 넘겨주지 않는 법",
+            description: "지영·민준·성호, 그리고 하은·영옥·도현의 일상을 따라가며 생성형 AI의 작동 원리부터 환각, 설계된 다정함과 정서적 의존, 데이터 편향, AI 시대의 정직함, 개인정보까지 다룹니다. AI에게 무엇을 맡기고 무엇을 내 손에 남길지, 각자의 AI 사용 원칙을 세우도록 돕는 AI 윤리 교양서입니다.",
+            status: "2026년 10월 중순 출간 예정",
+            links: []
         }
     ],
     lectures: [

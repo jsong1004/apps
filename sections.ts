@@ -216,7 +216,7 @@ export function renderBooks(container: HTMLElement): void {
     container.classList.add('fade-in-section');
     const wrapper = createWrapper();
 
-    wrapper.appendChild(createHeading(ui.headingBooks));
+    wrapper.appendChild(createHeading(ui.headingPublications));
 
     const grid = document.createElement('div');
     grid.className = 'books-grid';
@@ -229,6 +229,10 @@ export function renderBooks(container: HTMLElement): void {
             ? `<h3 class="book-title">${book.title}</h3><p class="book-title-ko">${book.titleKo}</p>`
             : `<h3 class="book-title">${book.title}</h3>`;
 
+        const statusHtml = book.status
+            ? `<span class="book-status">${book.status}</span>`
+            : '';
+
         const linksHtml = book.links
             .map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="book-link">${link.label}</a>`)
             .join('');
@@ -237,7 +241,7 @@ export function renderBooks(container: HTMLElement): void {
             <div class="book-icon">\uD83D\uDCD6</div>
             ${titleHtml}
             <p class="book-desc">${book.description}</p>
-            <div class="book-links">${linksHtml}</div>
+            <div class="book-links">${statusHtml}${linksHtml}</div>
         `;
 
         grid.appendChild(card);

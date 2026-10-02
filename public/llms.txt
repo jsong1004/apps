@@ -84,6 +84,11 @@ Title: The Mouth Opens, The Mouth Closes
 Description: A literary nonfiction series on care, consciousness, aging, disability, AI, and the human search for meaning amidst identity breakdown.
 URL: https://life.ai-biz.app/#home
 
+Title: Living with AI (AI와 함께 살아간다는 것)
+Subtitle: AI의 도움을 받되 나를 넘겨주지 않는 법 (How to accept AI's help without handing yourself over)
+Description: Korean-language AI ethics book for everyday users. Follows six characters to explain how chatbots work and explore hallucination, emotional dependence, data bias, honesty, privacy, and personal AI-use principles.
+Status: Forthcoming, mid-October 2026
+
 ## Services
 
 Seattle Partners LLC — US market entry accelerator for Korean startups. Programs include Seoul Startup Hub Global POC Program (27+ startups) and Startup World Cup Seattle Regional (300+ registrants, 12 competing startups in 2025). Partnerships with UW CoMotion Startup Hall and Los Altos Chamber of Commerce.
