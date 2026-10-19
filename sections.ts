@@ -179,7 +179,10 @@ export function renderProjects(container: HTMLElement): void {
         'workshop': '\uD83C\uDF93',
         'utilities': '\uD83D\uDD27',
         'marketing': '\uD83D\uDCE3',
-        'browser': '\uD83C\uDF10'
+        'vibe-coding': '\uD83D\uDCA1',
+        'muse': '\uD83C\uDFA8',
+        'knowledge': '\uD83D\uDCD6',
+        'learning': '\uD83D\uDCDA'
     };
 
     const categoryMap: { [key: string]: string } = {
