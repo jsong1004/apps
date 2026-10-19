@@ -318,6 +318,38 @@ export const portfolioData: PortfolioData = {
             category: "ai",
             icon: "utilities",
             badge: "live"
+        },
+        {
+            webSite: "vibe-coding.koreatous.com/",
+            title: "Jaehee Song - Vibe Coding",
+            description: "Innovation in working methods through creative collaboration and AI-powered development practices.",
+            category: "business",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "muse.koreatous.com/",
+            title: "Jaehee Song - Muse",
+            description: "AI creative companion for innovative thinking and problem-solving.",
+            category: "ai",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "whatwehandover.koreatous.com/",
+            title: "Jaehee Song - What We Hand Over",
+            description: "Exploring the philosophy and practice of knowledge transfer and legacy building.",
+            category: "business",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "aiguide.koreatous.com/",
+            title: "Jaehee Song - AI Guide",
+            description: "Comprehensive learning resources and practical guidance for AI development and implementation.",
+            category: "ai",
+            icon: "browser",
+            badge: "live"
         }
     ],
     books: [
@@ -648,6 +680,38 @@ const portfolioDataKo: PortfolioData = {
             description: "식단 계획, 음식 인사이트, 건강한 일상 선택을 돕는 AI 기반 영양 가이드 서비스입니다.",
             category: "ai",
             icon: "utilities",
+            badge: "live"
+        },
+        {
+            webSite: "vibe-coding.koreatous.com/",
+            title: "송재희 - 바이브 코딩",
+            description: "창의적인 협업과 AI 기반 개발 실전을 통한 일하는 방식의 혁신.",
+            category: "business",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "muse.koreatous.com/",
+            title: "송재희 - Muse",
+            description: "혁신적인 사고와 문제 해결을 위한 AI 창의 파트너.",
+            category: "ai",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "whatwehandover.koreatous.com/",
+            title: "송재희 - What We Hand Over",
+            description: "지식 전승과 유산 구축의 철학과 실제를 탐구합니다.",
+            category: "business",
+            icon: "browser",
+            badge: "live"
+        },
+        {
+            webSite: "aiguide.koreatous.com/",
+            title: "송재희 - AI 가이드",
+            description: "AI 개발과 구현을 위한 포괄적인 학습 자료와 실전 가이드.",
+            category: "ai",
+            icon: "browser",
             badge: "live"
         }
     ],

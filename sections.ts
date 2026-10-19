@@ -178,7 +178,8 @@ export function renderProjects(container: HTMLElement): void {
         'investment': '\uD83D\uDCCA',
         'workshop': '\uD83C\uDF93',
         'utilities': '\uD83D\uDD27',
-        'marketing': '\uD83D\uDCE3'
+        'marketing': '\uD83D\uDCE3',
+        'browser': '\uD83C\uDF10'
     };
 
     const categoryMap: { [key: string]: string } = {
