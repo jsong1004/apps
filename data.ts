@@ -321,7 +321,7 @@ export const portfolioData: PortfolioData = {
         },
         {
             webSite: "vibe-coding.koreatous.com/",
-            title: "Jaehee Song - Vibe Coding",
+            title: "Beyond Vibe Coding: What Will You Build?",
             description: "Innovation in working methods through creative collaboration and AI-powered development practices.",
             category: "business",
             icon: "vibe-coding",
@@ -329,7 +329,7 @@ export const portfolioData: PortfolioData = {
         },
         {
             webSite: "muse.koreatous.com/",
-            title: "Jaehee Song - Muse",
+            title: "Meta Muse Use Cases",
             description: "AI creative companion for innovative thinking and problem-solving.",
             category: "ai",
             icon: "muse",
@@ -337,7 +337,7 @@ export const portfolioData: PortfolioData = {
         },
         {
             webSite: "whatwehandover.koreatous.com/",
-            title: "Jaehee Song - What We Hand Over",
+            title: "AI and Ethics: What Should Never Be Handed Over?",
             description: "Exploring the philosophy and practice of knowledge transfer and legacy building.",
             category: "business",
             icon: "knowledge",
@@ -345,7 +345,7 @@ export const portfolioData: PortfolioData = {
         },
         {
             webSite: "aiguide.koreatous.com/",
-            title: "Jaehee Song - AI Guide",
+            title: "Everyone Should Build Their Own Solution",
             description: "Comprehensive learning resources and practical guidance for AI development and implementation.",
             category: "ai",
             icon: "learning",
@@ -684,7 +684,7 @@ const portfolioDataKo: PortfolioData = {
         },
         {
             webSite: "vibe-coding.koreatous.com/",
-            title: "송재희 - 바이브 코딩",
+            title: "바이브 코딩 넘어 - 무엇을 만들 것인가?",
             description: "창의적인 협업과 AI 기반 개발 실전을 통한 일하는 방식의 혁신.",
             category: "business",
             icon: "vibe-coding",
@@ -692,7 +692,7 @@ const portfolioDataKo: PortfolioData = {
         },
         {
             webSite: "muse.koreatous.com/",
-            title: "송재희 - Muse",
+            title: "Meta Muse 사용사례",
             description: "혁신적인 사고와 문제 해결을 위한 AI 창의 파트너.",
             category: "ai",
             icon: "muse",
@@ -700,7 +700,7 @@ const portfolioDataKo: PortfolioData = {
         },
         {
             webSite: "whatwehandover.koreatous.com/",
-            title: "송재희 - What We Hand Over",
+            title: "AI 와 윤리 - 무엇을 내주지 말아야 하는가?",
             description: "지식 전승과 유산 구축의 철학과 실제를 탐구합니다.",
             category: "business",
             icon: "knowledge",
@@ -708,7 +708,7 @@ const portfolioDataKo: PortfolioData = {
         },
         {
             webSite: "aiguide.koreatous.com/",
-            title: "송재희 - AI 가이드",
+            title: "모든 사람이 자신의 솔루션을 빌드해야 한다.",
             description: "AI 개발과 구현을 위한 포괄적인 학습 자료와 실전 가이드.",
             category: "ai",
             icon: "learning",
